@@ -15,7 +15,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="576.0" prefWidth="1050.0" style="-fx-background-color: #02030A;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="piroots.gui.FXMLgestionlignesController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="576.0" prefWidth="1050.0" style="-fx-background-color: #02030A;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.FXMLgestionlignesController">
    <children>
       <VBox alignment="TOP_CENTER" prefHeight="576.0" prefWidth="256.0" style="-fx-background-color: #171D26;" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -31,11 +31,11 @@
                   <Insets bottom="20.0" />
                </VBox.margin>
             </Label>
-            <Button fx:id="btnOverview" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" onAction="#handleClicks" prefHeight="42.0" prefWidth="259.0" style="-fx-background-color: #171D26;" stylesheets="@style.css" text="Overview" textFill="#e7e5e5">
+            <Button fx:id="btnOverview" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" onAction="#handleClicks" prefHeight="42.0" prefWidth="259.0" style="-fx-background-color: #171D26;" stylesheets="@../ressources/css/style.css" text="Overview" textFill="#e7e5e5">
                <graphic>
                   <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../images/icons8_Home_32px.png" />
+                        <Image url="@../ressources/images/icons8_Home_32px.png" />
                      </image>
                   </ImageView>
                </graphic>
@@ -49,11 +49,11 @@
                   <Insets left="50.0" />
                </padding>
             </Button>
-            <Button fx:id="btnOrders" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" onAction="#handleClicks" prefHeight="42.0" prefWidth="259.0" style="-fx-background-color: #171D26;" stylesheets="@style.css" text="Gestion de voyages">
+            <Button fx:id="btnOrders" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" onAction="#handleClicks" prefHeight="42.0" prefWidth="259.0" style="-fx-background-color: #171D26;" stylesheets="@../ressources/css/style.css" text="Gestion de voyages">
                <graphic>
                   <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../images/icons8_Open_Envelope_32px.png" />
+                        <Image url="@../ressources/images/icons8_Slider__32px.png" />
                      </image>
                   </ImageView>
                </graphic>
@@ -61,11 +61,11 @@
                   <Insets left="50.0" />
                </padding>
             </Button>
-            <Button fx:id="btnCustomers" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" onAction="#handleClicks" prefHeight="42.0" prefWidth="259.0" style="-fx-background-color: #171D26;" stylesheets="@style.css" text="Gestion de lignes">
+            <Button fx:id="btnCustomers" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" onAction="#handleClicks" prefHeight="42.0" prefWidth="259.0" style="-fx-background-color: #171D26;" stylesheets="@../ressources/css/style.css" text="Gestion de lignes">
                <graphic>
                   <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../images/icons8_Person_32px.png" />
+                        <Image url="@../ressources/images/icons8_Person_32px.png" />
                      </image>
                   </ImageView>
                </graphic>
@@ -73,11 +73,11 @@
                   <Insets left="50.0" />
                </padding>
             </Button>
-            <Button fx:id="btnMenus" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" onAction="#handleClicks" prefHeight="42.0" prefWidth="259.0" style="-fx-background-color: #171D26;" stylesheets="@style.css" text="Gestion de stations">
+            <Button fx:id="btnMenus" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" onAction="#handleClicks" prefHeight="42.0" prefWidth="259.0" style="-fx-background-color: #171D26;" stylesheets="@../ressources/css/style.css" text="Gestion de stations">
                <graphic>
                   <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../images/icons8_Xbox_Menu_32px.png" />
+                        <Image url="@../ressources/images/icons8_Box_32px.png" />
                      </image>
                   </ImageView>
                </graphic>
@@ -85,11 +85,11 @@
                   <Insets left="50.0" />
                </padding>
             </Button>
-            <Button fx:id="btnPackages" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="259.0" style="-fx-background-color: #171D26;" stylesheets="@style.css" text="Packages">
+            <Button fx:id="btnPackages" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="259.0" style="-fx-background-color: #171D26;" stylesheets="@../ressources/css/style.css" text="Packages">
                <graphic>
                   <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../images/icons8_Box_32px.png" />
+                        <Image url="@../ressources/images/icons8_Xbox_Menu_32px.png" />
                      </image>
                   </ImageView>
                </graphic>
@@ -97,11 +97,11 @@
                   <Insets left="50.0" />
                </padding>
             </Button>
-            <Button fx:id="btnSettings" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="259.0" style="-fx-background-color: #171D26;" stylesheets="@style.css" text="Settings">
+            <Button fx:id="btnSettings" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="259.0" style="-fx-background-color: #171D26;" stylesheets="@../ressources/css/style.css" text="Settings">
                <graphic>
                   <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../images/icons8_Slider__32px.png" />
+                        <Image url="@../ressources/images/icons8_Slider__32px.png" />
                      </image>
                   </ImageView>
                </graphic>
@@ -109,11 +109,11 @@
                   <Insets left="50.0" />
                </padding>
             </Button>
-            <Button fx:id="btnSignout" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="259.0" style="-fx-background-color: #171D26;" stylesheets="@style.css" text="Sign Out">
+            <Button fx:id="btnSignout" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="259.0" style="-fx-background-color: #171D26;" stylesheets="@../ressources/css/style.css" text="Sign Out">
                <graphic>
                   <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../images/icons8_Sign_Out_32px.png" />
+                        <Image url="@../ressources/images/icons8_Sign_Out_32px.png" />
                      </image>
                   </ImageView>
                </graphic>
@@ -136,7 +136,7 @@
                         <Font size="24.0" />
                      </font>
                   </Label>
-                  <ScrollPane layoutX="14.0" layoutY="232.0" prefHeight="320.0" prefWidth="746.0" stylesheets="@style.css">
+                  <ScrollPane layoutX="14.0" layoutY="232.0" prefHeight="320.0" prefWidth="746.0" stylesheets="@../ressources/css/style.css">
                      <content>
                         <VBox fx:id="pnItems" prefHeight="318.0" prefWidth="744.0" spacing="5.0" style="-fx-background-color: #B0B5B9;">
                            <padding>
@@ -158,12 +158,12 @@
         </Label>
                                     <ImageView fitHeight="23.0" fitWidth="42.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
-                                          <Image url="@../../images/edit.png" />
+                                          <Image url="@../ressources/images/edit.png" />
                                        </image>
                                     </ImageView>
                                     <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
-                                          <Image url="@../../images/trash.png" />
+                                          <Image url="@../ressources/images/trash.png" />
                                        </image>
                                     </ImageView>
     </children>
@@ -178,7 +178,7 @@
                   </ScrollPane>
                   <ImageView fitHeight="17.0" fitWidth="16.0" layoutX="749.0" layoutY="53.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../images/icons8_Search_52px.png" />
+                        <Image url="@../ressources/images/icons8_Search_52px.png" />
                      </image>
                   </ImageView>
                   <Button fx:id="btnOrders1" alignment="BASELINE_LEFT" centerShape="false" graphicTextGap="22.0" layoutX="482.0" layoutY="187.0" mnemonicParsing="false" onAction="#handleClicks" prefHeight="35.0" prefWidth="256.0" text="Ajouter une nouvelle ligne">
@@ -188,12 +188,12 @@
                   </Button>
                   <ImageView fitHeight="23.0" fitWidth="27.0" layoutX="682.0" layoutY="193.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../images/add.png" />
+                        <Image url="@../ressources/images/add.png" />
                      </image>
                   </ImageView>
                   <ImageView fitHeight="42.0" fitWidth="42.0" layoutX="221.0" layoutY="40.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../images/push-pin.png" />
+                        <Image url="@../ressources/images/push-pin.png" />
                      </image>
                   </ImageView>
                   <Label layoutX="263.0" layoutY="196.0" prefHeight="17.0" prefWidth="176.0" text="            Moyen de Transport" textFill="#1a2638" />

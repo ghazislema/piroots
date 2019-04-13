@@ -116,7 +116,7 @@ public class FXMLgestionlignesController implements Initializable {
                    edit.setFitHeight(23.0);
                    edit.setPickOnBounds(true);
                    edit.setPreserveRatio(true);
-                   edit.setImage(new Image("@../../images/edit.png"));
+          //         edit.setImage(new Image("@../ressources/images/edit.png"));
                 
                    
                     ImageView delete= new ImageView();
@@ -124,7 +124,7 @@ public class FXMLgestionlignesController implements Initializable {
                    delete.setFitHeight(23.0);
                    delete.setPickOnBounds(true);
                    delete.setPreserveRatio(true);
-                   delete.setImage(new Image("@../../images/trash.png"));
+            //       delete.setImage(new Image("@../ressources/images/trash.png"));
                    
                   
                     h1.getChildren().addAll(espace,espace2,nom,espace3,moyenTransp,espace4,espace5
