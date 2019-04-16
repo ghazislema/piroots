@@ -24,6 +24,7 @@ import javafx.scene.layout.VBox;
 import jdk.nashorn.internal.objects.Global;
 import service.ServiceLigne;
 import entities.Ligne;
+import java.util.Locale;
 import javafx.geometry.Insets;
 
 /**
@@ -40,7 +41,7 @@ public class FXMLgestionlignesController implements Initializable {
     @FXML
     private Button btnOrders;
     @FXML
-    private Button btnCustomers;
+    private Button BTN_LINE_MANAGEMENT;
     @FXML
     private Button btnMenus;
     @FXML
@@ -63,6 +64,9 @@ public class FXMLgestionlignesController implements Initializable {
     private HBox itemC;
     @FXML
     private Button btnOrders1;
+    
+    private ResourceBundle bundle;
+    private Locale locale;
 
     ObservableList<Ligne> lignes = FXCollections.observableArrayList();
     /**
@@ -71,6 +75,7 @@ public class FXMLgestionlignesController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        Loadlang(LigneMain.language);
         recupererLignes();
         
     }    
@@ -145,8 +150,15 @@ public class FXMLgestionlignesController implements Initializable {
         
     
 }
-       public static void loadLoginGuiLang(ResourceBundle bundle) {
-        nomLigne.setText(bundle.getString("linename"));
+        private void Loadlang(String lang)
+    {
+         Locale locale= new Locale(lang);
+         bundle = ResourceBundle.getBundle("i18n.mybundle",locale);
+         
+         BTN_LINE_MANAGEMENT.setText(bundle.getString("BTN_LINE_MANAGEMENT"));
+         
+         
+        
         
     }
       

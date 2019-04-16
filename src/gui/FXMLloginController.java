@@ -77,12 +77,14 @@ public class FXMLloginController implements Initializable {
     @FXML
     private void btn_en(ActionEvent event) 
     {
-        Loadlang("en");
+        LigneMain.language="en";
+        Loadlang(LigneMain.language);
     }
     @FXML
     private void btn_fr(ActionEvent event) 
     {
-        Loadlang("fr");
+        LigneMain.language="fr";
+        Loadlang(LigneMain.language);
     }
     
     private void Loadlang(String lang)
@@ -103,11 +105,7 @@ public class FXMLloginController implements Initializable {
          H5.setText(bundle.getString("H5"));
          H6.setText(bundle.getString("H6"));
          SIGNUP_BTN.setText(bundle.getString("SIGNUP"));
-         
         
-            
-//         FXMLgestionlignesController gestionLignes = new FXMLgestionlignesController();
-//         gestionLignes.loadLoginGuiLang(bundle);
         
     }
     

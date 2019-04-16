@@ -39,9 +39,9 @@
             <Font size="36.0" />
          </font>
       </Label>
-      <Label fx:id="H2" layoutX="346.0" layoutY="82.0" prefHeight="31.0" prefWidth="502.0" text="The leader solution for Smart Transport handling and management" textFill="WHITE" wrapText="true">
+      <Label fx:id="H2" layoutX="380.0" layoutY="82.0" prefHeight="31.0" prefWidth="502.0" text="The leader solution for Smart Transport handling and management" textFill="WHITE" wrapText="true">
          <font>
-            <Font size="15.0" />
+            <Font size="13.0" />
          </font></Label>
       <JFXButton fx:id="SIGNUP_BTN" layoutX="694.0" layoutY="241.0" prefHeight="31.0" prefWidth="134.0" style="-fx-background-color: white;" text="Sign Up">
          <font>

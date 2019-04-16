@@ -23,6 +23,8 @@ import javafx.stage.Stage;
  */
 public class LigneMain extends Application {
     
+    public static String language = "en";
+    
     @Override
     public void start(Stage s) throws IOException{
         Parent root = FXMLLoader.load(getClass().getResource("FXMLgestionlignes.fxml"));
