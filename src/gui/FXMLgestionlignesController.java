@@ -13,7 +13,6 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -25,6 +24,7 @@ import javafx.scene.layout.VBox;
 import jdk.nashorn.internal.objects.Global;
 import service.ServiceLigne;
 import entities.Ligne;
+import javafx.geometry.Insets;
 
 /**
  * FXML Controller class
@@ -81,42 +81,50 @@ public class FXMLgestionlignesController implements Initializable {
         ServiceLigne service= new ServiceLigne();
         
         list = service.findAll();
-        int i = 1;
+       
         for (Ligne ligne : list) {
             
              HBox h1 = new HBox();
              h1.setAlignment(Pos.CENTER_LEFT);
-             h1.setPrefHeight(35.0);
+             h1.maxHeight(Global.Infinity);
+             h1.setPadding(Insets.EMPTY);
+             h1.setPrefHeight(70.0);
              h1.setPrefWidth(733.0);
-            h1.setSpacing(70.0);
-            h1.maxHeight(Global.Infinity);
+            h1.setSpacing(55.0);
+            
+            
             h1.setStyle("-fx-background-color: #E6E9ED; -fx-background-radius: 5; -fx-background-insets: 0;");
-        
+       
              Label espace = new Label("");
              Label espace2 = new Label("");
              Label espace3 = new Label("");
              Label espace4 = new Label("");
              Label espace5 = new Label("");
+            
+             
              Label nom=new Label(ligne.getNom());
              nom.prefHeight(17.0);
              nom.prefWidth(234.0);
              
              Label moyenTransp = new Label(ligne.getMoyentransport());
              moyenTransp.prefHeight(17.0);
+             moyenTransp.prefWidth(234.0);
+             moyenTransp.setPrefSize(75 , 15);
+            moyenTransp.setMaxSize(75      , 15);
+             
+             
+             moyenTransp.prefHeight(17.0);
              moyenTransp.prefWidth(112.0);
+            
              
              
-           
-             Label label3 = new Label(String.valueOf(i));
-             i++;
-             label3.setPrefWidth(70);
                    
                     ImageView edit= new ImageView();
                    edit.setFitWidth(42.0);
                    edit.setFitHeight(23.0);
                    edit.setPickOnBounds(true);
                    edit.setPreserveRatio(true);
-          //         edit.setImage(new Image("@../ressources/images/edit.png"));
+                  edit.setImage(new Image("@../../ressources/images/edit.png"));
                 
                    
                     ImageView delete= new ImageView();
@@ -124,11 +132,11 @@ public class FXMLgestionlignesController implements Initializable {
                    delete.setFitHeight(23.0);
                    delete.setPickOnBounds(true);
                    delete.setPreserveRatio(true);
-            //       delete.setImage(new Image("@../ressources/images/trash.png"));
+                   delete.setImage(new Image("@../../ressources/images/trash.png"));
                    
                   
-                    h1.getChildren().addAll(espace,espace2,nom,espace3,moyenTransp,espace4,espace5
-                            ,edit,delete);
+                    h1.getChildren().addAll(espace,nom,espace2,moyenTransp,espace4,espace5
+                            ,edit,espace3,delete);
                     pnItems.getChildren().add(h1);
            
         }
