@@ -34,6 +34,8 @@ import javafx.geometry.Insets;
 public class FXMLgestionlignesController implements Initializable {
 
     @FXML
+    private static Label nomLigne;
+    @FXML
     private Button btnOverview;
     @FXML
     private Button btnOrders;
@@ -143,6 +145,11 @@ public class FXMLgestionlignesController implements Initializable {
         
     
 }
+       public static void loadLoginGuiLang(ResourceBundle bundle) {
+        nomLigne.setText(bundle.getString("linename"));
+        
+    }
+      
     @FXML
     private void handleClicks(ActionEvent event) {
     }

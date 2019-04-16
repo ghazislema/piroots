@@ -11,43 +11,58 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="700.0" style="-fx-background-color: #030911;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="700.0" style="-fx-background-color: #030911;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.FXMLloginController">
    <children>
       <AnchorPane prefHeight="400.0" prefWidth="316.0" style="-fx-background-color: #f1faee;">
          <children>
-            <JFXTextField focusColor="#2a365a" labelFloat="true" layoutX="29.0" layoutY="117.0" prefHeight="25.0" prefWidth="241.0" promptText="Username" unFocusColor="#457b9d" />
-            <JFXPasswordField focusColor="#2a365a" labelFloat="true" layoutX="29.0" layoutY="182.0" prefHeight="25.0" prefWidth="241.0" promptText="Password" unFocusColor="#457b9d" />
-            <JFXButton layoutX="29.0" layoutY="269.0" prefHeight="25.0" prefWidth="241.0" style="-fx-background-color: #0F1D30;" text="Login" textFill="WHITE" />
-            <CheckBox layoutX="24.0" layoutY="323.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="104.0" text="Remember me" />
-            <Hyperlink layoutX="167.0" layoutY="320.0" text="Forgot password?" textFill="#3a3e4a" underline="true" />
+            <JFXTextField fx:id="USERNAME" focusColor="#2a365a" labelFloat="true" layoutX="29.0" layoutY="117.0" prefHeight="25.0" prefWidth="241.0" promptText="Username" unFocusColor="#457b9d" />
+            <JFXPasswordField fx:id="PASSWORD" focusColor="#2a365a" labelFloat="true" layoutX="29.0" layoutY="182.0" prefHeight="25.0" prefWidth="241.0" promptText="Password" unFocusColor="#457b9d" />
+            <JFXButton fx:id="SIGNIN_BTN" layoutX="29.0" layoutY="263.0" onAction="#Back" prefHeight="25.0" prefWidth="241.0" style="-fx-background-color: #0F1D30;" text="Login" textFill="WHITE" />
+            <CheckBox fx:id="REMEMBER_ME" layoutX="21.0" layoutY="317.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="134.0" text="Remember me" />
+            <Hyperlink fx:id="FORGOTPW_LINK" layoutX="168.0" layoutY="314.0" prefHeight="23.0" prefWidth="134.0" text="Forgot password?" textFill="#3a3e4a" underline="true" />
             <ImageView fitHeight="106.0" fitWidth="117.0" layoutX="199.0">
                <image>
                   <Image url="@../ressources/images/Dream-Catcher-PNG-Photo.png" />
                </image>
             </ImageView>
+            <Label layoutX="143.0" layoutY="369.0" text="/" />
+            <Hyperlink fx:id="BTN_EN" layoutX="87.0" layoutY="366.0" onAction="#btn_en" text="English" />
+            <Hyperlink fx:id="BTN_FR" layoutX="158.0" layoutY="366.0" onAction="#btn_fr" text="Francais" />
          </children></AnchorPane>
       <ImageView fitHeight="400.0" fitWidth="530.0" layoutX="319.0">
          <image>
             <Image url="@../ressources/images/loginImage.jpg" />
          </image>
       </ImageView>
-      <Label layoutX="391.0" layoutY="41.0" lineSpacing="1.0" prefHeight="61.0" prefWidth="396.0" text="Welcome to SmartRoots" textAlignment="CENTER" textFill="#fcfafa" wrapText="true">
+      <Label fx:id="H1" layoutX="386.0" layoutY="21.0" lineSpacing="1.0" prefHeight="61.0" prefWidth="396.0" text="Welcome to SmartRoots" textAlignment="CENTER" textFill="#fcfafa" wrapText="true">
          <font>
-            <Font size="35.0" />
+            <Font size="36.0" />
          </font>
       </Label>
-      <Label layoutX="363.0" layoutY="102.0" prefHeight="31.0" prefWidth="453.0" text="The leader solution for Smart Transport handling and management" textFill="WHITE" wrapText="true">
+      <Label fx:id="H2" layoutX="346.0" layoutY="82.0" prefHeight="31.0" prefWidth="502.0" text="The leader solution for Smart Transport handling and management" textFill="WHITE" wrapText="true">
          <font>
             <Font size="15.0" />
          </font></Label>
-      <JFXButton layoutX="510.0" layoutY="327.0" prefHeight="25.0" prefWidth="148.0" style="-fx-background-color: white;" text="Sign Up">
+      <JFXButton fx:id="SIGNUP_BTN" layoutX="694.0" layoutY="241.0" prefHeight="31.0" prefWidth="134.0" style="-fx-background-color: white;" text="Sign Up">
          <font>
             <Font size="15.0" />
          </font>
       </JFXButton>
-      <Label layoutX="441.0" layoutY="169.0" prefHeight="31.0" prefWidth="286.0" text="Informations about all and every wokring transport" textFill="WHITE" wrapText="true" />
-      <Label layoutX="463.0" layoutY="200.0" prefHeight="31.0" prefWidth="241.0" text="Book anytime or anywhere you want to go" textFill="WHITE" wrapText="true" />
-      <Label layoutX="435.0" layoutY="231.0" prefHeight="31.0" prefWidth="299.0" text="Available support at your service all arround the clock" textFill="WHITE" wrapText="true" />
-      <Label layoutX="498.0" layoutY="262.0" prefHeight="31.0" prefWidth="174.0" text="And much more... Sign up now!" textFill="WHITE" wrapText="true" />
+      <Label fx:id="H3" layoutX="343.0" layoutY="194.0" prefHeight="31.0" prefWidth="480.0" text="Informations about all and every wokring transport" textFill="WHITE" wrapText="true">
+         <font>
+            <Font size="13.0" />
+         </font></Label>
+      <Label fx:id="H4" layoutX="343.0" layoutY="225.0" prefHeight="31.0" prefWidth="343.0" text="Book anytime or anywhere you want to go" textFill="WHITE" wrapText="true">
+         <font>
+            <Font size="13.0" />
+         </font></Label>
+      <Label fx:id="H5" layoutX="343.0" layoutY="255.0" prefHeight="31.0" prefWidth="329.0" text="Available support at your service all arround the clock" textFill="WHITE" wrapText="true">
+         <font>
+            <Font size="13.0" />
+         </font></Label>
+      <Label fx:id="H6" layoutX="344.0" layoutY="287.0" prefHeight="31.0" prefWidth="376.0" text="And much more... Sign up now!" textFill="WHITE" wrapText="true">
+         <font>
+            <Font size="13.0" />
+         </font></Label>
    </children>
 </AnchorPane>
