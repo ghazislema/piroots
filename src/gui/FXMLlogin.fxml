@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXPasswordField?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="700.0" style="-fx-background-color: #030911;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <AnchorPane prefHeight="400.0" prefWidth="316.0" style="-fx-background-color: #f1faee;">
+         <children>
+            <JFXTextField focusColor="#2a365a" labelFloat="true" layoutX="29.0" layoutY="117.0" prefHeight="25.0" prefWidth="241.0" promptText="Username" unFocusColor="#457b9d" />
+            <JFXPasswordField focusColor="#2a365a" labelFloat="true" layoutX="29.0" layoutY="182.0" prefHeight="25.0" prefWidth="241.0" promptText="Password" unFocusColor="#457b9d" />
+            <JFXButton layoutX="29.0" layoutY="269.0" prefHeight="25.0" prefWidth="241.0" style="-fx-background-color: #0F1D30;" text="Login" textFill="WHITE" />
+            <CheckBox layoutX="24.0" layoutY="323.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="104.0" text="Remember me" />
+            <Hyperlink layoutX="167.0" layoutY="320.0" text="Forgot password?" textFill="#3a3e4a" underline="true" />
+            <ImageView fitHeight="106.0" fitWidth="117.0" layoutX="199.0">
+               <image>
+                  <Image url="@../ressources/images/Dream-Catcher-PNG-Photo.png" />
+               </image>
+            </ImageView>
+         </children></AnchorPane>
+      <ImageView fitHeight="400.0" fitWidth="530.0" layoutX="319.0">
+         <image>
+            <Image url="@../ressources/images/loginImage.jpg" />
+         </image>
+      </ImageView>
+      <Label layoutX="391.0" layoutY="41.0" lineSpacing="1.0" prefHeight="61.0" prefWidth="396.0" text="Welcome to SmartRoots" textAlignment="CENTER" textFill="#fcfafa" wrapText="true">
+         <font>
+            <Font size="35.0" />
+         </font>
+      </Label>
+      <Label layoutX="363.0" layoutY="102.0" prefHeight="31.0" prefWidth="453.0" text="The leader solution for Smart Transport handling and management" textFill="WHITE" wrapText="true">
+         <font>
+            <Font size="15.0" />
+         </font></Label>
+      <JFXButton layoutX="510.0" layoutY="327.0" prefHeight="25.0" prefWidth="148.0" style="-fx-background-color: white;" text="Sign Up">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </JFXButton>
+      <Label layoutX="441.0" layoutY="169.0" prefHeight="31.0" prefWidth="286.0" text="Informations about all and every wokring transport" textFill="WHITE" wrapText="true" />
+      <Label layoutX="463.0" layoutY="200.0" prefHeight="31.0" prefWidth="241.0" text="Book anytime or anywhere you want to go" textFill="WHITE" wrapText="true" />
+      <Label layoutX="435.0" layoutY="231.0" prefHeight="31.0" prefWidth="299.0" text="Available support at your service all arround the clock" textFill="WHITE" wrapText="true" />
+      <Label layoutX="498.0" layoutY="262.0" prefHeight="31.0" prefWidth="174.0" text="And much more... Sign up now!" textFill="WHITE" wrapText="true" />
+   </children>
+</AnchorPane>
