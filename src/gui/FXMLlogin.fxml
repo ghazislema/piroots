@@ -15,19 +15,19 @@
    <children>
       <AnchorPane prefHeight="400.0" prefWidth="316.0" style="-fx-background-color: #f1faee;">
          <children>
-            <JFXTextField fx:id="USERNAME" focusColor="#2a365a" labelFloat="true" layoutX="29.0" layoutY="117.0" prefHeight="25.0" prefWidth="241.0" promptText="Username" unFocusColor="#457b9d" />
-            <JFXPasswordField fx:id="PASSWORD" focusColor="#2a365a" labelFloat="true" layoutX="29.0" layoutY="182.0" prefHeight="25.0" prefWidth="241.0" promptText="Password" unFocusColor="#457b9d" />
-            <JFXButton fx:id="SIGNIN_BTN" layoutX="29.0" layoutY="263.0" onAction="#Back" prefHeight="25.0" prefWidth="241.0" style="-fx-background-color: #0F1D30;" text="Login" textFill="WHITE" />
-            <CheckBox fx:id="REMEMBER_ME" layoutX="21.0" layoutY="317.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="134.0" text="Remember me" />
-            <Hyperlink fx:id="FORGOTPW_LINK" layoutX="168.0" layoutY="314.0" prefHeight="23.0" prefWidth="134.0" text="Forgot password?" textFill="#3a3e4a" underline="true" />
-            <ImageView fitHeight="106.0" fitWidth="117.0" layoutX="199.0">
-               <image>
-                  <Image url="@../ressources/images/Dream-Catcher-PNG-Photo.png" />
-               </image>
-            </ImageView>
+            <JFXTextField fx:id="USERNAME" focusColor="#2a365a" labelFloat="true" layoutX="29.0" layoutY="108.0" prefHeight="25.0" prefWidth="241.0" promptText="Username" unFocusColor="#457b9d" />
+            <JFXPasswordField fx:id="PASSWORD" focusColor="#2a365a" labelFloat="true" layoutX="29.0" layoutY="173.0" prefHeight="25.0" prefWidth="241.0" promptText="Password" unFocusColor="#457b9d" />
+            <JFXButton fx:id="SIGNIN_BTN" layoutX="29.0" layoutY="260.0" onAction="#Back" prefHeight="25.0" prefWidth="241.0" style="-fx-background-color: #0F1D30;" text="Login" textFill="WHITE" />
+            <CheckBox fx:id="REMEMBER_ME" layoutX="21.0" layoutY="312.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="134.0" text="Remember me" />
+            <Hyperlink fx:id="FORGOTPW_LINK" layoutX="168.0" layoutY="309.0" prefHeight="23.0" prefWidth="134.0" text="Forgot password?" textFill="#3a3e4a" underline="true" />
             <Label layoutX="143.0" layoutY="369.0" text="/" />
             <Hyperlink fx:id="BTN_EN" layoutX="87.0" layoutY="366.0" onAction="#btn_en" text="English" />
             <Hyperlink fx:id="BTN_FR" layoutX="158.0" layoutY="366.0" onAction="#btn_fr" text="Francais" />
+            <ImageView fitHeight="155.0" fitWidth="308.0" layoutX="2.0" layoutY="-46.0">
+               <image>
+                  <Image url="@../ressources/images/floral-1751088__340.png" />
+               </image>
+            </ImageView>
          </children></AnchorPane>
       <ImageView fitHeight="400.0" fitWidth="530.0" layoutX="319.0">
          <image>
