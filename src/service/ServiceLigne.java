@@ -32,7 +32,7 @@ public class ServiceLigne implements SCRUD < Ligne > {
   try {
    ps = con.prepareStatement("insert into ligne " +
     "              (nom,moyentransport)" +
-    "               values(?,?");
+    "               values(?,?)");
 
 
    ps.setString(1, a.getNom());

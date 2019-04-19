@@ -5,12 +5,11 @@
  */
 package gui;
 
-import com.jfoenix.controls.JFXDatePicker;
-import com.jfoenix.controls.JFXTimePicker;
+import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXTextField;
+import entities.Ligne;
 import java.io.IOException;
 import java.net.URL;
-import java.time.LocalDate;
-import java.time.LocalTime;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -20,10 +19,13 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.TextField;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.Hyperlink;
+import javafx.scene.control.Label;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import service.ServiceLigne;
-import entities.Ligne;
 
 /**
  * FXML Controller class
@@ -33,55 +35,87 @@ import entities.Ligne;
 public class FXMLaddligneController implements Initializable {
 
     @FXML
-    private TextField d_depart;
+    private Label OP_SUCCESS;
     @FXML
-    private TextField d_arrive;
+    private AnchorPane BOX_NOTIF;
     @FXML
-    private Button ajouter;
+    private AnchorPane BOX_NOTIF_WARNING;
     @FXML
-    private JFXTimePicker heure_arrive;
+    private Button btnOverview;
     @FXML
-    private JFXTimePicker heure_depart;
+    private Button btnOrders;
     @FXML
-    private JFXDatePicker date_depart;
+    private Button BTN_LINE_MANAGEMENT;
+    @FXML
+    private Button btnMenus;
+    @FXML
+    private Button btnPackages;
+    @FXML
+    private Button btnSettings;
+    @FXML
+    private Button btnSignout;
+    @FXML
+    private Pane pnlCustomer;
+    @FXML
+    private Pane pnlOrders;
+    @FXML
+    private Pane pnlMenus;
+    @FXML
+    private Pane pnlOverview;
+    @FXML
+    private JFXButton ADD_LINE_BTN;
+    @FXML
+    private Hyperlink PREV_LINK;
+    @FXML
+    private ComboBox COMBO_BOX_TRANSP;
+    @FXML
+    private JFXTextField LINE_NAME;
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        // TODO
         
+        COMBO_BOX_TRANSP.getItems().addAll("Bus","Train","Metro");
         
-         ajouter.setOnAction((event) -> {
-           
-            String depart=d_depart.getText();
-            String arrive=d_arrive.getText();
-
+        ADD_LINE_BTN.setOnAction(e->{
             
-            LocalTime heured=heure_depart.getValue();
-            LocalTime heurea=heure_arrive.getValue();
-            
-            LocalDate date=date_depart.getValue();
-            System.out.println(""+depart+ "   "+arrive+ " depart = "+heured);
-            
-            String timed=heured+"";
-            String timea=heurea+"";
-            String dateligne=date+"";
-            
+            if (COMBO_BOX_TRANSP.getValue()==null || LINE_NAME.getText()=="" )
+                {
+                        BOX_NOTIF_WARNING.setVisible(true);
+                }
+            else
+                {
+                
             ServiceLigne service=new ServiceLigne();
+            String nom= LINE_NAME.getText();
+            String transp= (String) COMBO_BOX_TRANSP.getValue();
+            Ligne ligne=new Ligne();
+            ligne.setNom(nom);
+            ligne.setMoyentransport(transp);
+            service.insert(ligne);
             
-//            Ligne a=new Ligne(depart, arrive, timed , timea , dateligne);
-//            service.insert(a);
+            BOX_NOTIF.setVisible(true);
             
+                
+                }
         });
     }    
-    
-    @FXML
-    public void ShowListLignes(ActionEvent event) throws IOException {
 
-        Parent root = FXMLLoader.load(getClass().getResource("FXMLlistelignes.fxml"));
+    @FXML
+    private void handleClicks(ActionEvent event) {
+    }
+
+    @FXML
+    private void Back(ActionEvent event) throws IOException {
+        
+        Parent showligne = FXMLLoader.load(getClass().getResource("FXMLgestionlignes.fxml"));
+        Scene scene = new Scene(showligne);
+        
+        
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
     }

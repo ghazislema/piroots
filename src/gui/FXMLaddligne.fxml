@@ -1,25 +1,184 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.JFXDatePicker?>
-<?import com.jfoenix.controls.JFXTimePicker?>
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Hyperlink?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="piroots.gui.FXMLaddligneController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="576.0" prefWidth="1050.0" style="-fx-background-color: #171D26 #171D26;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.FXMLaddligneController">
    <children>
-      <TextField fx:id="d_depart" layoutX="239.0" layoutY="82.0" />
-      <TextField fx:id="d_arrive" layoutX="239.0" layoutY="137.0" />
-      <Button fx:id="ajouter" layoutX="144.0" layoutY="352.0" mnemonicParsing="false" text="Ajouter" />
-      <Label layoutX="107.0" layoutY="86.0" text="Destination depart " />
-      <Label layoutX="107.0" layoutY="141.0" text="Destination arrive" />
-      <Label layoutX="121.0" layoutY="192.0" text="heure depart" />
-      <Label layoutX="121.0" layoutY="242.0" text="Heure arrive" />
-      <JFXTimePicker fx:id="heure_arrive" layoutX="228.0" layoutY="187.0" />
-      <JFXTimePicker fx:id="heure_depart" layoutX="228.0" layoutY="237.0" />
-      <Label layoutX="146.0" layoutY="313.0" text="Date" />
-      <JFXDatePicker fx:id="date_depart" layoutX="228.0" layoutY="293.0" />
-      <Button fx:id="list_ligne" layoutX="314.0" layoutY="352.0" mnemonicParsing="false" onAction="#ShowListLignes" text="Liste des lignes" />
+      <VBox alignment="TOP_CENTER" layoutY="156.0" prefHeight="422.0" prefWidth="256.0" style="-fx-background-color: #171D26;" AnchorPane.bottomAnchor="-2.0" AnchorPane.topAnchor="156.0">
+         <children>
+            <Label textFill="#e7e5e5">
+               <VBox.margin>
+                  <Insets bottom="20.0" />
+               </VBox.margin>
+            </Label>
+            <Button fx:id="btnOverview" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" onAction="#handleClicks" prefHeight="42.0" prefWidth="259.0" stylesheets="@../ressources/css/style.css" text="Overview" textFill="#e7e5e5">
+               <graphic>
+                  <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../ressources/images/icons8_Home_32px.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+               <padding>
+                  <Insets left="50.0" />
+               </padding>
+            </Button>
+            <Button fx:id="btnOrders" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" onAction="#handleClicks" prefHeight="42.0" prefWidth="259.0" stylesheets="@../ressources/css/style.css" text="Gestion de voyages">
+               <graphic>
+                  <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../ressources/images/icons8_Slider__32px.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <padding>
+                  <Insets left="50.0" />
+               </padding>
+            </Button>
+            <Button fx:id="BTN_LINE_MANAGEMENT" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" onAction="#handleClicks" prefHeight="42.0" prefWidth="259.0" stylesheets="@../ressources/css/style.css" text="Gestion de lignes">
+               <graphic>
+                  <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../ressources/images/icons8_Person_32px.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <padding>
+                  <Insets left="50.0" />
+               </padding>
+            </Button>
+            <Button fx:id="btnMenus" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" onAction="#handleClicks" prefHeight="42.0" prefWidth="259.0" stylesheets="@../ressources/css/style.css" text="Gestion de stations">
+               <graphic>
+                  <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../ressources/images/icons8_Box_32px.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <padding>
+                  <Insets left="50.0" />
+               </padding>
+            </Button>
+            <Button fx:id="btnPackages" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="259.0" stylesheets="@../ressources/css/style.css" text="Packages">
+               <graphic>
+                  <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../ressources/images/icons8_Xbox_Menu_32px.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <padding>
+                  <Insets left="50.0" />
+               </padding>
+            </Button>
+            <Button fx:id="btnSettings" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="259.0" stylesheets="@../ressources/css/style.css" text="Settings">
+               <graphic>
+                  <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../ressources/images/icons8_Slider__32px.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <padding>
+                  <Insets left="50.0" />
+               </padding>
+            </Button>
+            <Button fx:id="btnSignout" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="259.0" stylesheets="@../ressources/css/style.css" text="Sign Out">
+               <graphic>
+                  <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../ressources/images/icons8_Sign_Out_32px.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <padding>
+                  <Insets left="50.0" />
+               </padding>
+            </Button>
+         </children>
+      </VBox>
+      <StackPane layoutX="258.0" prefHeight="576.0" prefWidth="793.0" style="-fx-background-color: #02030A;">
+         <children>
+            <Pane fx:id="pnlCustomer" prefHeight="200.0" prefWidth="200.0" />
+            <Pane fx:id="pnlOrders" prefHeight="200.0" prefWidth="200.0" />
+            <Pane fx:id="pnlMenus" prefHeight="200.0" prefWidth="200.0" />
+            <Pane fx:id="pnlOverview" prefHeight="554.0" prefWidth="793.0" style="-fx-background-color: #FFFEF9;">
+               <children>
+                  <Line endX="202.0" layoutX="363.0" layoutY="469.0" startX="-136.0" />
+                  <Line endX="601.0" layoutX="151.0" layoutY="109.0" startX="-136.0" />
+                  <JFXButton fx:id="ADD_LINE_BTN" layoutX="276.0" layoutY="410.0" onAction="#Back" prefHeight="25.0" prefWidth="241.0" style="-fx-background-color: #0F1D30;" text="Ajouter" textFill="WHITE" />
+                  <Hyperlink fx:id="PREV_LINK" layoutX="28.0" layoutY="52.0" prefHeight="28.0" prefWidth="123.0" text="Page précédente" textFill="#3a3e4a" underline="true">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Hyperlink>
+                  <ComboBox fx:id="COMBO_BOX_TRANSP" layoutX="276.0" layoutY="306.0" prefHeight="25.0" prefWidth="241.0" promptText="Choisir le moyen de transport..." />
+                  <JFXTextField fx:id="LINE_NAME" focusColor="#2a365a" labelFloat="true" layoutX="276.0" layoutY="227.0" prefHeight="25.0" prefWidth="241.0" promptText="Nom de la ligne" unFocusColor="#457b9d" />
+                  <AnchorPane fx:id="BOX_NOTIF" layoutX="520.0" layoutY="45.0" prefHeight="42.0" prefWidth="241.0" style="-fx-background-color: #f1faee;">
+                     <children>
+                        <Label fx:id="OP_SUCCESS" layoutX="14.0" layoutY="11.0" text="Operation done with success " textFill="#363b4d">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <ImageView fitHeight="20.0" fitWidth="24.0" layoutX="196.0" layoutY="11.0">
+                           <image>
+                              <Image url="@../ressources/images/add.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </AnchorPane>
+                  <ImageView fitHeight="113.0" fitWidth="156.0" layoutX="319.0" layoutY="435.0">
+                     <image>
+                        <Image url="@../ressources/images/floral-1751088__340.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="74.0" fitWidth="488.0" layoutX="152.0" layoutY="110.0">
+                     <image>
+                        <Image url="@../ressources/images/Decorative-Line-Black-PNG-Image.png" />
+                     </image>
+                  </ImageView>
+                  <AnchorPane fx:id="BOX_NOTIF_WARNING" layoutX="276.0" layoutY="355.0" prefHeight="42.0" prefWidth="241.0" style="-fx-background-color: #f1faee;">
+                     <children>
+                        <Label fx:id="OP_SUCCESS1" layoutX="14.0" layoutY="11.0" text="You have to fill all fields" textFill="#363b4d">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </AnchorPane>
+               </children>
+            </Pane>
+         </children>
+      </StackPane>
+      <ImageView fitHeight="113.0" fitWidth="119.0" layoutX="72.0" layoutY="28.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../ressources/images/train_white_192x192.png" />
+         </image>
+      </ImageView>
    </children>
+   <effect>
+      <DropShadow color="#1b1eeb" />
+   </effect>
 </AnchorPane>

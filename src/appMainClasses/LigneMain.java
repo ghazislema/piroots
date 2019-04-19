@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package gui;
+package appMainClasses;
 
 import java.io.IOException;
 import javafx.application.Application;
@@ -27,7 +27,7 @@ public class LigneMain extends Application {
     
     @Override
     public void start(Stage s) throws IOException{
-        Parent root = FXMLLoader.load(getClass().getResource("FXMLgestionlignes.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/gui/FXMLgestionlignes.fxml"));
         
         Scene scene = new Scene(root);
         

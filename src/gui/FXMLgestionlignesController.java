@@ -5,6 +5,7 @@
  */
 package gui;
 
+import appMainClasses.LigneMain;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -61,16 +62,15 @@ public class FXMLgestionlignesController implements Initializable {
     @FXML
     private VBox pnItems;
     @FXML
-    private HBox itemC;
-    @FXML
     private Button btnOrders1;
     
     private ResourceBundle bundle;
     private Locale locale;
 
-    ObservableList<Ligne> lignes = FXCollections.observableArrayList();
     /**
      * Initializes the controller class.
+     * @param url
+     * @param rb
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -83,7 +83,6 @@ public class FXMLgestionlignesController implements Initializable {
       public void recupererLignes() {
 
         
-        lignes.clear();
         List<Ligne> list = null;
         ServiceLigne service= new ServiceLigne();
         
@@ -95,11 +94,10 @@ public class FXMLgestionlignesController implements Initializable {
              h1.setAlignment(Pos.CENTER_LEFT);
              h1.maxHeight(Global.Infinity);
              h1.setPadding(Insets.EMPTY);
-             h1.setPrefHeight(70.0);
-             h1.setPrefWidth(733.0);
+//             h1.setPrefHeight(70.0);
+//             h1.setPrefWidth(733.0);
             h1.setSpacing(55.0);
-            
-            
+           
             h1.setStyle("-fx-background-color: #E6E9ED; -fx-background-radius: 5; -fx-background-insets: 0;");
        
              Label espace = new Label("");
@@ -107,15 +105,19 @@ public class FXMLgestionlignesController implements Initializable {
              Label espace3 = new Label("");
              Label espace4 = new Label("");
              Label espace5 = new Label("");
-            
+           
+             espace.setMaxSize(0, 0);
+             espace2.setMaxSize(0, 0);
+             espace3.setMaxSize(0, 0);
+             espace4.setMaxSize(0, 0);
+             espace5.setMaxSize(0, 0);
              
              Label nom=new Label(ligne.getNom());
-             nom.prefHeight(17.0);
-             nom.prefWidth(234.0);
-             
+             nom.setPrefSize(75 , 15);
+            nom.setMaxSize(75      , 15);
              Label moyenTransp = new Label(ligne.getMoyentransport());
-             moyenTransp.prefHeight(17.0);
-             moyenTransp.prefWidth(234.0);
+       
+             
              moyenTransp.setPrefSize(75 , 15);
             moyenTransp.setMaxSize(75      , 15);
              
@@ -142,9 +144,16 @@ public class FXMLgestionlignesController implements Initializable {
                    delete.setImage(new Image("@../../ressources/images/trash.png"));
                    
                   
+                   
+                  
                     h1.getChildren().addAll(espace,nom,espace2,moyenTransp,espace4,espace5
                             ,edit,espace3,delete);
                     pnItems.getChildren().add(h1);
+                    
+                     delete.setOnMouseClicked(e->{
+                       service.delete(ligne.getId());
+                      pnItems.getChildren().remove(h1);
+                   });
            
         }
         

@@ -3,39 +3,35 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package gui;
+package appMainClasses;
 
 import java.io.IOException;
-import java.util.Locale;
-import java.util.ResourceBundle;
 import javafx.application.Application;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
+import static javafx.application.Application.launch;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
 /**
  *
- * @author user
+ * @author ghazy
  */
-public class LoginMain extends Application {
+public class LigneAddMain extends Application {
+    
+    public static String language = "en";
     
     @Override
-    public void start(Stage stage) throws IOException {
-        
-      
-        Parent root = FXMLLoader.load(getClass().getResource("FXMLlogin.fxml"));
+    public void start(Stage s) throws IOException{
+        Parent root = FXMLLoader.load(getClass().getResource("/gui/FXMLaddligne.fxml"));
         
         Scene scene = new Scene(root);
         
-      
-        stage.setScene(scene);
-        stage.show();
+        s.setScene(scene);
+        
+        s.show();
     }
+
 
     /**
      * @param args the command line arguments

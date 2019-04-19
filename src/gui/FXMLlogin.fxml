@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="700.0" style="-fx-background-color: #030911;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.FXMLloginController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="700.0" style="-fx-background-color: #030911;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.FXMLloginController">
    <children>
       <AnchorPane prefHeight="400.0" prefWidth="316.0" style="-fx-background-color: #f1faee;">
          <children>
@@ -29,7 +29,7 @@
                </image>
             </ImageView>
          </children></AnchorPane>
-      <ImageView fitHeight="400.0" fitWidth="545.0" layoutX="319.0">
+      <ImageView fitHeight="400.0" fitWidth="512.0" layoutX="319.0">
          <image>
             <Image url="@../ressources/images/loginImage.jpg" />
          </image>
@@ -39,11 +39,11 @@
             <Font size="36.0" />
          </font>
       </Label>
-      <Label fx:id="H2" layoutX="343.0" layoutY="89.0" prefHeight="31.0" prefWidth="502.0" text="The leader solution for Smart Transport handling and management" textFill="WHITE" wrapText="true">
+      <Label fx:id="H2" layoutX="343.0" layoutY="89.0" prefHeight="31.0" prefWidth="480.0" text="The leader solution for Smart Transport handling and management" textFill="WHITE" wrapText="true">
          <font>
             <Font size="13.0" />
          </font></Label>
-      <JFXButton fx:id="SIGNUP_BTN" layoutX="686.0" layoutY="265.0" prefHeight="31.0" prefWidth="134.0" style="-fx-background-color: white;" text="Sign Up">
+      <JFXButton fx:id="SIGNUP_BTN" layoutX="343.0" layoutY="312.0" prefHeight="31.0" prefWidth="134.0" style="-fx-background-color: white;" text="Sign Up">
          <font>
             <Font size="15.0" />
          </font>
@@ -56,11 +56,11 @@
          <font>
             <Font size="13.0" />
          </font></Label>
-      <Label fx:id="H5" layoutX="343.0" layoutY="226.0" prefHeight="31.0" prefWidth="329.0" text="Available support at your service all arround the clock" textFill="WHITE" wrapText="true">
+      <Label fx:id="H5" layoutX="343.0" layoutY="221.0" prefHeight="31.0" prefWidth="329.0" text="Available support at your service all arround the clock" textFill="WHITE" wrapText="true">
          <font>
             <Font size="13.0" />
          </font></Label>
-      <Label fx:id="H6" layoutX="343.0" layoutY="265.0" prefHeight="31.0" prefWidth="376.0" text="And much more... Sign up now!" textFill="WHITE" wrapText="true">
+      <Label fx:id="H6" layoutX="343.0" layoutY="252.0" prefHeight="31.0" prefWidth="376.0" text="And much more... Sign up now!" textFill="WHITE" wrapText="true">
          <font>
             <Font size="13.0" />
          </font></Label>
