@@ -12,9 +12,10 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="576.0" prefWidth="1050.0" style="-fx-background-color: #171D26 #171D26;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.FXMLgestionlignesController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="576.0" prefWidth="1050.0" style="-fx-background-color: #171D26 #171D26;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.FXMLgestionlignesController">
    <children>
       <VBox alignment="TOP_CENTER" layoutY="156.0" prefHeight="422.0" prefWidth="256.0" style="-fx-background-color: #171D26;" AnchorPane.bottomAnchor="-2.0" AnchorPane.topAnchor="156.0">
          <children>
@@ -122,7 +123,7 @@
             <Pane fx:id="pnlMenus" prefHeight="200.0" prefWidth="200.0" />
             <Pane fx:id="pnlOverview" prefHeight="554.0" prefWidth="793.0" style="-fx-background-color: #FFFEF9;">
                <children>
-                  <TextField layoutX="536.0" layoutY="192.0" prefHeight="27.0" prefWidth="183.0" promptText="search" style="-fx-background-color: #FFFEF9; -fx-border-color: #B7C3D7; -fx-border-radius: 2em;" />
+                  <TextField fx:id="SEARCH_BAR" layoutX="573.0" layoutY="191.0" prefHeight="27.0" prefWidth="183.0" promptText="Rechercher.." style="-fx-background-color: #FFFEF9; -fx-border-color: #B7C3D7; -fx-border-radius: 2em;" />
                   <Label layoutX="26.0" layoutY="43.0" text="Gestion de lignes" textFill="#1a2638">
                      <font>
                         <Font size="24.0" />
@@ -137,12 +138,12 @@
                         </VBox>
                      </content>
                   </ScrollPane>
-                  <ImageView fitHeight="17.0" fitWidth="16.0" layoutX="690.0" layoutY="197.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="17.0" fitWidth="16.0" layoutX="727.0" layoutY="196.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../ressources/images/icons8_Search_52px.png" />
                      </image>
                   </ImageView>
-                  <Button fx:id="btnOrders1" alignment="BASELINE_LEFT" centerShape="false" graphicTextGap="22.0" layoutX="500.0" layoutY="44.0" mnemonicParsing="false" onAction="#handleClicks" prefHeight="35.0" prefWidth="256.0" text="Ajouter une nouvelle ligne">
+                  <Button fx:id="btnOrders1" alignment="BASELINE_LEFT" centerShape="false" graphicTextGap="22.0" layoutX="500.0" layoutY="44.0" mnemonicParsing="false" onAction="#handleClicks" prefHeight="35.0" prefWidth="256.0" stylesheets="@../ressources/css/add_ligne_button_css.css" text="Ajouter une nouvelle ligne">
                      <padding>
                         <Insets left="50.0" />
                      </padding>
@@ -154,11 +155,12 @@
                   </ImageView>
                   <ImageView fitHeight="42.0" fitWidth="42.0" layoutX="221.0" layoutY="40.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../ressources/images/push-pin.png" />
+                        <Image url="@../ressources/images/push-pin2.png" />
                      </image>
                   </ImageView>
                   <Label layoutX="175.0" layoutY="196.0" prefHeight="17.0" prefWidth="176.0" text="            Moyen de Transport" textFill="#1a2638" />
                   <Label fx:id="nomLigne" layoutX="40.0" layoutY="196.0" text="Nom ligne" textFill="#1a2638" />
+                  <Line endX="634.0" layoutX="127.0" layoutY="118.0" startX="-100.0" />
                </children>
             </Pane>
          </children>

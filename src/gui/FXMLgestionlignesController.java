@@ -27,6 +27,7 @@ import service.ServiceLigne;
 import entities.Ligne;
 import java.util.Locale;
 import javafx.geometry.Insets;
+import javafx.scene.control.TextField;
 
 /**
  * FXML Controller class
@@ -35,6 +36,8 @@ import javafx.geometry.Insets;
  */
 public class FXMLgestionlignesController implements Initializable {
 
+    @FXML
+    private TextField SEARCH_BAR;
     @FXML
     private static Label nomLigne;
     @FXML
@@ -152,6 +155,7 @@ public class FXMLgestionlignesController implements Initializable {
                     
                      delete.setOnMouseClicked(e->{
                        service.delete(ligne.getId());
+                       
                       pnItems.getChildren().remove(h1);
                    });
            
@@ -170,9 +174,11 @@ public class FXMLgestionlignesController implements Initializable {
         
         
     }
-      
-    @FXML
+        
+           @FXML
     private void handleClicks(ActionEvent event) {
     }
+      
+  
     
 }

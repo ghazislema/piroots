@@ -79,7 +79,7 @@ public class FXMLaddligneController implements Initializable {
         // TODO
         
         COMBO_BOX_TRANSP.getItems().addAll("Bus","Train","Metro");
-        
+       
         ADD_LINE_BTN.setOnAction(e->{
             
             if (COMBO_BOX_TRANSP.getValue()==null || LINE_NAME.getText()=="" )
