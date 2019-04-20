@@ -128,7 +128,7 @@
                   <Line endX="202.0" layoutX="363.0" layoutY="469.0" startX="-136.0" />
                   <Line endX="601.0" layoutX="151.0" layoutY="109.0" startX="-136.0" />
                   <JFXButton fx:id="ADD_LINE_BTN" layoutX="276.0" layoutY="410.0" onAction="#Back" prefHeight="25.0" prefWidth="241.0" style="-fx-background-color: #0F1D30;" text="Ajouter" textFill="WHITE" />
-                  <Hyperlink fx:id="PREV_LINK" layoutX="51.0" layoutY="52.0" prefHeight="28.0" prefWidth="132.0" text="Page précédente" textFill="#328a8a">
+                  <Hyperlink fx:id="PREV_LINK" layoutX="51.0" layoutY="52.0" prefHeight="28.0" prefWidth="132.0" text="Page précédente" textFill="#233232">
                      <font>
                         <Font size="14.0" />
                      </font>
@@ -173,9 +173,9 @@
                         </ImageView>
                      </children>
                   </AnchorPane>
-                  <ImageView fitHeight="20.0" fitWidth="20.0" layoutX="31.0" layoutY="56.0" preserveRatio="true">
+                  <ImageView fitHeight="20.0" fitWidth="20.0" layoutX="31.0" layoutY="56.0" preserveRatio="true" rotate="180.0">
                      <image>
-                        <Image url="@../ressources/images/left-arrow.png" />
+                        <Image url="@../ressources/images/right-arrow.png" />
                      </image>
                   </ImageView>
                </children>

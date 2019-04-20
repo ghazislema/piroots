@@ -39,7 +39,13 @@ public class FXMLgestionlignesController implements Initializable {
     @FXML
     private TextField SEARCH_BAR;
     @FXML
-    private static Label nomLigne;
+    private Label COL1_LIST_LIGNE;
+    @FXML
+    private Label COL2_LIST_LIGNE;
+     @FXML
+    private Label H1_LINE_MANAGEMENT;
+     @FXML
+    private Button BTN_ADD_NEW_LINE;
     @FXML
     private Button btnOverview;
     @FXML
@@ -169,6 +175,12 @@ public class FXMLgestionlignesController implements Initializable {
          bundle = ResourceBundle.getBundle("i18n.mybundle",locale);
          
          BTN_LINE_MANAGEMENT.setText(bundle.getString("BTN_LINE_MANAGEMENT"));
+         H1_LINE_MANAGEMENT.setText(bundle.getString("H1_LINE_MANAGEMENT"));
+         BTN_ADD_NEW_LINE.setText(bundle.getString("BTN_ADD_NEW_LINE"));
+         COL1_LIST_LIGNE.setText(bundle.getString("COL1_LIST_LIGNE"));
+         COL2_LIST_LIGNE.setText(bundle.getString("COL2_LIST_LIGNE"));
+         SEARCH_BAR.setPromptText(bundle.getString("SEARCH_BAR"));
+         
          
          
         

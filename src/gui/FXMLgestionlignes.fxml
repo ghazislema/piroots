@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextField?>
@@ -124,7 +126,7 @@
             <Pane fx:id="pnlOverview" prefHeight="554.0" prefWidth="793.0" style="-fx-background-color: #FFFEF9;">
                <children>
                   <TextField fx:id="SEARCH_BAR" layoutX="573.0" layoutY="191.0" prefHeight="27.0" prefWidth="183.0" promptText="Rechercher.." style="-fx-background-color: #FFFEF9; -fx-border-color: #B7C3D7; -fx-border-radius: 2em;" />
-                  <Label layoutX="26.0" layoutY="43.0" text="Gestion de lignes" textFill="#1a2638">
+                  <Label fx:id="H1_LINE_MANAGEMENT" layoutX="26.0" layoutY="33.0" text="Gestion de lignes" textFill="#1a2638">
                      <font>
                         <Font size="24.0" />
                      </font>
@@ -143,24 +145,40 @@
                         <Image url="@../ressources/images/icons8_Search_52px.png" />
                      </image>
                   </ImageView>
-                  <Button fx:id="btnOrders1" alignment="BASELINE_LEFT" centerShape="false" graphicTextGap="22.0" layoutX="500.0" layoutY="44.0" mnemonicParsing="false" onAction="#handleClicks" prefHeight="35.0" prefWidth="256.0" stylesheets="@../ressources/css/add_ligne_button_css.css" text="Ajouter une nouvelle ligne">
+                  <Button fx:id="BTN_ADD_NEW_LINE" alignment="BASELINE_LEFT" centerShape="false" graphicTextGap="22.0" layoutX="500.0" layoutY="34.0" mnemonicParsing="false" onAction="#handleClicks" prefHeight="35.0" prefWidth="256.0" stylesheets="@../ressources/css/add_ligne_button_css.css" text="Ajouter une nouvelle ligne">
                      <padding>
                         <Insets left="50.0" />
                      </padding>
                   </Button>
-                  <ImageView fitHeight="23.0" fitWidth="27.0" layoutX="716.0" layoutY="50.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="23.0" fitWidth="27.0" layoutX="716.0" layoutY="40.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../ressources/images/add.png" />
                      </image>
                   </ImageView>
-                  <ImageView fitHeight="42.0" fitWidth="42.0" layoutX="221.0" layoutY="40.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="42.0" fitWidth="42.0" layoutX="221.0" layoutY="30.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../ressources/images/push-pin2.png" />
                      </image>
                   </ImageView>
-                  <Label layoutX="175.0" layoutY="196.0" prefHeight="17.0" prefWidth="176.0" text="            Moyen de Transport" textFill="#1a2638" />
-                  <Label fx:id="nomLigne" layoutX="40.0" layoutY="196.0" text="Nom ligne" textFill="#1a2638" />
-                  <Line endX="634.0" layoutX="127.0" layoutY="118.0" startX="-100.0" />
+                  <Label fx:id="COL2_LIST_LIGNE" layoutX="221.0" layoutY="196.0" prefHeight="17.0" prefWidth="176.0" text="Moyen de Transport" textFill="#1a2638" />
+                  <Label fx:id="COL1_LIST_LIGNE" layoutX="40.0" layoutY="196.0" text="Nom ligne" textFill="#1a2638" />
+                  <Line endX="634.0" layoutX="127.0" layoutY="90.0" startX="-100.0" />
+                  <AnchorPane layoutX="54.0" layoutY="109.0" prefHeight="53.0" prefWidth="680.0">
+                     <children>
+                        <JFXTextField fx:id="LINE_NAME" focusColor="#2a365a" labelFloat="true" layoutX="14.0" layoutY="9.0" prefHeight="25.0" prefWidth="241.0" promptText="Nom de la ligne" unFocusColor="#457b9d" />
+                        <ComboBox fx:id="COMBO_BOX_TRANSP" layoutX="275.0" layoutY="13.0" prefHeight="25.0" prefWidth="241.0" promptText="Choisir le moyen de transport..." stylesheets="@../ressources/css/style.css" />
+                        <ImageView fitHeight="23.0" fitWidth="27.0" layoutX="563.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../ressources/images/Save-icon.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="23.0" fitWidth="27.0" layoutX="609.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../ressources/images/error.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </AnchorPane>
                </children>
             </Pane>
          </children>
