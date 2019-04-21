@@ -41,28 +41,28 @@
             <Font size="46.0" />
          </font>
       </Label>
-      <Label fx:id="H2" layoutX="488.0" layoutY="149.0" prefHeight="31.0" prefWidth="480.0" text="The leader solution for Smart Transport handling and management" textFill="WHITE" wrapText="true">
+      <Label fx:id="H2" layoutX="488.0" layoutY="148.0" prefHeight="31.0" prefWidth="480.0" text="The leader solution for Smart Transport handling and management" textFill="WHITE" wrapText="true">
          <font>
             <Font size="13.0" />
          </font></Label>
-      <JFXButton fx:id="SIGNUP_BTN" layoutX="488.0" layoutY="484.0" prefHeight="31.0" prefWidth="134.0" style="-fx-background-color: white;" text="Sign Up">
+      <JFXButton fx:id="SIGNUP_BTN" layoutX="488.0" layoutY="461.0" prefHeight="31.0" prefWidth="134.0" style="-fx-background-color: white;" text="Sign Up">
          <font>
             <Font size="15.0" />
          </font>
       </JFXButton>
-      <Label fx:id="H3" layoutX="488.0" layoutY="260.0" prefHeight="31.0" prefWidth="507.0" text="Informations about all and every working transport line" textFill="WHITE" wrapText="true">
+      <Label fx:id="H3" layoutX="488.0" layoutY="236.0" prefHeight="31.0" prefWidth="507.0" text="Informations about all and every working transport line" textFill="WHITE" wrapText="true">
          <font>
             <Font size="16.0" />
          </font></Label>
-      <Label fx:id="H4" layoutX="488.0" layoutY="311.0" prefHeight="31.0" prefWidth="420.0" text="Book anytime or anywhere you want to go" textFill="WHITE" wrapText="true">
+      <Label fx:id="H4" layoutX="488.0" layoutY="296.0" prefHeight="31.0" prefWidth="420.0" text="Book anytime or anywhere you want to go" textFill="WHITE" wrapText="true">
          <font>
             <Font size="16.0" />
          </font></Label>
-      <Label fx:id="H5" layoutX="488.0" layoutY="362.0" prefHeight="31.0" prefWidth="468.0" text="Available support at your service all arround the clock" textFill="WHITE" wrapText="true">
+      <Label fx:id="H5" layoutX="488.0" layoutY="348.0" prefHeight="31.0" prefWidth="468.0" text="Available support at your service all arround the clock" textFill="WHITE" wrapText="true">
          <font>
             <Font size="16.0" />
          </font></Label>
-      <Label fx:id="H6" layoutX="488.0" layoutY="413.0" prefHeight="31.0" prefWidth="384.0" text="And much more... Sign up now!" textFill="WHITE" wrapText="true">
+      <Label fx:id="H6" layoutX="488.0" layoutY="398.0" prefHeight="31.0" prefWidth="384.0" text="And much more... Sign up now!" textFill="WHITE" wrapText="true">
          <font>
             <Font size="16.0" />
          </font></Label>

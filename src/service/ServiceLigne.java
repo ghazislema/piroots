@@ -23,7 +23,6 @@ public class ServiceLigne implements SCRUD < Ligne > {
 
  static Connection con = MYSQLConnection.conncet();
  static PreparedStatement ps;
- static PreparedStatement ps1;
 
  @Override
  public void insert(Ligne a) {
@@ -77,7 +76,7 @@ public class ServiceLigne implements SCRUD < Ligne > {
     "where id=?");
    ps.setString(1, a.getNom());
    ps.setString(2, a.getMoyentransport());
-
+    ps.setInt(3,a.getId());
 
 
 
@@ -122,34 +121,32 @@ public class ServiceLigne implements SCRUD < Ligne > {
 
 
 
-// public ArrayList < Ligne > searchLigneByDestination(String destination) {
-//  ArrayList < Ligne > lignes = new ArrayList < > ();
-//  try {
-//
-//   ps = con.prepareStatement("select * from ligne where destination_depart=? or destination_arrive=?");
-//   ps.setString(1, destination);
-//   ps.setString(2, destination);
-//
-//
-//   ResultSet res = ps.executeQuery();
-//   while (res.next()) {
-//
-//
-//    Ligne lig = new Ligne();
-//    lig.setId(res.getInt(1));
-//    lig.setDestination_depart(res.getString(2));
-//    lig.setDestination_arrive(res.getString(3));
-//    lig.setHeure_depart(res.getString(4));
-//    lig.setHeure_arrive(res.getString(5));
-//    lignes.add(lig);
-//   }
-//
-//  } catch (Exception e) {
-//   e.printStackTrace();
-//   return null;
-//  }
-//  return lignes;
-// }
+ public ArrayList < Ligne > searchLineByNameTransport(String str) {
+  ArrayList < Ligne > lignes = new ArrayList < > ();
+  try {
+
+   ps = con.prepareStatement("select * from ligne where UCASE(nom) like UCASE(?) or UCASE(moyenTransport) like UCASE(?)");
+   ps.setString(1, "%"+str+"%");
+   ps.setString(2, "%"+str+"%");
+
+   ResultSet res = ps.executeQuery();
+   while (res.next()) {
+
+
+    Ligne lig = new Ligne();
+    lig.setId(res.getInt(1));
+    lig.setNom(res.getString(2));
+    lig.setMoyentransport(res.getString(3));
+  
+    lignes.add(lig);
+   }
+
+  } catch (Exception e) {
+   e.printStackTrace();
+   return null;
+  }
+  return lignes;
+ }
 
  
  

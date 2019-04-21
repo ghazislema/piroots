@@ -14,9 +14,8 @@ public class Ligne {
     private int id;
     private String nom;
     private String moyentransport;
-    
 
-   
+
 
     
     public Ligne()

@@ -11,6 +11,7 @@ import entities.Ligne;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.animation.PauseTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -25,6 +26,7 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 import service.ServiceLigne;
 
 /**
@@ -79,13 +81,19 @@ public class FXMLaddligneController implements Initializable {
         // TODO
         
         COMBO_BOX_TRANSP.getItems().addAll("Bus","Train","Metro");
+        
        
+        
         ADD_LINE_BTN.setOnAction(e->{
             
-            if (COMBO_BOX_TRANSP.getValue()==null || LINE_NAME.getText()=="" )
+           
+            if (COMBO_BOX_TRANSP.getValue()==null  || LINE_NAME.getText()==null
+                    || LINE_NAME.getText().trim().isEmpty())
                 {
-                        BOX_NOTIF_WARNING.setVisible(true);
+                     BOX_NOTIF_WARNING.setVisible(true);
+                    BOX_NOTIF.setVisible(false);
                 }
+      
             else
                 {
                 
@@ -99,6 +107,17 @@ public class FXMLaddligneController implements Initializable {
             
             BOX_NOTIF.setVisible(true);
             
+                    //fermer notif aprés x sec
+                     PauseTransition delay = new PauseTransition(Duration.seconds(5));
+                    delay.setOnFinished( event -> 
+                     {
+                     BOX_NOTIF.setVisible(false);
+                     });
+                    delay.play();
+                    //
+            
+            
+            BOX_NOTIF_WARNING.setVisible(false);
                 
                 }
         });

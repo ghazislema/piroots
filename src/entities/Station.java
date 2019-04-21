@@ -19,6 +19,24 @@ public class Station {
     public Station() {
     }
 
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setLongitude(double longitude) {
+        this.longitude = longitude;
+    }
+
+    public void setLatitude(double latitude) {
+        this.latitude = latitude;
+    }
+
+    public void setNom(String nom) {
+        this.nom = nom;
+    }
+
+    
+    
     public Station(int id, double longitude, double latitude, String nom) {
         this.id = id;
         this.longitude = longitude;
