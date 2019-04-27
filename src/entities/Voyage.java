@@ -20,6 +20,39 @@ public class Voyage {
     private int id_chauffeur;
     private int id_ligne;
 
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public void setHeure_depart(String heure_depart) {
+        this.heure_depart = heure_depart;
+    }
+
+    public void setHeure_arrive(String heure_arrive) {
+        this.heure_arrive = heure_arrive;
+    }
+
+    public void setDestination_depart(String destination_depart) {
+        this.destination_depart = destination_depart;
+    }
+
+    public void setDestination_arrive(String destination_arrive) {
+        this.destination_arrive = destination_arrive;
+    }
+
+    public void setId_chauffeur(int id_chauffeur) {
+        this.id_chauffeur = id_chauffeur;
+    }
+
+    public void setId_ligne(int id_ligne) {
+        this.id_ligne = id_ligne;
+    }
+
+    
     public Voyage() {
     }
 
