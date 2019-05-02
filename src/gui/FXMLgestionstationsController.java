@@ -12,6 +12,7 @@ import entities.Station;
 import java.io.IOException;
 import java.net.URL;
 import java.util.List;
+import java.util.Optional;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -24,7 +25,10 @@ import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -184,9 +188,18 @@ public class FXMLgestionstationsController implements Initializable {
    pnItems.getChildren().add(h1);
 
    delete.setOnMouseClicked(e -> {
-    service.delete(s.getId());
+     Alert alert = new Alert(AlertType.CONFIRMATION);
+alert.setTitle("Attention !");
+alert.setHeaderText("Suppression de la station "+s.getNom());
+alert.setContentText("Etes-vous sûr de cette action? ");
+
+Optional<ButtonType> result = alert.showAndWait();
+if (result.get() == ButtonType.OK){
+        service.delete(s.getId());
 
     pnItems.getChildren().remove(h1);
+
+} 
 
    });
 
@@ -202,17 +215,20 @@ public class FXMLgestionstationsController implements Initializable {
    inspect.setOnMouseClicked(e->{
       
         Parent root;
-       try {
-           root = FXMLLoader.load(getClass().getResource("/gui/FXMLmaptester.fxml"));
-           Scene scene = new Scene(root);
-        Stage stage=new Stage();
-      
-        stage.setScene(scene);
-        stage.show();
-       } catch (IOException ex) {
-           Logger.getLogger(FXMLgestionstationsController.class.getName()).log(Level.SEVERE, null, ex);
-       }
-        
+       
+           MapExample map=new MapExample();
+           Stage stage=new Stage();
+           map.x=s.getLongitude();
+           map.y=s.getLatitude();
+           map.nom=s.getNom();
+           map.start(stage);
+//           root = FXMLLoader.load(getClass().getResource("/gui/FXMLmaptester.fxml"));
+//           Scene scene = new Scene(root);
+//        Stage stage=new Stage();
+//      
+//        stage.setScene(scene);
+//        stage.show();
+     
         
    });
 
