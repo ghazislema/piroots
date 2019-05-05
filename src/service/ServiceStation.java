@@ -26,6 +26,33 @@ public class ServiceStation implements SCRUD < Station >{
     static PreparedStatement ps;
     
     
+     public ArrayList < Station > search(String str) {
+  ArrayList < Station > lignes = new ArrayList < > ();
+  try {
+
+   ps = con.prepareStatement("select * from station where UCASE(nom) like UCASE(?) or longitude like ? or latitude like ?");
+   ps.setString(1, "%"+str+"%");
+   ps.setString(2, "%"+str+"%");
+   ps.setString(3, "%"+str+"%");
+
+   ResultSet res = ps.executeQuery();
+   while (res.next()) {
+
+Station sta= new Station();
+sta.setId(res.getInt(1));
+sta.setNom(res.getString(2));
+sta.setLongitude(res.getDouble(3));
+sta.setLatitude(res.getDouble(4));
+
+    lignes.add(sta);
+   }
+
+  } catch (Exception e) {
+   e.printStackTrace();
+   return null;
+  }
+  return lignes;
+ }
     @Override
     public void insert(Station a) {
         try {
@@ -36,7 +63,7 @@ public class ServiceStation implements SCRUD < Station >{
 
    ps.setString(1, a.getNom());
    ps.setDouble(2, a.getLongitude());
-   ps.setDouble(2, a.getLatitude());
+   ps.setDouble(3, a.getLatitude());
 
 
    int i = ps.executeUpdate();
@@ -75,7 +102,7 @@ public class ServiceStation implements SCRUD < Station >{
    ps.setString(1, a.getNom());
    ps.setDouble(2, a.getLongitude());
     ps.setDouble(3,a.getLatitude());
-    ps.setInt(3,a.getId());
+    ps.setInt(4,a.getId());
 
 
 

@@ -26,14 +26,25 @@ import javafx.scene.layout.VBox;
 import jdk.nashorn.internal.objects.Global;
 import service.ServiceLigne;
 import entities.Ligne;
+import java.io.IOException;
 import java.util.Locale;
+import java.util.Optional;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.animation.PauseTransition;
+import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
 import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 import javafx.util.Duration;
 
 /**
@@ -65,7 +76,7 @@ public class FXMLgestionlignesController implements Initializable {
  @FXML
  private Label H1_LINE_MANAGEMENT;
  @FXML
- private Button BTN_ADD_NEW_LINE;
+ private Label BTN_ADD_NEW_LINE;
  @FXML
  private Button btnOverview;
  @FXML
@@ -115,6 +126,9 @@ public class FXMLgestionlignesController implements Initializable {
   //remplir le vbox
   recupererLignes(service.findAll());
 
+  //go to add line page
+  goToAdd();
+  
   //methode pour fermer l'update box
   exit_update();
 
@@ -126,6 +140,24 @@ public class FXMLgestionlignesController implements Initializable {
 
  }
 
+ public void goToAdd()
+ {
+     BTN_ADD_NEW_LINE.setOnMouseClicked(e->{
+             Parent showligne;
+             try {
+                 showligne = FXMLLoader.load(getClass().getResource("FXMLaddligne.fxml"));
+                  Scene scene = new Scene(showligne);
+        
+        
+        Stage stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
+        stage.setScene(scene);
+        stage.show();
+             } catch (IOException ex) {
+                 Logger.getLogger(FXMLgestionstationsController.class.getName()).log(Level.SEVERE, null, ex);
+             }
+       
+         });
+ }
 
  public void recupererLignes(List < Ligne > list) {
 
@@ -190,9 +222,18 @@ public class FXMLgestionlignesController implements Initializable {
    pnItems.getChildren().add(h1);
 
    delete.setOnMouseClicked(e -> {
+       Alert alert = new Alert(AlertType.CONFIRMATION);
+alert.setTitle("Confirmation alert");
+alert.setHeaderText("Are you sure you want to delete the following line: "+nom.getText());
+alert.setContentText("This action cannot be reverted !");
+
+Optional<ButtonType> result = alert.showAndWait();
+if (result.get() == ButtonType.OK){
     service.delete(ligne.getId());
 
     pnItems.getChildren().remove(h1);
+} 
+    
 
    });
 
@@ -240,7 +281,9 @@ public class FXMLgestionlignesController implements Initializable {
  public void update_line() {
   //partie update 
   SAVE_ICON.setOnMouseClicked(e -> {
-
+    
+   if (!LINE_NAME.getText().isEmpty())
+   {
    String style = "-fx-background-color: #DAE5CC";
    ANCHOR_UPDATE.setStyle(style);
 
@@ -263,6 +306,18 @@ public class FXMLgestionlignesController implements Initializable {
     ANCHOR_UPDATE.setStyle(style2);
    });
    delay.play();
+   }
+   else
+   {
+        String style = "-fx-background-color: #FFE2CC";
+        ANCHOR_UPDATE.setStyle(style);
+        PauseTransition delay = new PauseTransition(Duration.millis(1000));
+   delay.setOnFinished(event -> {
+    String style2 = "-fx-background-color: #DEEAF2";
+    ANCHOR_UPDATE.setStyle(style2);
+   });
+       
+   }
    //
   });
 

@@ -18,13 +18,13 @@ import javafx.stage.Stage;
 
 /**
  *
- * @author ghazy
+ * @author user
  */
-public class MapTester extends Application {
+public class VoyageMain extends Application {
     
     @Override
     public void start(Stage stage) throws IOException {
-       Parent root = FXMLLoader.load(getClass().getResource("/gui/FXMLmaptester.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/gui/FXMLgestionvoyage.fxml"));
         
         Scene scene = new Scene(root);
         

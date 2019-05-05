@@ -19,6 +19,28 @@ public class Voyage {
     private String destination_arrive;
     private int id_chauffeur;
     private int id_ligne;
+    private String date;
+
+    public Voyage(int id, String type, String heure_depart, String heure_arrive, String destination_depart, String destination_arrive, int id_chauffeur, int id_ligne, String date) {
+        this.id = id;
+        this.type = type;
+        this.heure_depart = heure_depart;
+        this.heure_arrive = heure_arrive;
+        this.destination_depart = destination_depart;
+        this.destination_arrive = destination_arrive;
+        this.id_chauffeur = id_chauffeur;
+        this.id_ligne = id_ligne;
+        this.date = date;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+    
 
     public void setId(int id) {
         this.id = id;

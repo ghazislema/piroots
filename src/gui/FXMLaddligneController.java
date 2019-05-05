@@ -108,12 +108,13 @@ public class FXMLaddligneController implements Initializable {
             BOX_NOTIF.setVisible(true);
             
                     //fermer notif aprés x sec
-                     PauseTransition delay = new PauseTransition(Duration.seconds(5));
+                     PauseTransition delay = new PauseTransition(Duration.seconds(3));
                     delay.setOnFinished( event -> 
                      {
                      BOX_NOTIF.setVisible(false);
                      });
                     delay.play();
+                 
                     //
             
             

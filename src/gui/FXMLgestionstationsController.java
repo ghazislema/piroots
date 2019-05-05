@@ -5,7 +5,6 @@
  */
 package gui;
 
-import appMainClasses.MapTester;
 import com.jfoenix.controls.JFXTextField;
 import entities.Ligne;
 import entities.Station;
@@ -50,7 +49,6 @@ import service.ServiceStation;
  */
 public class FXMLgestionstationsController implements Initializable {
 
-    private MapTester map;
     @FXML
     private Button btnOverview;
     @FXML
@@ -59,8 +57,6 @@ public class FXMLgestionstationsController implements Initializable {
     private Button BTN_LINE_MANAGEMENT;
     @FXML
     private Button btnMenus;
-    @FXML
-    private Button btnPackages;
     @FXML
     private Button btnSettings;
     @FXML
@@ -80,7 +76,7 @@ public class FXMLgestionstationsController implements Initializable {
     @FXML
     private VBox pnItems;
     @FXML
-    private Button BTN_ADD_NEW_STATION;
+    private Label BTN_ADD_NEW_STATION;
     @FXML
     private Label COL2_LIST_STATION;
     @FXML
@@ -103,21 +99,50 @@ public class FXMLgestionstationsController implements Initializable {
     private ImageView RELOAD_BTN1;
 
     public ServiceStation service = new ServiceStation();
+    @FXML
+    private ImageView RELOAD_BTN2;
     /**
      * Initializes the controller class.
      */
+    
+  
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
         
+        search_line();
          recupererStations(service.findAll());
+       
+         BTN_ADD_NEW_STATION.setOnMouseClicked(e->{
+             Parent showligne;
+             try {
+                 showligne = FXMLLoader.load(getClass().getResource("FXMLupdateStation.fxml"));
+                  Scene scene = new Scene(showligne);
+        
+        
+        Stage stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
+        stage.setScene(scene);
+        stage.show();
+             } catch (IOException ex) {
+                 Logger.getLogger(FXMLgestionstationsController.class.getName()).log(Level.SEVERE, null, ex);
+             }
+       
+         });
     }    
 
     @FXML
     private void handleClicks(ActionEvent event) {
     }
     
-    
+    public void search_line() {
+  // recherche synchro
+  SEARCH_BAR.textProperty().addListener((observable, oldValue, newValue) -> {
+   pnItems.getChildren().clear();
+   List < Station > list = null;
+   list = service.search(SEARCH_BAR.getText());
+   recupererStations(list);
+  });
+    }
     
      public void recupererStations(List<Station> list) {
 
@@ -189,9 +214,9 @@ public class FXMLgestionstationsController implements Initializable {
 
    delete.setOnMouseClicked(e -> {
      Alert alert = new Alert(AlertType.CONFIRMATION);
-alert.setTitle("Attention !");
-alert.setHeaderText("Suppression de la station "+s.getNom());
-alert.setContentText("Etes-vous sûr de cette action? ");
+alert.setTitle("Confirmation alert");
+alert.setHeaderText("Are you sure you want to delete the following station: "+nom.getText());
+alert.setContentText("This action cannot be reverted !");
 
 Optional<ButtonType> result = alert.showAndWait();
 if (result.get() == ButtonType.OK){
@@ -205,11 +230,28 @@ if (result.get() == ButtonType.OK){
 
    edit.setOnMouseClicked(e -> {
 
-    ANCHOR_UPDATE.setVisible(true);
-    LINE_NAME.setText(nom.getText());
-    int id = s.getId();
-    LINE_ID.setText(id + "");
+ 
+       try {
+           
+           FXMLLoader loader = new FXMLLoader();
+           loader.setLocation(getClass().getResource("FXMLupdateStation.fxml"));
+           Parent updatestation = loader.load();
+           Scene updatescene = new Scene(updatestation);
+           
+           FXMLupdateStationController controller=  loader.getController();
+           controller.initData(s);
+        
+            Stage stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
+        stage.setScene(updatescene);
+        stage.show();
 
+       } catch (IOException ex) {
+           Logger.getLogger(FXMLgestionstationsController.class.getName()).log(Level.SEVERE, null, ex);
+       }
+        
+        
+        
+       
    });
    
    inspect.setOnMouseClicked(e->{
@@ -222,12 +264,8 @@ if (result.get() == ButtonType.OK){
            map.y=s.getLatitude();
            map.nom=s.getNom();
            map.start(stage);
-//           root = FXMLLoader.load(getClass().getResource("/gui/FXMLmaptester.fxml"));
-//           Scene scene = new Scene(root);
-//        Stage stage=new Stage();
-//      
-//        stage.setScene(scene);
-//        stage.show();
+
+           
      
         
    });

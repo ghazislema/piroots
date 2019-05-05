@@ -102,6 +102,31 @@ public class ServiceVoyage implements SCRUD < Voyage >{
         
     }
 
+//    public int getNbrVoyage()
+//    {
+//        
+//         try {
+//             int n=0;
+//   ps = con.prepareStatement("select count(*) from voyage");
+//   ResultSet res = ps.executeQuery();
+//   while (res.next()) {
+//    Voyage voy = new Voyage();
+//    voy.setId(res.getInt(1));
+//    voy.setType(res.getString(2));
+//    voy.setHeure_depart(res.getString(3));
+//    voy.setHeure_arrive(res.getString(4));
+//    voy.setDestination_depart(res.getString(5));
+//    voy.setDestination_arrive(res.getString(6));
+//    voy.setId_chauffeur(res.getInt(7));
+//    voy.setId_ligne(res.getInt(8));
+//
+//
+//    voyages.add(voy);
+//   }
+//  } catch (SQLException ex) {
+//   System.out.println(ex.getMessage());
+//  }
+//    }
     @Override
     public ArrayList<Voyage> findAll() {
         
