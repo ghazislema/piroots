@@ -116,7 +116,7 @@ public class FXMLgestionstationsController implements Initializable {
          BTN_ADD_NEW_STATION.setOnMouseClicked(e->{
              Parent showligne;
              try {
-                 showligne = FXMLLoader.load(getClass().getResource("FXMLupdateStation.fxml"));
+                 showligne = FXMLLoader.load(getClass().getResource("FXMLaddStation.fxml"));
                   Scene scene = new Scene(showligne);
         
         
@@ -160,6 +160,8 @@ public class FXMLgestionstationsController implements Initializable {
 
    Label idline = new Label(s.getId() + "");
    idline.setVisible(false);
+   idline.setMaxSize(0, 0);
+   
    Label espace = new Label("");
    Label espace2 = new Label("");
    Label espace3 = new Label("");

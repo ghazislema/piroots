@@ -138,9 +138,9 @@ public class FXMLaddStationController implements Initializable {
     BTN_LINE_MANAGEMENT.setText(bundle.getString("BTN_LINE_MANAGEMENT"));
             btnMenus.setText(bundle.getString("BTN_STATION_MANAGEMENT"));
             btnSignout.setText(bundle.getString("BTN_SIGN_OUT"));
-                    STATION_NAME.setText(bundle.getString("STATION_NAME"));
-                    LONGITUDE.setText(bundle.getString("LONGITUDE"));
-                            LATITUDE.setText(bundle.getString("LATITUDE"));
+                    STATION_NAME.setPromptText(bundle.getString("STATION_NAME"));
+                    LONGITUDE.setPromptText(bundle.getString("LONGITUDE"));
+                            LATITUDE.setPromptText(bundle.getString("LATITUDE"));
                             chooseMap.setText(bundle.getString("CHOSE_MAP"));
                                     UPDATE_BTN_STATION.setText(bundle.getString("SAVE"));
 

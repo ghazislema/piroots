@@ -172,6 +172,34 @@
                         <Image url="@../ressources/images/map%20(2).png" />
                      </image>
                   </ImageView>
+                  <AnchorPane fx:id="BOX_NOTIF_WARNING1" layoutX="309.0" layoutY="374.0" prefHeight="28.0" prefWidth="182.0" style="-fx-background-color: #FFE2CC;" visible="false">
+                     <children>
+                        <Label fx:id="OP_SUCCESS11" layoutX="14.0" layoutY="4.0" text="All fields are required" textFill="#363b4d">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <ImageView fitHeight="25.0" fitWidth="28.0" layoutX="146.0" layoutY="2.0" preserveRatio="true">
+                           <image>
+                              <Image url="@../ressources/images/icons8-warning-shield-96.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane fx:id="BOX_NOTIF1" layoutX="530.0" layoutY="45.0" prefHeight="42.0" prefWidth="182.0" style="-fx-background-color: #f1faee;" visible="false">
+                     <children>
+                        <Label fx:id="OP_SUCCESS2" layoutX="14.0" layoutY="11.0" text="Operation done with success " textFill="#363b4d">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <ImageView fitHeight="20.0" fitWidth="24.0" layoutX="200.0" layoutY="11.0" preserveRatio="true">
+                           <image>
+                              <Image url="@../ressources/images/checked.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </AnchorPane>
                </children>
             </Pane>
          </children>

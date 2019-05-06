@@ -156,9 +156,9 @@ public class FXMLupdateStationController implements Initializable {
 
   PREV_LINK.setText(bundle.getString("PREV_PAGE"));
   
-                    STATION_NAME.setText(bundle.getString("STATION_NAME"));
-                    LONGITUDE.setText(bundle.getString("LONGITUDE"));
-                            LATITUDE.setText(bundle.getString("LATITUDE"));
+                    STATION_NAME.setPromptText(bundle.getString("STATION_NAME"));
+                    LONGITUDE.setPromptText(bundle.getString("LONGITUDE"));
+                            LATITUDE.setPromptText(bundle.getString("LATITUDE"));
                             chooseMap.setText(bundle.getString("CHOSE_MAP"));
                                     UPDATE_BTN_STATION.setText(bundle.getString("SAVE"));
 

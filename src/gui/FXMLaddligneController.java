@@ -5,11 +5,13 @@
  */
 package gui;
 
+import appMainClasses.LigneMain;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
 import entities.Ligne;
 import java.io.IOException;
 import java.net.URL;
+import java.util.Locale;
 import java.util.ResourceBundle;
 import javafx.animation.PauseTransition;
 import javafx.event.ActionEvent;
@@ -35,9 +37,11 @@ import service.ServiceLigne;
  * @author ghazy
  */
 public class FXMLaddligneController implements Initializable {
-
+private ResourceBundle bundle;
     @FXML
     private Label OP_SUCCESS;
+    @FXML
+    private Label OP_SUCCESS1;
     @FXML
     private AnchorPane BOX_NOTIF;
     @FXML
@@ -80,6 +84,9 @@ public class FXMLaddligneController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
         
+              //Chargement langage
+  Loadlang(LigneMain.language);
+  
         COMBO_BOX_TRANSP.getItems().addAll("Bus","Train","Metro");
         
        
@@ -127,6 +134,23 @@ public class FXMLaddligneController implements Initializable {
     @FXML
     private void handleClicks(ActionEvent event) {
     }
+    
+     private void Loadlang(String lang) {
+  Locale locale = new Locale(lang);
+  bundle = ResourceBundle.getBundle("i18n.mybundle", locale);
+
+  PREV_LINK.setText(bundle.getString("PREV_PAGE"));
+   btnOrders.setText(bundle.getString("BTN_TRIPS_MANAGEMENT"));
+    BTN_LINE_MANAGEMENT.setText(bundle.getString("BTN_LINE_MANAGEMENT"));
+            btnMenus.setText(bundle.getString("BTN_STATION_MANAGEMENT"));
+            btnSignout.setText(bundle.getString("BTN_SIGN_OUT"));
+                    LINE_NAME.setPromptText(bundle.getString("LINE_NAME"));
+                    COMBO_BOX_TRANSP.setPromptText(bundle.getString("MEANS_OF_TRANSPORt"));
+                            PREV_LINK.setText(bundle.getString("PREV_PAGE"));
+                                    OP_SUCCESS1.setText(bundle.getString("OP_FAIL"));
+                                    OP_SUCCESS.setText(bundle.getString("OP_SUCC"));
+
+ }
 
     @FXML
     private void Back(ActionEvent event) throws IOException {

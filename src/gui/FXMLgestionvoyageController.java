@@ -243,13 +243,13 @@ public ServiceVoyage service = new ServiceVoyage();
             btnMenus.setText(bundle.getString("BTN_STATION_MANAGEMENT"));
             btnSignout.setText(bundle.getString("BTN_SIGN_OUT"));
 
-  COL1_LIST_STATION.setText(bundle.getString("PREV_PAGE"));
-  COL2_LIST_STATION.setText(bundle.getString("PREV_PAGE"));
-  COL2_LIST_STATION1.setText(bundle.getString("PREV_PAGE"));
-  COL2_LIST_STATION11.setText(bundle.getString("PREV_PAGE"));
-  SEARCH_BAR.setText(bundle.getString("PREV_PAGE"));
-  BTN_ADD_NEW_STATION.setText(bundle.getString("PREV_PAGE"));
-  H1_STATION_MANAGEMENT.setText(bundle.getString("PREV_PAGE"));
+  COL1_LIST_STATION.setText(bundle.getString("DEPARTURE_STATION"));
+  COL2_LIST_STATION.setText(bundle.getString("TERMINUS"));
+  COL2_LIST_STATION1.setText(bundle.getString("DEPARTURE"));
+  COL2_LIST_STATION11.setText(bundle.getString("ARRIVAL"));
+  SEARCH_BAR.setText(bundle.getString("SEARCH_BAR"));
+  BTN_ADD_NEW_STATION.setText(bundle.getString("ADD_VOYAGE"));
+  H1_STATION_MANAGEMENT.setText(bundle.getString("H1_TRIP_MANAGEMENT"));
   
 
  }

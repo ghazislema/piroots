@@ -166,7 +166,7 @@
                   </ImageView>
                   <JFXTextField fx:id="LONGITUDE" focusColor="#2a365a" labelFloat="true" layoutX="400.0" layoutY="246.0" prefHeight="25.0" prefWidth="132.0" promptText="Longitude" unFocusColor="#457b9d" />
                   <JFXTextField fx:id="LATITUDE" focusColor="#2a365a" labelFloat="true" layoutX="559.0" layoutY="246.0" prefHeight="25.0" prefWidth="132.0" promptText="Latitude" unFocusColor="#457b9d" />
-                  <Label layoutX="117.0" layoutY="322.0" prefHeight="17.0" prefWidth="241.0" text="&lt;- Choose new coordinates from this map" />
+                  <Label fx:id="chooseMap" layoutX="117.0" layoutY="322.0" prefHeight="17.0" prefWidth="241.0" text="&lt;- Choose new coordinates from this map" />
                   <ImageView fx:id="MAP_ID" fitHeight="35.0" fitWidth="37.0" layoutX="68.0" layoutY="313.0" preserveRatio="true">
                      <image>
                         <Image url="@../ressources/images/map%20(2).png" />
