@@ -262,9 +262,6 @@ if (result.get() == ButtonType.OK){
   SEARCH_BAR.setPromptText(bundle.getString("SEARCH_BAR"));
 
 
-
-
-
  }
 
  @FXML
@@ -332,18 +329,6 @@ if (result.get() == ButtonType.OK){
    recupererLignes(list);
   });
 
-  //recherche en appuyant entré
-
-  //        SEARCH_BAR.setOnKeyPressed(e->{
-  //            if (e.getCode() == KeyCode.ENTER)
-  //                {
-  //                    pnItems.getChildren().clear();
-  //                    List < Ligne > list = null;
-  //                    list =service.searchLineByNameTransport(SEARCH_BAR.getText());
-  //                    recupererLignes(list);
-  //                }
-  //            
-  //        });
  }
 
 

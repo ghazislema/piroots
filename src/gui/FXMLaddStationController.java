@@ -23,9 +23,9 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
@@ -34,9 +34,9 @@ import service.ServiceStation;
 /**
  * FXML Controller class
  *
- * @author user
+ * @author gslema
  */
-public class FXMLupdateStationController implements Initializable {
+public class FXMLaddStationController implements Initializable {
 
     @FXML
     private Button btnOverview;
@@ -46,8 +46,6 @@ public class FXMLupdateStationController implements Initializable {
     private Button BTN_LINE_MANAGEMENT;
     @FXML
     private Button btnMenus;
-    @FXML
-    private Button btnPackages;
     @FXML
     private Button btnSettings;
     @FXML
@@ -61,15 +59,11 @@ public class FXMLupdateStationController implements Initializable {
     @FXML
     private Pane pnlOverview;
     @FXML
-    private JFXButton ADD_LINE_BTN;
-    @FXML
     private JFXButton UPDATE_BTN_STATION;
     @FXML
     private Hyperlink PREV_LINK;
     @FXML
-    private ComboBox<?> COMBO_BOX_TRANSP;
-    @FXML
-    private JFXTextField LINE_NAME;
+    private JFXTextField STATION_NAME;
     @FXML
     private AnchorPane BOX_NOTIF;
     @FXML
@@ -79,29 +73,27 @@ public class FXMLupdateStationController implements Initializable {
     @FXML
     private Label OP_SUCCESS1;
     @FXML
-    private JFXTextField STATION_NAME;
-    @FXML
     private JFXTextField LONGITUDE;
     @FXML
     private JFXTextField LATITUDE;
     @FXML
     private Label chooseMap;
-    
+    @FXML
+    private ImageView MAP_ID;
+    ServiceStation service = new ServiceStation();
     private ResourceBundle bundle;
-
-    
-    
-    private int id;
     /**
      * Initializes the controller class.
      */
-    ServiceStation service=  new ServiceStation();
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         
-         //Chargement langage
+        
+        //Chargement langage
   Loadlang(LigneMain.language);
   
+  
+        // TODO
         PREV_LINK.setOnAction(e->{
             Parent showligne;
             try {
@@ -118,14 +110,14 @@ public class FXMLupdateStationController implements Initializable {
        
         });
         
-        UPDATE_BTN_STATION.setOnAction(e->{
+        
+                UPDATE_BTN_STATION.setOnAction(e->{
             Station a= new Station();
             a.setNom(STATION_NAME.getText());
           
             a.setLongitude(Double.parseDouble(LONGITUDE.getText()));
             a.setLatitude(Double.parseDouble(LATITUDE.getText()));
-            a.setId(id);
-            service.update(a);
+            service.insert(a);
         });
     }    
 
@@ -137,25 +129,15 @@ public class FXMLupdateStationController implements Initializable {
     private void Back(ActionEvent event) {
     }
     
-    public void initData(Station s)
-    {
-        STATION_NAME.setText(s.getNom());
-        LONGITUDE.setText(Double.toString(s.getLongitude()));
-        LATITUDE.setText(Double.toString(s.getLatitude()));
-        id=s.getId();
-    }
-    
-      private void Loadlang(String lang) {
+     private void Loadlang(String lang) {
   Locale locale = new Locale(lang);
   bundle = ResourceBundle.getBundle("i18n.mybundle", locale);
-  
+
+  PREV_LINK.setText(bundle.getString("PREV_PAGE"));
    btnOrders.setText(bundle.getString("BTN_TRIPS_MANAGEMENT"));
     BTN_LINE_MANAGEMENT.setText(bundle.getString("BTN_LINE_MANAGEMENT"));
             btnMenus.setText(bundle.getString("BTN_STATION_MANAGEMENT"));
             btnSignout.setText(bundle.getString("BTN_SIGN_OUT"));
-
-  PREV_LINK.setText(bundle.getString("PREV_PAGE"));
-  
                     STATION_NAME.setText(bundle.getString("STATION_NAME"));
                     LONGITUDE.setText(bundle.getString("LONGITUDE"));
                             LATITUDE.setText(bundle.getString("LATITUDE"));

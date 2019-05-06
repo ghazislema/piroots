@@ -11,6 +11,7 @@ import entities.Voyage;
 import java.io.IOException;
 import java.net.URL;
 import java.util.List;
+import java.util.Locale;
 import java.util.Optional;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
@@ -103,7 +104,14 @@ public class FXMLgestionvoyageController implements Initializable {
     @FXML
     private Label BTN_ADD_NEW_STATION;
     @FXML
+    private Label   COL2_LIST_STATION11;
+;
+    @FXML
+    private Label COL2_LIST_STATION1;
+    @FXML
     private AnchorPane AnchorPANEid;
+    private ResourceBundle bundle;
+
 public ServiceVoyage service = new ServiceVoyage();
     /**
      * Initializes the controller class.
@@ -226,5 +234,23 @@ public ServiceVoyage service = new ServiceVoyage();
     @FXML
     private void handleClicks(ActionEvent event) {
     }
-    
+       private void Loadlang(String lang) {
+  Locale locale = new Locale(lang);
+  bundle = ResourceBundle.getBundle("i18n.mybundle", locale);
+  
+   btnOrders.setText(bundle.getString("BTN_TRIPS_MANAGEMENT"));
+    BTN_LINE_MANAGEMENT.setText(bundle.getString("BTN_LINE_MANAGEMENT"));
+            btnMenus.setText(bundle.getString("BTN_STATION_MANAGEMENT"));
+            btnSignout.setText(bundle.getString("BTN_SIGN_OUT"));
+
+  COL1_LIST_STATION.setText(bundle.getString("PREV_PAGE"));
+  COL2_LIST_STATION.setText(bundle.getString("PREV_PAGE"));
+  COL2_LIST_STATION1.setText(bundle.getString("PREV_PAGE"));
+  COL2_LIST_STATION11.setText(bundle.getString("PREV_PAGE"));
+  SEARCH_BAR.setText(bundle.getString("PREV_PAGE"));
+  BTN_ADD_NEW_STATION.setText(bundle.getString("PREV_PAGE"));
+  H1_STATION_MANAGEMENT.setText(bundle.getString("PREV_PAGE"));
+  
+
+ }
 }
