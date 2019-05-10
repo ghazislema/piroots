@@ -102,7 +102,7 @@ public class FXMLgestionvoyageController implements Initializable {
     @FXML
     private ImageView RELOAD_BTN2;
     @FXML
-    private Label BTN_ADD_NEW_STATION;
+    private Label BTN_ADD_NEW_TRIP;
     @FXML
     private Label   COL2_LIST_STATION11;
 ;
@@ -144,7 +144,21 @@ public ServiceVoyage service = new ServiceVoyage();
         
         AnchorPANEid.getChildren().add(pagination);
         
+        BTN_ADD_NEW_TRIP.setOnMouseClicked(e->{
+             Parent showligne;
+             try {
+                 showligne = FXMLLoader.load(getClass().getResource("FXMLaddvoyage.fxml"));
+                  Scene scene = new Scene(showligne);
         
+        
+        Stage stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
+        stage.setScene(scene);
+        stage.show();
+             } catch (IOException ex) {
+                 Logger.getLogger(FXMLgestionstationsController.class.getName()).log(Level.SEVERE, null, ex);
+             }
+       
+         });
     }  
     
     public VBox remplir(int pageIndex)
@@ -248,7 +262,7 @@ public ServiceVoyage service = new ServiceVoyage();
   COL2_LIST_STATION1.setText(bundle.getString("DEPARTURE"));
   COL2_LIST_STATION11.setText(bundle.getString("ARRIVAL"));
   SEARCH_BAR.setText(bundle.getString("SEARCH_BAR"));
-  BTN_ADD_NEW_STATION.setText(bundle.getString("ADD_VOYAGE"));
+  BTN_ADD_NEW_TRIP.setText(bundle.getString("ADD_VOYAGE"));
   H1_STATION_MANAGEMENT.setText(bundle.getString("H1_TRIP_MANAGEMENT"));
   
 

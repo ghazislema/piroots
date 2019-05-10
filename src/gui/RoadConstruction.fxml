@@ -20,7 +20,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="576.0" prefWidth="1050.0" style="-fx-background-color: #171D26 #171D26;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.RoadConstructionController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="576.0" prefWidth="1050.0" style="-fx-background-color: #171D26 #171D26;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.RoadConstructionController">
    <children>
       <VBox alignment="TOP_CENTER" layoutY="156.0" prefHeight="422.0" prefWidth="256.0" style="-fx-background-color: #171D26;" AnchorPane.bottomAnchor="-2.0" AnchorPane.topAnchor="156.0">
          <children>
@@ -157,11 +157,11 @@
                         <Label layoutX="26.0" layoutY="87.0" text="Select a line type :" />
                         <Label fx:id="tx1" disable="true" layoutX="26.0" layoutY="142.0" text="Select the target line :" />
                         <Label fx:id="tx2" disable="true" layoutX="26.0" layoutY="199.0" prefHeight="17.0" prefWidth="224.0" text="Select the start and the end of your line :" />
-                        <Hyperlink layoutX="379.0" layoutY="310.0" text="Next step" />
+                        <Hyperlink fx:id="next1" layoutX="385.0" layoutY="310.0" text="Next step" />
                         <Hyperlink disable="true" layoutX="289.0" layoutY="310.0" text="Previous step" />
-                        <Label disable="true" layoutX="26.0" layoutY="254.0" prefHeight="17.0" prefWidth="155.0" text="Traject generation type :" />
+                        <Label fx:id="tx3" disable="true" layoutX="26.0" layoutY="254.0" prefHeight="17.0" prefWidth="155.0" text="Traject generation type :" />
                         <JFXRadioButton fx:id="Automatic1" disable="true" layoutX="290.0" layoutY="254.0" text="Automatic" />
-                        <JFXRadioButton disable="true" layoutX="178.0" layoutY="254.0" prefHeight="17.0" prefWidth="96.0" text="Manual" />
+                        <JFXRadioButton fx:id="manual" disable="true" layoutX="178.0" layoutY="254.0" prefHeight="17.0" prefWidth="96.0" text="Manual" />
                      </children>
                   </AnchorPane>
                   <ImageView fitHeight="75.0" fitWidth="518.0" layoutX="138.0" layoutY="458.0">
@@ -169,7 +169,7 @@
                         <Image url="@../ressources/images/Decorative-Line-Black-PNG-Image.png" />
                      </image>
                   </ImageView>
-                  <AnchorPane fx:id="STEP2_ANCHOR1" layoutX="27.0" layoutY="96.0" prefHeight="361.0" prefWidth="735.0" visible="false">
+                  <AnchorPane fx:id="STEP2_ANCHOR" layoutX="27.0" layoutY="96.0" prefHeight="361.0" prefWidth="735.0" visible="false">
                      <children>
                         <Label layoutX="26.0" layoutY="30.0" prefHeight="17.0" prefWidth="464.0" text="Your line simulation is below, add stations in the following text field to fill your line" />
                         <Hyperlink layoutX="379.0" layoutY="310.0" text="Next step" />

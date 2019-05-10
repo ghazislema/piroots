@@ -8,11 +8,8 @@ package gui;
 import com.jfoenix.controls.JFXAutoCompletePopup;
 import com.jfoenix.controls.JFXCheckBox;
 import com.jfoenix.controls.JFXComboBox;
+import com.jfoenix.controls.JFXRadioButton;
 import com.jfoenix.controls.JFXTextField;
-import com.lynden.gmapsfx.GoogleMapView;
-import com.lynden.gmapsfx.javascript.event.UIEventType;
-import com.lynden.gmapsfx.javascript.object.GoogleMap;
-import com.lynden.gmapsfx.javascript.object.LatLong;
 import entities.Ligne;
 import entities.Station;
 import java.net.URL;
@@ -25,6 +22,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
@@ -107,6 +105,18 @@ public class RoadConstructionController implements Initializable {
     private JFXComboBox combo_depart;
     @FXML
     private JFXComboBox combo_arrive;
+    @FXML
+    private Label tx3;
+    @FXML
+    private JFXRadioButton manual;
+    @FXML
+    private JFXRadioButton Automatic1;
+    @FXML
+    private Hyperlink next1;
+    @FXML
+    private AnchorPane STEP1_ANCHOR;
+    @FXML
+    private AnchorPane STEP2_ANCHOR;
     
 
     ServiceStation serv_station= new ServiceStation();
@@ -157,6 +167,21 @@ public class RoadConstructionController implements Initializable {
         }).forEachOrdered((nom) -> {
             combo_depart.getItems().add(nom);
         });
+          
+          
+          combo_arrive.setOnAction(evv->{
+              tx3.setDisable(false);
+              manual.setDisable(false);
+              Automatic1.setDisable(false);
+              
+              
+          });
+          
+          next1.setOnAction(ev2->{
+              STEP1_ANCHOR.setVisible(false);
+              STEP2_ANCHOR.setVisible(true);
+          });
+          
           
           
         

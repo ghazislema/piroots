@@ -7,6 +7,7 @@ package gui;
 
 import appMainClasses.LigneMain;
 import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextField;
 import entities.Station;
 import java.io.IOException;
@@ -26,6 +27,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
@@ -47,8 +49,6 @@ public class FXMLupdateStationController implements Initializable {
     @FXML
     private Button btnMenus;
     @FXML
-    private Button btnPackages;
-    @FXML
     private Button btnSettings;
     @FXML
     private Button btnSignout;
@@ -62,14 +62,9 @@ public class FXMLupdateStationController implements Initializable {
     private Pane pnlOverview;
     @FXML
     private JFXButton ADD_LINE_BTN;
-    @FXML
     private JFXButton UPDATE_BTN_STATION;
     @FXML
     private Hyperlink PREV_LINK;
-    @FXML
-    private ComboBox<?> COMBO_BOX_TRANSP;
-    @FXML
-    private JFXTextField LINE_NAME;
     @FXML
     private AnchorPane BOX_NOTIF;
     @FXML
@@ -78,13 +73,9 @@ public class FXMLupdateStationController implements Initializable {
     private AnchorPane BOX_NOTIF_WARNING;
     @FXML
     private Label OP_SUCCESS1;
-    @FXML
     private JFXTextField STATION_NAME;
-    @FXML
     private JFXTextField LONGITUDE;
-    @FXML
     private JFXTextField LATITUDE;
-    @FXML
     private Label chooseMap;
     
     private ResourceBundle bundle;
@@ -96,6 +87,16 @@ public class FXMLupdateStationController implements Initializable {
      * Initializes the controller class.
      */
     ServiceStation service=  new ServiceStation();
+    @FXML
+    private JFXComboBox<?> line_trip;
+    @FXML
+    private JFXComboBox<?> type_trip;
+    @FXML
+    private ImageView MAP_ID1;
+    @FXML
+    private ImageView MAP_ID11;
+    @FXML
+    private ImageView MAP_ID111;
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         

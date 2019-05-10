@@ -18,7 +18,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="576.0" prefWidth="1050.0" style="-fx-background-color: #171D26 #171D26;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.FXMLupdateStationController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="576.0" prefWidth="1050.0" style="-fx-background-color: #171D26 #171D26;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.FXMLaddvoyageController">
    <children>
       <VBox alignment="TOP_CENTER" layoutY="156.0" prefHeight="422.0" prefWidth="256.0" style="-fx-background-color: #171D26;" AnchorPane.bottomAnchor="-2.0" AnchorPane.topAnchor="156.0">
          <children>
@@ -116,7 +116,7 @@
                <children>
                   <Line endX="202.0" layoutX="363.0" layoutY="469.0" startX="-136.0" />
                   <Line endX="601.0" layoutX="151.0" layoutY="89.0" startX="-136.0" />
-                  <JFXButton fx:id="ADD_LINE_BTN" disable="true" layoutX="305.0" layoutY="410.0" onAction="#Back" prefHeight="25.0" prefWidth="182.0" style="-fx-background-color: #0F1D30;" text="Save" textFill="WHITE" />
+                  <JFXButton fx:id="SAVE_BTN" disable="true" layoutX="305.0" layoutY="410.0" onAction="#Back" prefHeight="25.0" prefWidth="182.0" style="-fx-background-color: #0F1D30;" text="Save" textFill="WHITE" />
                   <Hyperlink fx:id="PREV_LINK" layoutX="51.0" layoutY="32.0" prefHeight="28.0" prefWidth="132.0" text="Previous page" textFill="#233232">
                      <font>
                         <Font size="14.0" />
@@ -162,8 +162,8 @@
                   </ImageView>
                   <AnchorPane layoutX="15.0" layoutY="110.0" prefHeight="70.0" prefWidth="738.0">
                      <children>
-                        <JFXComboBox layoutX="159.0" layoutY="23.0" prefHeight="25.0" prefWidth="182.0" promptText="Line of trip..." />
-                        <JFXComboBox layoutX="438.0" layoutY="23.0" prefHeight="25.0" prefWidth="182.0" promptText="Type of trip..." />
+                        <JFXComboBox fx:id="line_trip" layoutX="159.0" layoutY="23.0" prefHeight="25.0" prefWidth="182.0" promptText="Line of trip..." />
+                        <JFXComboBox fx:id="type_trip" layoutX="438.0" layoutY="23.0" prefHeight="25.0" prefWidth="182.0" promptText="Type of trip..." />
                         <ImageView fx:id="MAP_ID1" fitHeight="42.0" fitWidth="52.0" layoutX="36.0" layoutY="14.0" preserveRatio="true">
                            <image>
                               <Image url="@../ressources/images/one.png" />
@@ -173,13 +173,13 @@
                   </AnchorPane>
                   <AnchorPane disable="true" layoutX="28.0" layoutY="203.0" prefHeight="70.0" prefWidth="738.0">
                      <children>
-                        <JFXComboBox layoutX="143.0" layoutY="24.0" prefHeight="25.0" prefWidth="182.0" promptText="Departure station..." />
-                        <JFXComboBox layoutX="418.0" layoutY="23.0" prefHeight="25.0" prefWidth="182.0" promptText="Terminus.." />
                         <ImageView fx:id="MAP_ID11" fitHeight="42.0" fitWidth="52.0" layoutX="22.0" layoutY="15.0" preserveRatio="true">
                            <image>
                               <Image url="@../ressources/images/two.png" />
                            </image>
                         </ImageView>
+                        <JFXTimePicker fx:id="depart_time" layoutX="149.0" layoutY="21.0" promptText="Departure time..." />
+                        <JFXTimePicker fx:id="arrival_time" layoutX="432.0" layoutY="21.0" promptText="Arriving time..." />
                      </children>
                   </AnchorPane>
                   <AnchorPane disable="true" layoutX="27.0" layoutY="297.0" prefHeight="70.0" prefWidth="738.0">
@@ -189,9 +189,7 @@
                               <Image url="@../ressources/images/three.png" />
                            </image>
                         </ImageView>
-                        <JFXDatePicker layoutX="113.0" layoutY="24.0" promptText="Date of trip" />
-                        <JFXTimePicker layoutX="335.0" layoutY="24.0" promptText="Departure time..." />
-                        <JFXTimePicker layoutX="532.0" layoutY="24.0" promptText="Arriving time..." />
+                        <JFXDatePicker fx:id="date_trip" layoutX="148.0" layoutY="21.0" promptText="Date of trip" />
                      </children>
                   </AnchorPane>
                </children>

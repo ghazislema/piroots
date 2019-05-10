@@ -73,15 +73,22 @@ public class FXMLaddStationController implements Initializable {
     @FXML
     private Label OP_SUCCESS1;
     @FXML
-    private JFXTextField LONGITUDE;
+    public JFXTextField LONGITUDE;
     @FXML
-    private JFXTextField LATITUDE;
+    public JFXTextField LATITUDE;
     @FXML
     private Label chooseMap;
     @FXML
     private ImageView MAP_ID;
+    @FXML
+    private ImageView reload_data;
     ServiceStation service = new ServiceStation();
     private ResourceBundle bundle;
+    
+    
+    public static String generated_long;
+    public static String generated_lat;
+  
     /**
      * Initializes the controller class.
      */
@@ -119,6 +126,22 @@ public class FXMLaddStationController implements Initializable {
             a.setLatitude(Double.parseDouble(LATITUDE.getText()));
             service.insert(a);
         });
+                
+                
+                MAP_ID.setOnMouseClicked(e->{
+                     Parent root;
+       
+           MapRetrievePoint map=new MapRetrievePoint();
+           Stage stage=new Stage();
+        map.start(stage);
+        
+  
+                });
+                
+                reload_data.setOnMouseClicked(ev->{
+                          LONGITUDE.setText(generated_long);
+        LATITUDE.setText(generated_lat);
+                });
     }    
 
     @FXML
