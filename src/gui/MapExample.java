@@ -8,6 +8,7 @@ import com.teamdev.jxmaps.GeocoderStatus;
 import com.teamdev.jxmaps.InfoWindow;
 import com.teamdev.jxmaps.LatLng;
 import com.teamdev.jxmaps.Map;
+import com.teamdev.jxmaps.MapMouseEvent;
 import com.teamdev.jxmaps.MapOptions;
 import com.teamdev.jxmaps.MapReadyHandler;
 import com.teamdev.jxmaps.MapStatus;
@@ -16,7 +17,9 @@ import com.teamdev.jxmaps.MapViewOptions;
 import com.teamdev.jxmaps.Marker;
 import com.teamdev.jxmaps.javafx.MapView;
 import javafx.application.Application;
+import javafx.event.Event;
 import javafx.scene.Scene;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
@@ -81,6 +84,35 @@ public class MapExample extends Application {
                     map.setCenter(new LatLng(x, y));
                     // Setting initial zoom value
                     map.setZoom(10.0);
+                    marker.setDraggable(true);
+                    marker.setClickable(true);
+                //    marker.addEventListener(nom, callback);
+                    System.out.println(marker.getPosition().getLat());
+                    
+                   
+                     map.addEventListener("click", new MapMouseEvent() {
+                         @Override
+                        public void onEvent(com.teamdev.jxmaps.MouseEvent me) {
+                            // Closing initially created info window
+                      
+                            // Creating a new marker
+                            final Marker marker = new Marker(map);
+                            // Move marker to the position where user clicked
+                            marker.setPosition(me.latLng());
+                             System.out.println(me.latLng().getLat());
+                            // Adding event listener that intercepts clicking on marker
+                            marker.addEventListener("click", new MapMouseEvent() {
+                             
+
+                                @Override
+                                public void onEvent(com.teamdev.jxmaps.MouseEvent me) {
+                                   marker.remove(); //To change body of generated methods, choose Tools | Templates.
+                                }
+                            });
+                        }
+
+                     
+                    });
                 }
             }
         });
