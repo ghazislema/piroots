@@ -41,6 +41,7 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 import jdk.nashorn.internal.objects.Global;
+import service.EmailSend;
 import service.ServiceStation;
 import service.ServiceVoyage;
 
@@ -126,6 +127,9 @@ public ServiceVoyage service = new ServiceVoyage();
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
        
+        loadpages();
+        
+        
      float n = list.size();
      int pages = (int) Math.ceil(n/8);
         System.out.println(pages);
@@ -181,6 +185,7 @@ public ServiceVoyage service = new ServiceVoyage();
              h1.setStyle("-fx-background-color: #E6E9ED; -fx-background-radius: 5; -fx-background-insets: 0;");
             Label idline = new Label(list.get(i).getId() + "");
    idline.setVisible(false);
+   idline.setMaxSize(0, 0);
    Label espace = new Label("");
    Label espace2 = new Label("");
    Label espace3 = new Label("");
@@ -190,12 +195,13 @@ public ServiceVoyage service = new ServiceVoyage();
    Label espace7 = new Label("");
    Label espace8 = new Label("");
 
-
-   Label depart = new Label(list.get(i).getDestination_depart());
+   
+   
+   Label depart = new Label(list.get(i).getType());
    depart.setPrefSize(75, 15);
    depart.setMaxSize(75, 15);
    
-   Label arrive = new Label(list.get(i).getDestination_arrive());
+   Label arrive = new Label(list.get(i).getDate());
     arrive.setPrefSize(110, 15);
    arrive.setMaxSize(110, 15);
    
@@ -228,12 +234,34 @@ public ServiceVoyage service = new ServiceVoyage();
    delete.setImage(new Image("@../../ressources/images/trash.png"));
 
 
+    int id=list.get(i).getId();
+     delete.setOnMouseClicked(e -> {
+       
+       Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+alert.setTitle("Confirmation alert");
+alert.setHeaderText(null);
+alert.setContentText("Are you sure you want to delete this trip?");
+
+Optional<ButtonType> result = alert.showAndWait();
+if (result.get() == ButtonType.OK){
+    
+      box.getChildren().remove(h1);
+    service.delete(id);
+    EmailSend a= new EmailSend();
+    a.main(null);
+    
+  
+} 
+    
+
+   });
     
 
    h1.getChildren().addAll(idline, depart, espace2, arrive  ,hdepart,harrive,espace7, edit,espace5,delete);
 
    h1.setId(list.get(i).getId() + "");
     box.getChildren().add(h1);
+    
         }
             catch (Exception e)
             {
@@ -244,7 +272,88 @@ public ServiceVoyage service = new ServiceVoyage();
    return box;
     }
    
-
+ public void loadpages()
+ {
+     btnOrders.setOnAction(e->{
+          Parent showligne;
+             try {
+                 showligne = FXMLLoader.load(getClass().getResource("FXMLgestionvoyage.fxml"));
+                  Scene scene = new Scene(showligne);
+        
+        
+        Stage stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
+        stage.setScene(scene);
+        stage.show();
+             } catch (IOException ex) {
+                 Logger.getLogger(FXMLgestionstationsController.class.getName()).log(Level.SEVERE, null, ex);
+             }
+       
+         });
+     
+     BTN_LINE_MANAGEMENT.setOnAction(e->{
+         
+          Parent showligne;
+             try {
+                 showligne = FXMLLoader.load(getClass().getResource("FXMLgestionlignes.fxml"));
+                  Scene scene = new Scene(showligne);
+        
+        
+        Stage stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
+        stage.setScene(scene);
+        stage.show();
+             } catch (IOException ex) {
+                 Logger.getLogger(FXMLgestionstationsController.class.getName()).log(Level.SEVERE, null, ex);
+             }
+         
+     });
+     
+     btnSettings.setOnAction(e->{
+         Parent showligne;
+             try {
+                 showligne = FXMLLoader.load(getClass().getResource("RoadConstruction.fxml"));
+                  Scene scene = new Scene(showligne);
+        
+        
+        Stage stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
+        stage.setScene(scene);
+        stage.show();
+             } catch (IOException ex) {
+                 Logger.getLogger(FXMLgestionstationsController.class.getName()).log(Level.SEVERE, null, ex);
+             }
+         
+     });
+     btnMenus.setOnAction(e->{
+         Parent showligne;
+             try {
+                 showligne = FXMLLoader.load(getClass().getResource("FXMLgestionstations.fxml"));
+                  Scene scene = new Scene(showligne);
+        
+        
+        Stage stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
+        stage.setScene(scene);
+        stage.show();
+             } catch (IOException ex) {
+                 Logger.getLogger(FXMLgestionstationsController.class.getName()).log(Level.SEVERE, null, ex);
+             }
+         
+     });
+     btnSignout.setOnAction(e->{
+          Parent showligne;
+             try {
+                 showligne = FXMLLoader.load(getClass().getResource("FXMLlogin.fxml"));
+                  Scene scene = new Scene(showligne);
+        
+        
+        Stage stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
+        stage.setScene(scene);
+        stage.show();
+             } catch (IOException ex) {
+                 Logger.getLogger(FXMLgestionstationsController.class.getName()).log(Level.SEVERE, null, ex);
+             }
+         
+     });
+        
+ }
     @FXML
     private void handleClicks(ActionEvent event) {
     }

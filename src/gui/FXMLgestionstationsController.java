@@ -109,7 +109,7 @@ public class FXMLgestionstationsController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-        
+        loadpages();
         search_line();
          recupererStations(service.findAll());
        
@@ -144,6 +144,90 @@ public class FXMLgestionstationsController implements Initializable {
   });
     }
     
+    
+    
+     public void loadpages()
+ {
+     btnOrders.setOnAction(e->{
+          Parent showligne;
+             try {
+                 showligne = FXMLLoader.load(getClass().getResource("FXMLgestionvoyage.fxml"));
+                  Scene scene = new Scene(showligne);
+        
+        
+        Stage stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
+        stage.setScene(scene);
+        stage.show();
+             } catch (IOException ex) {
+                 Logger.getLogger(FXMLgestionstationsController.class.getName()).log(Level.SEVERE, null, ex);
+             }
+       
+         });
+     
+     BTN_LINE_MANAGEMENT.setOnAction(e->{
+         
+          Parent showligne;
+             try {
+                 showligne = FXMLLoader.load(getClass().getResource("FXMLgestionlignes.fxml"));
+                  Scene scene = new Scene(showligne);
+        
+        
+        Stage stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
+        stage.setScene(scene);
+        stage.show();
+             } catch (IOException ex) {
+                 Logger.getLogger(FXMLgestionstationsController.class.getName()).log(Level.SEVERE, null, ex);
+             }
+         
+     });
+     
+     btnSettings.setOnAction(e->{
+         Parent showligne;
+             try {
+                 showligne = FXMLLoader.load(getClass().getResource("RoadConstruction.fxml"));
+                  Scene scene = new Scene(showligne);
+        
+        
+        Stage stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
+        stage.setScene(scene);
+        stage.show();
+             } catch (IOException ex) {
+                 Logger.getLogger(FXMLgestionstationsController.class.getName()).log(Level.SEVERE, null, ex);
+             }
+         
+     });
+     btnMenus.setOnAction(e->{
+         Parent showligne;
+             try {
+                 showligne = FXMLLoader.load(getClass().getResource("FXMLgestionstations.fxml"));
+                  Scene scene = new Scene(showligne);
+        
+        
+        Stage stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
+        stage.setScene(scene);
+        stage.show();
+             } catch (IOException ex) {
+                 Logger.getLogger(FXMLgestionstationsController.class.getName()).log(Level.SEVERE, null, ex);
+             }
+         
+     });
+     btnSignout.setOnAction(e->{
+          Parent showligne;
+             try {
+                 showligne = FXMLLoader.load(getClass().getResource("FXMLlogin.fxml"));
+                  Scene scene = new Scene(showligne);
+        
+        
+        Stage stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
+        stage.setScene(scene);
+        stage.show();
+             } catch (IOException ex) {
+                 Logger.getLogger(FXMLgestionstationsController.class.getName()).log(Level.SEVERE, null, ex);
+             }
+         
+     });
+        
+ }
      public void recupererStations(List<Station> list) {
 
 
@@ -223,7 +307,7 @@ alert.setContentText("This action cannot be reverted !");
 Optional<ButtonType> result = alert.showAndWait();
 if (result.get() == ButtonType.OK){
         service.delete(s.getId());
-
+        service.deletet_fromtraject(s.getId());
     pnItems.getChildren().remove(h1);
 
 } 
@@ -260,16 +344,13 @@ if (result.get() == ButtonType.OK){
       
         Parent root;
        
-           MapExample map=new MapExample();
+           double longi=s.getLongitude();
+           double lat=s.getLatitude();
+           String nom2=s.getNom();
+           MapExample map=new MapExample(lat, longi, nom2);
            Stage stage=new Stage();
-           map.x=s.getLongitude();
-           map.y=s.getLatitude();
-           map.nom=s.getNom();
-           map.start(stage);
-
-           
-     
-        
+            map.start(stage);
+   
    });
 
   }

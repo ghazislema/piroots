@@ -117,7 +117,10 @@ public class FXMLgestionlignesController implements Initializable {
  @Override
  public void initialize(URL url, ResourceBundle rb) {
   // TODO
-
+  
+  //load menu ki tenzel
+  loadpages();
+  
   //Chargement langage
   Loadlang(LigneMain.language);
 
@@ -140,6 +143,90 @@ public class FXMLgestionlignesController implements Initializable {
 
  }
 
+ public void loadpages()
+ {
+     btnOrders.setOnAction(e->{
+          Parent showligne;
+             try {
+                 showligne = FXMLLoader.load(getClass().getResource("FXMLgestionvoyage.fxml"));
+                  Scene scene = new Scene(showligne);
+        
+        
+        Stage stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
+        stage.setScene(scene);
+        stage.show();
+             } catch (IOException ex) {
+                 Logger.getLogger(FXMLgestionstationsController.class.getName()).log(Level.SEVERE, null, ex);
+             }
+       
+         });
+     
+     BTN_LINE_MANAGEMENT.setOnAction(e->{
+         
+          Parent showligne;
+             try {
+                 showligne = FXMLLoader.load(getClass().getResource("FXMLgestionlignes.fxml"));
+                  Scene scene = new Scene(showligne);
+        
+        
+        Stage stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
+        stage.setScene(scene);
+        stage.show();
+             } catch (IOException ex) {
+                 Logger.getLogger(FXMLgestionstationsController.class.getName()).log(Level.SEVERE, null, ex);
+             }
+         
+     });
+     
+     btnSettings.setOnAction(e->{
+         Parent showligne;
+             try {
+                 showligne = FXMLLoader.load(getClass().getResource("RoadConstruction.fxml"));
+                  Scene scene = new Scene(showligne);
+        
+        
+        Stage stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
+        stage.setScene(scene);
+        stage.show();
+             } catch (IOException ex) {
+                 Logger.getLogger(FXMLgestionstationsController.class.getName()).log(Level.SEVERE, null, ex);
+             }
+         
+     });
+     btnMenus.setOnAction(e->{
+         Parent showligne;
+             try {
+                 showligne = FXMLLoader.load(getClass().getResource("FXMLgestionstations.fxml"));
+                  Scene scene = new Scene(showligne);
+        
+        
+        Stage stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
+        stage.setScene(scene);
+        stage.show();
+             } catch (IOException ex) {
+                 Logger.getLogger(FXMLgestionstationsController.class.getName()).log(Level.SEVERE, null, ex);
+             }
+         
+     });
+     btnSignout.setOnAction(e->{
+          Parent showligne;
+             try {
+                 showligne = FXMLLoader.load(getClass().getResource("FXMLlogin.fxml"));
+                  Scene scene = new Scene(showligne);
+        
+        
+        Stage stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
+        stage.setScene(scene);
+        stage.show();
+             } catch (IOException ex) {
+                 Logger.getLogger(FXMLgestionstationsController.class.getName()).log(Level.SEVERE, null, ex);
+             }
+         
+     });
+        
+ }
+ 
+ 
  public void goToAdd()
  {
      BTN_ADD_NEW_LINE.setOnMouseClicked(e->{
@@ -230,7 +317,7 @@ alert.setContentText("This action cannot be reverted !");
 Optional<ButtonType> result = alert.showAndWait();
 if (result.get() == ButtonType.OK){
     service.delete(ligne.getId());
-
+    service.delete_trajectline(ligne.getNom());
     pnItems.getChildren().remove(h1);
 } 
     

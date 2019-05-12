@@ -10,6 +10,8 @@ import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextField;
 import entities.Station;
+import static gui.FXMLaddStationController.generated_lat;
+import static gui.FXMLaddStationController.generated_long;
 import java.io.IOException;
 import java.net.URL;
 import java.util.Locale;
@@ -62,6 +64,7 @@ public class FXMLupdateStationController implements Initializable {
     private Pane pnlOverview;
     @FXML
     private JFXButton ADD_LINE_BTN;
+    @FXML
     private JFXButton UPDATE_BTN_STATION;
     @FXML
     private Hyperlink PREV_LINK;
@@ -73,9 +76,14 @@ public class FXMLupdateStationController implements Initializable {
     private AnchorPane BOX_NOTIF_WARNING;
     @FXML
     private Label OP_SUCCESS1;
+    @FXML
     private JFXTextField STATION_NAME;
+    @FXML
     private JFXTextField LONGITUDE;
+    @FXML
     private JFXTextField LATITUDE;
+    
+    @FXML
     private Label chooseMap;
     
     private ResourceBundle bundle;
@@ -92,16 +100,18 @@ public class FXMLupdateStationController implements Initializable {
     @FXML
     private JFXComboBox<?> type_trip;
     @FXML
-    private ImageView MAP_ID1;
+    private ImageView MAP_ID;
     @FXML
-    private ImageView MAP_ID11;
-    @FXML
-    private ImageView MAP_ID111;
+    private ImageView reload_data;
+  
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         
+        
+        loadpages();
+        
          //Chargement langage
-  Loadlang(LigneMain.language);
+//  Loadlang(LigneMain.language);
   
         PREV_LINK.setOnAction(e->{
             Parent showligne;
@@ -128,6 +138,23 @@ public class FXMLupdateStationController implements Initializable {
             a.setId(id);
             service.update(a);
         });
+        
+         MAP_ID.setOnMouseClicked(e->{
+                     Parent root;
+       
+           MapRetrievePoint map=new MapRetrievePoint();
+           map.y=Double.parseDouble(LONGITUDE.getText());
+           map.x=Double.parseDouble(LATITUDE.getText());
+           Stage stage=new Stage();
+        map.start(stage);
+        
+  
+                });
+         
+          reload_data.setOnMouseClicked(ev->{
+                          LONGITUDE.setText(generated_long);
+        LATITUDE.setText(generated_lat);
+                });
     }    
 
     @FXML
@@ -145,6 +172,89 @@ public class FXMLupdateStationController implements Initializable {
         LATITUDE.setText(Double.toString(s.getLatitude()));
         id=s.getId();
     }
+    
+     public void loadpages()
+ {
+     btnOrders.setOnAction(e->{
+          Parent showligne;
+             try {
+                 showligne = FXMLLoader.load(getClass().getResource("FXMLgestionvoyage.fxml"));
+                  Scene scene = new Scene(showligne);
+        
+        
+        Stage stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
+        stage.setScene(scene);
+        stage.show();
+             } catch (IOException ex) {
+                 Logger.getLogger(FXMLgestionstationsController.class.getName()).log(Level.SEVERE, null, ex);
+             }
+       
+         });
+     
+     BTN_LINE_MANAGEMENT.setOnAction(e->{
+         
+          Parent showligne;
+             try {
+                 showligne = FXMLLoader.load(getClass().getResource("FXMLgestionlignes.fxml"));
+                  Scene scene = new Scene(showligne);
+        
+        
+        Stage stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
+        stage.setScene(scene);
+        stage.show();
+             } catch (IOException ex) {
+                 Logger.getLogger(FXMLgestionstationsController.class.getName()).log(Level.SEVERE, null, ex);
+             }
+         
+     });
+     
+     btnSettings.setOnAction(e->{
+         Parent showligne;
+             try {
+                 showligne = FXMLLoader.load(getClass().getResource("RoadConstruction.fxml"));
+                  Scene scene = new Scene(showligne);
+        
+        
+        Stage stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
+        stage.setScene(scene);
+        stage.show();
+             } catch (IOException ex) {
+                 Logger.getLogger(FXMLgestionstationsController.class.getName()).log(Level.SEVERE, null, ex);
+             }
+         
+     });
+     btnMenus.setOnAction(e->{
+         Parent showligne;
+             try {
+                 showligne = FXMLLoader.load(getClass().getResource("FXMLgestionstations.fxml"));
+                  Scene scene = new Scene(showligne);
+        
+        
+        Stage stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
+        stage.setScene(scene);
+        stage.show();
+             } catch (IOException ex) {
+                 Logger.getLogger(FXMLgestionstationsController.class.getName()).log(Level.SEVERE, null, ex);
+             }
+         
+     });
+     btnSignout.setOnAction(e->{
+          Parent showligne;
+             try {
+                 showligne = FXMLLoader.load(getClass().getResource("FXMLlogin.fxml"));
+                  Scene scene = new Scene(showligne);
+        
+        
+        Stage stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
+        stage.setScene(scene);
+        stage.show();
+             } catch (IOException ex) {
+                 Logger.getLogger(FXMLgestionstationsController.class.getName()).log(Level.SEVERE, null, ex);
+             }
+         
+     });
+        
+ }
     
       private void Loadlang(String lang) {
   Locale locale = new Locale(lang);

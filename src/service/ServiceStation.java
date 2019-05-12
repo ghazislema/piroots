@@ -26,6 +26,7 @@ public class ServiceStation implements SCRUD < Station >{
     static PreparedStatement ps;
     
     
+    
      public ArrayList < Station > search(String str) {
   ArrayList < Station > lignes = new ArrayList < > ();
   try {
@@ -78,10 +79,44 @@ sta.setLatitude(res.getDouble(4));
   }
     }
 
+     public boolean searchStation(String nom) {
+  try {
+   ps = con.prepareStatement("SELECT * FROM station WHERE UCASE(nom)='" + nom.toUpperCase() + "'");
+   ResultSet res = ps.executeQuery();
+
+   if (res.next()) {
+    return true;
+   
+   }
+
+   
+  } catch (SQLException ex) {
+   System.out.println(ex);
+  }
+    return false;
+
+ }
+    
+    
     @Override
     public void delete(int id) {
      try {
         ps = con.prepareStatement("delete from station where id=?");
+        ps.setInt(1, id);
+   int i = ps.executeUpdate();
+   if (i != 0) {
+    System.out.println("row deleted");
+   } else {
+    System.out.println("not deleted");
+   }
+  } catch (SQLException e) {
+      System.out.println(e);
+  }
+    }
+    
+     public void deletet_fromtraject(int id) {
+     try {
+        ps = con.prepareStatement("delete from lignestations where id_station=?");
         ps.setInt(1, id);
    int i = ps.executeUpdate();
    if (i != 0) {
@@ -142,6 +177,53 @@ sta.setLatitude(res.getDouble(4));
   return stations;
     }
     
+     public Station searchById(String nom) {
+  try {
+   ps = con.prepareStatement("SELECT * FROM station WHERE UCASE(nom) = UCASE('" + nom + "')");
+   ResultSet res = ps.executeQuery();
+
+   Station lig = new Station();
+   if (res.next()) {
+    lig.setId(res.getInt(1));
+    lig.setNom(res.getString(2));
+    lig.setLongitude(res.getDouble(3));
+    lig.setLatitude(res.getDouble(4));
+   // à finir
+   }
+
+   return lig;
+  } catch (SQLException ex) {
+   System.out.println(ex);
+    return null;
+
+  }
+
+
+ }
+     
+        public Station searchByrealID(String nom) {
+  try {
+   ps = con.prepareStatement("SELECT * FROM station WHERE id = " + nom + "");
+   ResultSet res = ps.executeQuery();
+
+   Station lig = new Station();
+   if (res.next()) {
+    lig.setId(res.getInt(1));
+    lig.setNom(res.getString(2));
+    lig.setLongitude(res.getDouble(3));
+    lig.setLatitude(res.getDouble(4));
+   // à finir
+   }
+
+   return lig;
+  } catch (SQLException ex) {
+   System.out.println(ex);
+    return null;
+
+  }
+
+
+ }
     
     
 }

@@ -20,7 +20,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="576.0" prefWidth="1050.0" style="-fx-background-color: #171D26 #171D26;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.RoadConstructionController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="576.0" prefWidth="1050.0" style="-fx-background-color: #171D26 #171D26;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.RoadConstructionController">
    <children>
       <VBox alignment="TOP_CENTER" layoutY="156.0" prefHeight="422.0" prefWidth="256.0" style="-fx-background-color: #171D26;" AnchorPane.bottomAnchor="-2.0" AnchorPane.topAnchor="156.0">
          <children>
@@ -29,11 +29,11 @@
                   <Insets bottom="20.0" />
                </VBox.margin>
             </Label>
-            <Button fx:id="btnOverview" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" onAction="#handleClicks" prefHeight="42.0" prefWidth="259.0" stylesheets="@../ressources/css/style.css" text="Overview" textFill="#e7e5e5">
+            <Button fx:id="btnOverview" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" onAction="#handleClicks" prefHeight="42.0" prefWidth="259.0" stylesheets="@../ressources/css/style.css" text="Home" textFill="#e7e5e5">
                <graphic>
-                  <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="23.0" fitWidth="27.0" opacity="0.49" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../ressources/images/icons8_Home_32px.png" />
+                        <Image url="@../ressources/images/icons8-home-64.png" />
                      </image>
                   </ImageView>
                </graphic>
@@ -49,9 +49,9 @@
             </Button>
             <Button fx:id="btnOrders" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" onAction="#handleClicks" prefHeight="42.0" prefWidth="259.0" stylesheets="@../ressources/css/style.css" text="Trips management">
                <graphic>
-                  <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="23.0" fitWidth="27.0" opacity="0.7" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../ressources/images/icons8_Slider__32px.png" />
+                        <Image url="@../ressources/images/airplane.png" />
                      </image>
                   </ImageView>
                </graphic>
@@ -59,35 +59,35 @@
                   <Insets left="50.0" />
                </padding>
             </Button>
-            <Button fx:id="BTN_LINE_MANAGEMENT" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" onAction="#handleClicks" prefHeight="42.0" prefWidth="259.0" style="-fx-background-color: #1D3557;" stylesheets="@../ressources/css/style.css" text="Lines management">
-               <graphic>
-                  <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../ressources/images/icons8_Person_32px.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-               <padding>
-                  <Insets left="50.0" />
-               </padding>
-            </Button>
-            <Button fx:id="btnMenus" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" onAction="#handleClicks" prefHeight="42.0" prefWidth="259.0" stylesheets="@../ressources/css/style.css" text="Stations management">
-               <graphic>
-                  <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../ressources/images/icons8_Box_32px.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-               <padding>
-                  <Insets left="50.0" />
-               </padding>
-            </Button>
-            <Button fx:id="btnSettings" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="259.0" stylesheets="@../ressources/css/style.css" text="Settings">
+            <Button fx:id="BTN_LINE_MANAGEMENT" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" onAction="#handleClicks" prefHeight="42.0" prefWidth="259.0" stylesheets="@../ressources/css/style.css" text="Lines management">
                <graphic>
                   <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../ressources/images/icons8_Slider__32px.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <padding>
+                  <Insets left="50.0" />
+               </padding>
+            </Button>
+            <Button fx:id="btnSettings" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" onAction="#handleClicks" prefHeight="42.0" prefWidth="259.0" style="-fx-background-color: #1D3557;" stylesheets="@../ressources/css/style.css" text="Lines trajects">
+               <graphic>
+                  <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../ressources/images/icons8-track-order-64.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <padding>
+                  <Insets left="50.0" />
+               </padding>
+            </Button>
+            <Button fx:id="btnMenus" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="259.0" stylesheets="@../ressources/css/style.css" text="Stations management">
+               <graphic>
+                  <ImageView fitHeight="23.0" fitWidth="27.0" opacity="0.84" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../ressources/images/station.png" />
                      </image>
                   </ImageView>
                </graphic>
@@ -97,9 +97,9 @@
             </Button>
             <Button fx:id="btnSignout" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="259.0" stylesheets="@../ressources/css/style.css" text="Sign Out">
                <graphic>
-                  <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="23.0" fitWidth="27.0" opacity="0.57" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../ressources/images/icons8_Sign_Out_32px.png" />
+                        <Image url="@../ressources/images/icons8-exit-48.png" />
                      </image>
                   </ImageView>
                </graphic>
@@ -116,7 +116,7 @@
             <Pane fx:id="pnlMenus" prefHeight="200.0" prefWidth="200.0" />
             <Pane fx:id="pnlOverview" prefHeight="554.0" prefWidth="793.0" style="-fx-background-color: #FFFEF9;">
                <children>
-                  <Label fx:id="H1_LINE_MANAGEMENT" layoutX="105.0" layoutY="32.0" prefHeight="35.0" prefWidth="224.0" text="Line pathing" textFill="#7e8894">
+                  <Label fx:id="H1_LINE_MANAGEMENT" layoutX="105.0" layoutY="32.0" prefHeight="35.0" prefWidth="224.0" text="Lines trajects" textFill="#7e8894">
                      <font>
                         <Font size="24.0" />
                      </font>
@@ -148,20 +148,14 @@
                   <AnchorPane fx:id="STEP1_ANCHOR" layoutX="27.0" layoutY="96.0" prefHeight="361.0" prefWidth="735.0">
                      <children>
                         <Label layoutX="26.0" layoutY="30.0" prefHeight="17.0" prefWidth="412.0" text="This features allow you to create trajects for your lines." />
-                        <JFXComboBox fx:id="LINE_CAMBO_BAWKS" disable="true" focusColor="#bf9d62" layoutX="171.0" layoutY="131.0" prefHeight="25.0" prefWidth="142.0" promptText="Select a line..." stylesheets="@../ressources/css/ComboBoxCss.css" />
-                        <JFXComboBox fx:id="combo_depart" disable="true" focusColor="#bf9d62" layoutX="271.0" layoutY="187.0" promptText="Departure station..." />
-                        <JFXComboBox fx:id="combo_arrive" disable="true" layoutX="448.0" layoutY="187.0" prefHeight="25.0" prefWidth="128.0" promptText="Arrival station" />
-                        <JFXRadioButton fx:id="radio1" layoutX="160.0" layoutY="87.0" text="Bus" />
-                        <JFXRadioButton fx:id="radio3" layoutX="386.0" layoutY="87.0" text="Tramway" />
-                        <JFXRadioButton fx:id="radio2" layoutX="274.0" layoutY="87.0" text="Train" />
-                        <Label layoutX="26.0" layoutY="87.0" text="Select a line type :" />
-                        <Label fx:id="tx1" disable="true" layoutX="26.0" layoutY="142.0" text="Select the target line :" />
-                        <Label fx:id="tx2" disable="true" layoutX="26.0" layoutY="199.0" prefHeight="17.0" prefWidth="224.0" text="Select the start and the end of your line :" />
+                        <JFXComboBox fx:id="LINE_CAMBO_BAWKS" disable="true" focusColor="#bf9d62" layoutX="191.0" layoutY="205.0" prefHeight="25.0" prefWidth="142.0" promptText="Select a line..." stylesheets="@../ressources/css/ComboBoxCss.css" />
+                        <JFXRadioButton fx:id="radio1" layoutX="160.0" layoutY="117.0" text="Bus" />
+                        <JFXRadioButton fx:id="radio3" layoutX="386.0" layoutY="117.0" text="Tramway" />
+                        <JFXRadioButton fx:id="radio2" layoutX="270.0" layoutY="117.0" text="Train" />
+                        <Label layoutX="26.0" layoutY="117.0" text="Select a line type :" />
+                        <Label fx:id="tx1" disable="true" layoutX="26.0" layoutY="216.0" text="Select the target line :" />
                         <Hyperlink fx:id="next1" layoutX="385.0" layoutY="310.0" text="Next step" />
                         <Hyperlink disable="true" layoutX="289.0" layoutY="310.0" text="Previous step" />
-                        <Label fx:id="tx3" disable="true" layoutX="26.0" layoutY="254.0" prefHeight="17.0" prefWidth="155.0" text="Traject generation type :" />
-                        <JFXRadioButton fx:id="Automatic1" disable="true" layoutX="290.0" layoutY="254.0" text="Automatic" />
-                        <JFXRadioButton fx:id="manual" disable="true" layoutX="178.0" layoutY="254.0" prefHeight="17.0" prefWidth="96.0" text="Manual" />
                      </children>
                   </AnchorPane>
                   <ImageView fitHeight="75.0" fitWidth="518.0" layoutX="138.0" layoutY="458.0">
@@ -171,10 +165,27 @@
                   </ImageView>
                   <AnchorPane fx:id="STEP2_ANCHOR" layoutX="27.0" layoutY="96.0" prefHeight="361.0" prefWidth="735.0" visible="false">
                      <children>
-                        <Label layoutX="26.0" layoutY="30.0" prefHeight="17.0" prefWidth="464.0" text="Your line simulation is below, add stations in the following text field to fill your line" />
-                        <Hyperlink layoutX="379.0" layoutY="310.0" text="Next step" />
-                        <Hyperlink layoutX="289.0" layoutY="310.0" text="Previous step" />
-                        <JFXChipView layoutX="26.0" layoutY="66.0" prefHeight="244.0" prefWidth="256.0" />
+                        <Label layoutX="26.0" layoutY="30.0" prefHeight="17.0" prefWidth="464.0" text="Your line simulation is below, add stations in order, to build your line traject" />
+                        <Hyperlink fx:id="next2" layoutX="379.0" layoutY="310.0" text="Next step" />
+                        <Hyperlink fx:id="prev1" layoutX="289.0" layoutY="310.0" text="Previous step" />
+                        <StackPane fx:id="pane" layoutX="23.0" layoutY="85.0" prefHeight="207.0" prefWidth="691.0">
+                           <children>
+                              <JFXChipView fx:id="chipView" />
+                           </children>
+                        </StackPane>
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane fx:id="STEP3_ANCHOR" layoutX="27.0" layoutY="96.0" prefHeight="361.0" prefWidth="735.0" visible="false">
+                     <children>
+                        <Label layoutX="52.0" layoutY="131.0" prefHeight="17.0" prefWidth="579.0" text="You have successfully created a traject for your line. Click on this map to display a simulation of your road" />
+                        <Hyperlink fx:id="next21" disable="true" layoutX="379.0" layoutY="310.0" text="Next step" />
+                        <Hyperlink fx:id="prev2" layoutX="289.0" layoutY="310.0" text="Previous step" />
+                        <JFXButton fx:id="SAVE_TRAJECT" layoutX="292.0" layoutY="210.0" onAction="#Back" prefHeight="25.0" prefWidth="153.0" style="-fx-background-color: #0F1D30;" text="Save" textFill="WHITE" />
+                        <ImageView fx:id="DISPLAY_MAP" fitHeight="42.0" fitWidth="36.0" layoutX="623.0" layoutY="122.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../ressources/images/map%20(2).png" />
+                           </image>
+                        </ImageView>
                      </children>
                   </AnchorPane>
                </children>
@@ -186,7 +197,6 @@
             <Image url="@../ressources/images/train_white_192x192.png" />
          </image>
       </ImageView>
-      <JFXButton fx:id="UPDATE_BTN_STATION" layoutX="576.0" layoutY="623.0" onAction="#Back" prefHeight="25.0" prefWidth="241.0" style="-fx-background-color: #0F1D30;" text="Save" textFill="WHITE" />
    </children>
    <effect>
       <DropShadow color="#1b1eeb" />

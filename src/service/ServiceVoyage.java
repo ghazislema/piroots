@@ -30,17 +30,18 @@ public class ServiceVoyage implements SCRUD < Voyage >{
         
         try {
    ps = con.prepareStatement("insert into voyage " +
-    "              (type,heure_depart,heure_arrive,destination_depart,destination_arrive,id_chauffeur,id_ligne)" +
+    "              (type,heure_depart,heure_arrive,destination_depart,destination_arrive,id_ligne,date)" +
     "               values(?,?,?,?,?,?,?)");
 
 
    ps.setString(1, a.getType());
    ps.setString(2, a.getHeure_depart());
-   ps.setString(2, a.getHeure_arrive());
-   ps.setString(2, a.getDestination_depart());
-   ps.setString(2, a.getDestination_arrive());
-   ps.setInt(2, a.getId_chauffeur());
-   ps.setInt(2, a.getId_ligne());
+   ps.setString(3, a.getHeure_arrive());
+   ps.setString(4, a.getDestination_depart());
+   ps.setString(5, a.getDestination_arrive());
+      ps.setInt(6, a.getId_ligne());
+   ps.setString(7, a.getDate());
+
 
 
    int i = ps.executeUpdate();
@@ -144,8 +145,9 @@ public class ServiceVoyage implements SCRUD < Voyage >{
     voy.setHeure_arrive(res.getString(4));
     voy.setDestination_depart(res.getString(5));
     voy.setDestination_arrive(res.getString(6));
-    voy.setId_chauffeur(res.getInt(7));
-    voy.setId_ligne(res.getInt(8));
+    voy.setId_ligne(res.getInt(7));
+    voy.setDate(res.getString(8));
+    
 
 
     voyages.add(voy);

@@ -34,6 +34,11 @@ import javafx.stage.Stage;
  * @author ghazy
  */
 public class MapRetrievePoint extends Application {
+   
+    public static double x=9.55265;
+    public static double y=35.523842;
+    public static String nom;
+    
     
     @Override
     public void start(Stage primaryStage) {

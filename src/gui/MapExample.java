@@ -32,11 +32,17 @@ import javafx.stage.Stage;
  */
 public class MapExample extends Application {
     
-    public static double x=36.832130;
-    public static double y=36.832130;
-    public static String nom="Lac 2, Tunis";
+    public static double x=9.55265;
+    public static double y=35.523842;
+    public static String nom;
 
   //  36.832130, 10.225613
+    public MapExample(double x,double y,String nom)
+    {
+        this.x=x;
+        this.y=y;
+        this.nom=nom;
+    }
     
     @Override
     public void init() throws Exception {
@@ -66,6 +72,7 @@ public class MapExample extends Application {
                     // Creating a map options object
                     MapOptions options = new MapOptions();
                       Marker marker = new Marker(map);
+                      marker.setDraggable(false);
                                 marker.setPosition(new LatLng(x, y));
 
                                 final InfoWindow window = new InfoWindow(map);

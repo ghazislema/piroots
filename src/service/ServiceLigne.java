@@ -14,6 +14,7 @@ import java.util.List;
 import entities.Ligne;
 import interfaces.SCRUD;
 import connection.MYSQLConnection;
+import entities.Station;
 
 /**
  *
@@ -24,6 +25,94 @@ public class ServiceLigne implements SCRUD < Ligne > {
  static Connection con = MYSQLConnection.conncet();
  static PreparedStatement ps;
 
+ public void MakeTraject(String nomligne,Station idstat, int order)
+ {
+      try {
+   ps = con.prepareStatement("insert into lignestations " +
+    "              (nom,id_station,order_s)" +
+    "               values(?,?,?)");
+
+
+   ps.setString(1, nomligne);
+   ps.setInt(2, idstat.getId());
+   ps.setInt(3, order);
+
+
+   int i = ps.executeUpdate();
+
+   if (i != 0) {
+    System.out.println("Route ajouté avec success");
+   } else {
+    System.out.println("Operation non aboutie");
+   }
+  } catch (Exception e) {
+   e.printStackTrace();
+  }
+     
+ }
+ 
+ public String id_station_depart(String nom)
+ {
+      String ret=null;
+      try {
+   ps = con.prepareStatement("SELECT * FROM lignestations WHERE nom='" + nom + "' order by order_s asc");
+   ResultSet res = ps.executeQuery();
+
+  
+   if (res.next()) {
+    ret=res.getString(2);
+    return ret;
+   
+   }
+  } catch (SQLException ex) {
+   System.out.println(ex);
+   
+
+  }
+     return ret;
+ }
+ 
+  public String id_station_arrive(String nom)
+ {
+      String ret=null;
+      try {
+   ps = con.prepareStatement("SELECT * FROM lignestations WHERE nom='" + nom + "' order by order_s desc");
+   ResultSet res = ps.executeQuery();
+
+  
+   if (res.next()) {
+    ret=res.getString(2);
+    return ret;
+   
+   }
+  } catch (SQLException ex) {
+   System.out.println(ex);
+   
+
+  }
+     return ret;
+ }
+ 
+  public boolean checktraject(String nom) {
+
+
+  try {
+     ps = con.prepareStatement("SELECT * FROM lignestations WHERE nom='" + nom + "'");
+
+     ResultSet res = ps.executeQuery();
+
+   if (res.next()) {
+    return true;
+   }
+ 
+  } catch (Exception e) {
+   e.printStackTrace();
+  }
+
+return false;
+
+ }
+ 
  @Override
  public void insert(Ligne a) {
 
@@ -57,6 +146,21 @@ public class ServiceLigne implements SCRUD < Ligne > {
   try {
    ps = con.prepareStatement("delete from ligne where id=?");
    ps.setInt(1, id);
+   int i = ps.executeUpdate();
+   if (i != 0) {
+    System.out.println("row deleted");
+   } else {
+    System.out.println("not deleted");
+   }
+  } catch (SQLException e) {
+      System.out.println(e);
+  }
+ }
+ 
+ public void delete_trajectline(String nom) {
+  try {
+   ps = con.prepareStatement("delete from lignestations where nom=?");
+   ps.setString(1, nom);
    int i = ps.executeUpdate();
    if (i != 0) {
     System.out.println("row deleted");
@@ -118,16 +222,40 @@ public class ServiceLigne implements SCRUD < Ligne > {
 
 
  }
+ 
+ public boolean searchLigne(String nom) {
+  try {
+   ps = con.prepareStatement("SELECT * FROM ligne WHERE UCASE(nom)='" + nom.toUpperCase() + "'");
+   ResultSet res = ps.executeQuery();
+
+   if (res.next()) {
+    return true;
+   
+   }
+
+   
+  } catch (SQLException ex) {
+   System.out.println(ex);
+  }
+    return false;
+
+ }
 
 
 
  public ArrayList < Ligne > searchLineByNameTransport(String str) {
   ArrayList < Ligne > lignes = new ArrayList < > ();
+  
+  String str2=new String();
+  if (str.equals("Tramway"))
+      str2="Metro";
+  else
+      str2=str;
   try {
 
    ps = con.prepareStatement("select * from ligne where UCASE(nom) like UCASE(?) or UCASE(moyenTransport) like UCASE(?)");
-   ps.setString(1, "%"+str+"%");
-   ps.setString(2, "%"+str+"%");
+   ps.setString(1, "%"+str2+"%");
+   ps.setString(2, "%"+str2+"%");
 
    ResultSet res = ps.executeQuery();
    while (res.next()) {
@@ -147,6 +275,31 @@ public class ServiceLigne implements SCRUD < Ligne > {
   }
   return lignes;
  }
+  public Ligne searchLineByName(String str) {
+  Ligne lig = new Ligne();
+  try {
+
+   ps = con.prepareStatement("select * from ligne where nom = '"+str+"'");
+
+
+   ResultSet res = ps.executeQuery();
+   if (res.next()) {
+
+
+   
+    lig.setId(res.getInt(1));
+    lig.setNom(res.getString(2));
+    lig.setMoyentransport(res.getString(3));
+ 
+   }
+   return lig;
+
+  } catch (Exception e) {
+   e.printStackTrace();
+   return lig;
+  }
+
+ }
 
  
  
@@ -157,6 +310,28 @@ public class ServiceLigne implements SCRUD < Ligne > {
 
   try {
    ps = con.prepareStatement("select * from ligne");
+   ResultSet res = ps.executeQuery();
+   while (res.next()) {
+    Ligne lig = new Ligne();
+    lig.setId(res.getInt(1));
+    lig.setNom(res.getString(2));
+    lig.setMoyentransport(res.getString(3));
+
+
+    lignes.add(lig);
+   }
+  } catch (SQLException ex) {
+   System.out.println(ex.getMessage());
+  }
+  return lignes;
+ }
+ 
+  public ArrayList < Ligne > findAll_linestrajects() {
+  ArrayList < Ligne > lignes = new ArrayList < > ();
+
+
+  try {
+   ps = con.prepareStatement("select * from ligne l where l.nom in (select nom from lignestations) ");
    ResultSet res = ps.executeQuery();
    while (res.next()) {
     Ligne lig = new Ligne();

@@ -12,7 +12,10 @@ import entities.Ligne;
 import java.io.IOException;
 import java.net.URL;
 import java.util.Locale;
+import java.util.Optional;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.animation.PauseTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -21,7 +24,9 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
@@ -83,9 +88,9 @@ private ResourceBundle bundle;
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-        
+        loadpages();
               //Chargement langage
-  Loadlang(LigneMain.language);
+ // Loadlang(LigneMain.language);
   
         COMBO_BOX_TRANSP.getItems().addAll("Bus","Train","Metro");
         
@@ -110,23 +115,50 @@ private ResourceBundle bundle;
             Ligne ligne=new Ligne();
             ligne.setNom(nom);
             ligne.setMoyentransport(transp);
+            
+            //here
+            if (service.searchLigne(nom)){
+                 Alert alert = new Alert(Alert.AlertType.WARNING);
+
+alert.setHeaderText(null);
+alert.setContentText("Line already exists !");
+
+alert.showAndWait();
+                
+            }
+            else
+                {
+                    
+                
             service.insert(ligne);
-            
-            BOX_NOTIF.setVisible(true);
-            
-                    //fermer notif aprés x sec
-                     PauseTransition delay = new PauseTransition(Duration.seconds(3));
-                    delay.setOnFinished( event -> 
-                     {
-                     BOX_NOTIF.setVisible(false);
-                     });
-                    delay.play();
-                 
-                    //
+
+
+  Alert alert = new Alert(Alert.AlertType.INFORMATION);
+
+alert.setHeaderText(null);
+alert.setContentText("Line has been created successfully.");
+
+Optional<ButtonType> result = alert.showAndWait();
+if (result.get() == ButtonType.OK){
+    
+        Parent parent;
+             try {
+                 parent = FXMLLoader.load(getClass().getResource("FXMLgestionlignes.fxml"));
+                  Scene scene = new Scene(parent);
+        
+        
+        Stage stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
+        stage.setScene(scene);
+        stage.show();
+             } catch (IOException ex) {
+                 Logger.getLogger(FXMLgestionstationsController.class.getName()).log(Level.SEVERE, null, ex);
+             }
+} 
             
             
             BOX_NOTIF_WARNING.setVisible(false);
                 
+                }
                 }
         });
     }    
@@ -152,6 +184,88 @@ private ResourceBundle bundle;
 
  }
 
+      public void loadpages()
+ {
+     btnOrders.setOnAction(e->{
+          Parent showligne;
+             try {
+                 showligne = FXMLLoader.load(getClass().getResource("FXMLgestionvoyage.fxml"));
+                  Scene scene = new Scene(showligne);
+        
+        
+        Stage stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
+        stage.setScene(scene);
+        stage.show();
+             } catch (IOException ex) {
+                 Logger.getLogger(FXMLgestionstationsController.class.getName()).log(Level.SEVERE, null, ex);
+             }
+       
+         });
+     
+     BTN_LINE_MANAGEMENT.setOnAction(e->{
+         
+          Parent showligne;
+             try {
+                 showligne = FXMLLoader.load(getClass().getResource("FXMLgestionlignes.fxml"));
+                  Scene scene = new Scene(showligne);
+        
+        
+        Stage stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
+        stage.setScene(scene);
+        stage.show();
+             } catch (IOException ex) {
+                 Logger.getLogger(FXMLgestionstationsController.class.getName()).log(Level.SEVERE, null, ex);
+             }
+         
+     });
+     
+     btnSettings.setOnAction(e->{
+         Parent showligne;
+             try {
+                 showligne = FXMLLoader.load(getClass().getResource("RoadConstruction.fxml"));
+                  Scene scene = new Scene(showligne);
+        
+        
+        Stage stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
+        stage.setScene(scene);
+        stage.show();
+             } catch (IOException ex) {
+                 Logger.getLogger(FXMLgestionstationsController.class.getName()).log(Level.SEVERE, null, ex);
+             }
+         
+     });
+     btnMenus.setOnAction(e->{
+         Parent showligne;
+             try {
+                 showligne = FXMLLoader.load(getClass().getResource("FXMLgestionstations.fxml"));
+                  Scene scene = new Scene(showligne);
+        
+        
+        Stage stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
+        stage.setScene(scene);
+        stage.show();
+             } catch (IOException ex) {
+                 Logger.getLogger(FXMLgestionstationsController.class.getName()).log(Level.SEVERE, null, ex);
+             }
+         
+     });
+     btnSignout.setOnAction(e->{
+          Parent showligne;
+             try {
+                 showligne = FXMLLoader.load(getClass().getResource("FXMLlogin.fxml"));
+                  Scene scene = new Scene(showligne);
+        
+        
+        Stage stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
+        stage.setScene(scene);
+        stage.show();
+             } catch (IOException ex) {
+                 Logger.getLogger(FXMLgestionstationsController.class.getName()).log(Level.SEVERE, null, ex);
+             }
+         
+     });
+        
+ }
     @FXML
     private void Back(ActionEvent event) throws IOException {
         
