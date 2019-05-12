@@ -262,6 +262,7 @@ public class FXMLgestionlignesController implements Initializable {
 
    Label idline = new Label(ligne.getId() + "");
    idline.setVisible(false);
+   idline.setMaxSize(0, 0);
    Label espace2 = new Label("");
    Label espace3 = new Label("");
    Label espace4 = new Label("");

@@ -5,10 +5,12 @@
 <?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.scene.control.Hyperlink?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
 
 <AnchorPane id="AnchorPane" prefHeight="450.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.FXMLloginController">
    <children>
@@ -22,34 +24,72 @@
             <JFXPasswordField fx:id="PASSWORD" focusColor="#2a365a" labelFloat="true" layoutX="28.0" layoutY="213.0" prefHeight="25.0" prefWidth="259.0" promptText="Password" unFocusColor="#457b9d" />
             <JFXButton fx:id="SIGNIN_BTN" layoutX="28.0" layoutY="283.0" onAction="#Back" prefHeight="25.0" prefWidth="259.0" style="-fx-background-color: #0F1D30;" text="Login" textFill="WHITE" />
             <Hyperlink fx:id="FORGOTPW_LINK" layoutX="167.0" layoutY="330.0" prefHeight="23.0" prefWidth="149.0" text="Forgot password?" textFill="#3a3e4a" underline="true" />
-            <Label layoutX="162.0" layoutY="416.0" text="/" />
-            <Hyperlink fx:id="BTN_EN" layoutX="106.0" layoutY="413.0" onAction="#btn_en" text="English" />
-            <Hyperlink fx:id="BTN_FR" layoutX="177.0" layoutY="413.0" onAction="#btn_fr" text="Francais" />
+            <Label layoutX="151.0" layoutY="419.0" text="/" />
+            <Hyperlink fx:id="BTN_EN" layoutX="95.0" layoutY="416.0" onAction="#btn_en" text="English" />
+            <Hyperlink fx:id="BTN_FR" layoutX="166.0" layoutY="416.0" onAction="#btn_fr" text="Francais" />
             <Line endX="183.0" layoutX="114.0" layoutY="407.0" startX="-100.0" />
             <JFXTextField fx:id="USERNAME" focusColor="#2a365a" labelFloat="true" layoutX="28.0" layoutY="143.0" prefHeight="25.0" prefWidth="259.0" promptText="Username" unFocusColor="#457b9d" />
             <Label fx:id="BTN_ADD_NEW_STATION" layoutX="28.0" layoutY="332.0" prefHeight="19.0" prefWidth="91.0" stylesheets="@../ressources/css/add_station_label.css.css" text="Sign up here!" underline="true" />
-            <ImageView fitHeight="132.0" fitWidth="176.0" layoutX="74.0">
-               <image>
+            <ImageView fx:id="image1" fitHeight="131.0" fitWidth="149.0" layoutX="82.0">
+              <effect>
+                    <DropShadow color="GRAY" offsetX="5.0" offsetY="10.0" />
+                </effect> 
+                <image>
                   <Image url="@../ressources/images/Dream-Catcher-PNG-Photo.png" />
                </image>
             </ImageView>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="forgotpw_login" layoutX="197.0" opacity="0.9" prefHeight="450.0" prefWidth="326.0" style="-fx-background-color: #f1faee;" visible="false">
+      <AnchorPane fx:id="forgotpw_login" layoutX="197.0" opacity="0.9" prefHeight="450.0" prefWidth="326.0" style="-fx-background-color: #f1faee;" stylesheets="@../ressources/css/login_anchor_css.css" visible="false">
          <children>
-            <JFXButton fx:id="SIGNIN_BTN1" layoutX="23.0" layoutY="289.0" onAction="#Back" prefHeight="25.0" prefWidth="259.0" style="-fx-background-color: #0F1D30;" text="Retrieve Password" textFill="WHITE" />
-            <Label layoutX="162.0" layoutY="416.0" text="/" />
-            <Hyperlink fx:id="BTN_EN1" layoutX="106.0" layoutY="413.0" onAction="#btn_en" text="English" />
-            <Hyperlink fx:id="BTN_FR1" layoutX="177.0" layoutY="413.0" onAction="#btn_fr" text="Francais" />
-            <Line endX="183.0" layoutX="114.0" layoutY="407.0" startX="-100.0" />
+            <JFXButton fx:id="RETRIEVE_PW" layoutX="23.0" layoutY="289.0" onAction="#Back" prefHeight="25.0" prefWidth="259.0" style="-fx-background-color: #0F1D30;" text="Retrieve Password" textFill="WHITE" />
+            <Label layoutX="151.0" layoutY="416.0" text="/" />
+            <Hyperlink fx:id="BTN_EN1" layoutX="95.0" layoutY="413.0" onAction="#btn_en" text="English" />
+            <Hyperlink fx:id="BTN_FR1" layoutX="166.0" layoutY="413.0" onAction="#btn_fr" text="Francais" />
+            <Line endX="190.0" layoutX="114.0" layoutY="407.0" startX="-100.0" />
             <JFXTextField fx:id="USERNAME1" focusColor="#2a365a" labelFloat="true" layoutX="23.0" layoutY="225.0" prefHeight="25.0" prefWidth="259.0" promptText="Username" unFocusColor="#457b9d" />
-            <ImageView fitHeight="122.0" fitWidth="119.0" layoutX="95.0">
-               <image>
+            <ImageView fx:id="image2" fitHeight="122.0" fitWidth="119.0" layoutX="100.0">
+              <effect>
+                    <DropShadow color="GRAY" offsetX="5.0" offsetY="10.0" />
+                </effect> 
+                <image>
                   <Image url="@../ressources/images/Dream-Catcher-PNG-File.png" />
                </image>
             </ImageView>
             <Label layoutX="23.0" layoutY="178.0" prefHeight="17.0" prefWidth="259.0" text="You will recieve an sms to your phone.." />
-            <Hyperlink layoutX="14.0" layoutY="132.0" text="&lt;- Previous" />
+            <Hyperlink fx:id="previouslink" layoutX="14.0" layoutY="132.0" text="&lt;- Previous" />
+            <AnchorPane fx:id="BOX_NOTIF_WARNING" layoutX="23.0" layoutY="341.0" prefHeight="28.0" prefWidth="259.0" style="-fx-background-color: #FFE2CC;" visible="false">
+                  <effect>
+                    <DropShadow color="GRAY" offsetX="5.0" offsetY="5.0" />
+                </effect> 
+                <children>
+                  <Label fx:id="OP_SUCCESS1" layoutX="14.0" layoutY="4.0" text="Please type in your username" textFill="#363b4d">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <ImageView fitHeight="25.0" fitWidth="28.0" layoutX="208.0" layoutY="2.0" preserveRatio="true">
+                     <image>
+                        <Image url="@../ressources/images/icons8-warning-shield-96.png" />
+                     </image>
+                  </ImageView>
+               </children>
+         
+                
+            </AnchorPane>
+            <AnchorPane fx:id="BOX_NOTIF_SUC" layoutX="23.0" layoutY="341.0" prefHeight="28.0" prefWidth="259.0" style="-fx-background-color: #E0FCD6;" visible="false">
+               <effect>
+                  <DropShadow color="GRAY" offsetX="5.0" offsetY="5.0" />
+               </effect>
+               <children>
+                  <Label fx:id="OP_SUCCESS11" layoutX="14.0" layoutY="6.0" text="Sms sent ! Please check your phone" textFill="#363b4d" />
+                  <ImageView fitHeight="25.0" fitWidth="18.0" layoutX="216.0" layoutY="5.0" preserveRatio="true">
+                     <image>
+                        <Image url="@../ressources/images/checked.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </AnchorPane>
          </children>
       </AnchorPane>
    </children>

@@ -23,7 +23,12 @@ import javafx.scene.Scene;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
+import javafx.scene.effect.DropShadow;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
+import service.ServiceAuthentification;
+import service.sendSMS;
 
 /**
  * FXML Controller class
@@ -40,6 +45,8 @@ public class FXMLloginController implements Initializable {
     
     @FXML
     private JFXTextField USERNAME;
+    @FXML
+    private JFXTextField USERNAME1;
     @FXML
     private JFXPasswordField PASSWORD;
     @FXML
@@ -62,6 +69,18 @@ public class FXMLloginController implements Initializable {
     private Label H5;
     @FXML
     private Label H6;
+    @FXML
+    private AnchorPane login1;
+    @FXML
+    private AnchorPane forgotpw_login;
+    @FXML
+    private AnchorPane BOX_NOTIF_WARNING;
+    @FXML
+    private AnchorPane BOX_NOTIF_SUC;
+    @FXML
+    private Hyperlink previouslink;
+    @FXML
+    private JFXButton RETRIEVE_PW;
 
     private ResourceBundle bundle;
     private Locale locale;
@@ -72,6 +91,43 @@ public class FXMLloginController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
         
+        forgotpw_login.setEffect(new DropShadow(5  , 5, 4, Color.GREY));
+        login1.setEffect(new DropShadow(5  , 5, 4, Color.GREY));
+        FORGOTPW_LINK.setOnAction(e->{
+            login1.setVisible(false);
+            forgotpw_login.setVisible(true);
+            
+        });
+        previouslink.setOnAction(e->{
+            login1.setVisible(true);
+            forgotpw_login.setVisible(false);
+        });
+        
+        RETRIEVE_PW.setOnAction(e->{
+            
+            if (USERNAME1.getText().isEmpty())
+                {
+                    BOX_NOTIF_WARNING.setVisible(true);
+                    BOX_NOTIF_SUC.setVisible(false);
+                }
+            else
+                {
+                    BOX_NOTIF_SUC.setVisible(true);
+                    BOX_NOTIF_WARNING.setVisible(false);
+                      ServiceAuthentification serv=new ServiceAuthentification();
+                    String username=USERNAME1.getText();
+                    
+                    sendSMS.username=username;
+                    sendSMS.password=serv.retrieve_userpw(username);
+                    sendSMS.number=serv.retrieve_usernum(username);
+                    
+                    
+                    sendSMS sms=new sendSMS();
+                    System.out.println(sms.sendSms());
+                    
+                   
+                }
+        });
         
     }    
     
