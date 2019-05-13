@@ -6,6 +6,7 @@
 package gui;
 
 import com.jfoenix.controls.JFXTextField;
+import entities.Ligne;
 import entities.Station;
 import entities.Voyage;
 import java.io.IOException;
@@ -42,6 +43,7 @@ import javafx.stage.Stage;
 import javafx.util.Callback;
 import jdk.nashorn.internal.objects.Global;
 import service.EmailSend;
+import service.ServiceLigne;
 import service.ServiceStation;
 import service.ServiceVoyage;
 
@@ -114,6 +116,8 @@ public class FXMLgestionvoyageController implements Initializable {
     private ResourceBundle bundle;
 
 public ServiceVoyage service = new ServiceVoyage();
+    ServiceLigne service_ligne=new ServiceLigne();
+    ServiceStation service_stat=new ServiceStation();
     /**
      * Initializes the controller class.
      */
@@ -233,8 +237,33 @@ public ServiceVoyage service = new ServiceVoyage();
    delete.setPreserveRatio(true);
    delete.setImage(new Image("@../../ressources/images/trash.png"));
 
+   
+   int idligne=list.get(i).getId_ligne();
+   edit.setOnMouseClicked(e->{
+       Ligne ligne=service_ligne.searchLigneById(idligne);
+       List<Station> list_station= service_ligne.retrieve_stations_ofline(ligne.getNom());
+       
+       RoadTrip traject = new RoadTrip();
+       traject.list.clear();
+       traject.y=list_station.get(0).getLatitude();
+       traject.x=list_station.get(0).getLongitude();
+       int n = list_station.size();
+       
+        for (int it = 0; it < n; it++) {
 
+     RoadTrip.list.add(list_station.get(it));
+
+    }
+         Parent root;
+
+   Stage stage = new Stage();
+   traject.start(stage);
+       
+   });
+   
+   
     int id=list.get(i).getId();
+    
      delete.setOnMouseClicked(e -> {
        
        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
@@ -274,6 +303,21 @@ if (result.get() == ButtonType.OK){
    
  public void loadpages()
  {
+       btnOverview.setOnAction(e->{
+          Parent showligne;
+             try {
+                 showligne = FXMLLoader.load(getClass().getResource("HOME.fxml"));
+                  Scene scene = new Scene(showligne);
+        
+        
+        Stage stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
+        stage.setScene(scene);
+        stage.show();
+             } catch (IOException ex) {
+                 Logger.getLogger(FXMLgestionstationsController.class.getName()).log(Level.SEVERE, null, ex);
+             }
+       
+         });
      btnOrders.setOnAction(e->{
           Parent showligne;
              try {

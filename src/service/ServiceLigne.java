@@ -25,6 +25,66 @@ public class ServiceLigne implements SCRUD < Ligne > {
  static Connection con = MYSQLConnection.conncet();
  static PreparedStatement ps;
 
+ public int lines_bybus()
+ {
+      int ret=0;
+      try {
+   ps = con.prepareStatement("SELECT count(*) FROM ligne WHERE moyenTransport like 'Bus'");
+   ResultSet res = ps.executeQuery();
+
+  
+   if (res.next()) {
+    ret=res.getInt(1);
+    return ret;
+   
+   }
+  } catch (SQLException ex) {
+   System.out.println(ex);
+
+  }
+     return ret;
+ }
+  public int lines_bytrain()
+ {
+      int ret=0;
+      try {
+   ps = con.prepareStatement("SELECT count(*) FROM ligne WHERE moyenTransport like 'Train'");
+   ResultSet res = ps.executeQuery();
+
+  
+   if (res.next()) {
+    ret=res.getInt(1);
+    return ret;
+   
+   }
+  } catch (SQLException ex) {
+   System.out.println(ex);
+
+  }
+     return ret;
+ }
+  
+    public int lines_byMetro()
+ {
+      int ret=0;
+      try {
+   ps = con.prepareStatement("SELECT count(*) FROM ligne WHERE moyenTransport like 'Metro'");
+   ResultSet res = ps.executeQuery();
+
+  
+   if (res.next()) {
+    ret=res.getInt(1);
+    return ret;
+   
+   }
+  } catch (SQLException ex) {
+   System.out.println(ex);
+
+  }
+     return ret;
+ }
+ 
+ 
  public void MakeTraject(String nomligne,Station idstat, int order)
  {
       try {
@@ -91,6 +151,30 @@ public class ServiceLigne implements SCRUD < Ligne > {
 
   }
      return ret;
+ }
+    public List<Station> retrieve_stations_ofline(String nom) {
+
+      List<Station> mylist=new ArrayList<>();
+ServiceStation service_station=new ServiceStation();
+  try {
+     ps = con.prepareStatement("SELECT id_station FROM lignestations WHERE nom='" + nom + "' order by order_s asc");
+
+     ResultSet res = ps.executeQuery();
+     while (res.next()) {
+         
+     int id= res.getInt(1);
+     Station station= service_station.searchByrealID(id+"");
+        mylist.add(station);
+   }
+   return mylist;
+ 
+  } catch (Exception e) {
+      
+   e.printStackTrace();
+  }
+return mylist;
+
+
  }
  
   public boolean checktraject(String nom) {

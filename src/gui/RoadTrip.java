@@ -6,10 +6,8 @@
 package gui;
 
 import com.teamdev.jxmaps.ControlPosition;
-import com.teamdev.jxmaps.Icon;
 import com.teamdev.jxmaps.LatLng;
 import com.teamdev.jxmaps.Map;
-import com.teamdev.jxmaps.MapMouseEvent;
 import com.teamdev.jxmaps.MapOptions;
 import com.teamdev.jxmaps.MapReadyHandler;
 import com.teamdev.jxmaps.MapStatus;
@@ -20,13 +18,10 @@ import com.teamdev.jxmaps.Polyline;
 import com.teamdev.jxmaps.PolylineOptions;
 import com.teamdev.jxmaps.javafx.MapView;
 import entities.Station;
-import java.net.URL;
-
 
 import java.util.ArrayList;
 import java.util.List;
 import javafx.application.Application;
-import static javafx.application.Application.STYLESHEET_MODENA;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
@@ -34,25 +29,18 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
-import javax.swing.ImageIcon;
 
 /**
  *
  * @author user
  */
-public class TestingTraject extends Application {
- public static List < Station > list = new ArrayList < > ();
+public class RoadTrip extends Application {
+    public static List < Station > list = new ArrayList < > ();
  public static double x = 36.832130;
  public static double y = 36.832130;
-
- @Override
- public void init() throws Exception {
-  MapView.InitJavaFX();
- }
-
- @Override
- public void start(Stage primaryStage) {
-  MapViewOptions options = new MapViewOptions();
+    @Override
+    public void start(Stage primaryStage) {
+        MapViewOptions options = new MapViewOptions();
 
   options.importPlaces();
   options.setApiKey("AIzaSyDHNR3vAW0ePVGSFhG8ABlI5LIbAHo_5FY&fbclid=IwAR2aEAzW3rxWmB4hh5Fu74bJQ3roda6Z4-f8O45jINB3z7rasfCeXhS4Qu8&libraries=places&callback=initMap");
@@ -79,22 +67,26 @@ public class TestingTraject extends Application {
 
      map.setOptions(options);
 
-     map.setCenter(new LatLng(list.get(0).getLatitude(), list.get(0).getLongitude()));
+     map.setCenter(new LatLng(y, x));
 
      map.setZoom(10.0);
 
      int n = list.size();
-     LatLng[] path = new LatLng[n];
+     
 
      for (int i = 0; i < list.size(); i++) {
-      path[i] = new LatLng(list.get(i).getLatitude(), list.get(i).getLongitude());
+         Marker marker = new Marker(map);
+     marker.setPosition(new LatLng(list.get(i).getLatitude(),
+      list.get(i).getLongitude()));
+         
+   
      }
 
 
      Polyline polyline = new Polyline(map);
 
 
-     polyline.setPath(path);
+ 
 
      PolylineOptions options2 = new PolylineOptions();
 
@@ -125,14 +117,14 @@ public class TestingTraject extends Application {
   Scene scene = new Scene(new BorderPane(mapView), 700, 500);
   primaryStage.setScene(scene);
   primaryStage.show();
+       
+    }
 
- }
-
- /**
-  * @param args the command line arguments
-  */
- public static void main(String[] args) {
-  launch(args);
- }
-
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+        launch(args);
+    }
+    
 }

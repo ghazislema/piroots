@@ -5,47 +5,41 @@
  */
 package gui;
 
-import appMainClasses.LigneMain;
-import com.jfoenix.controls.JFXButton;
-import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextField;
-import entities.Station;
-import static gui.FXMLaddStationController.generated_lat;
-import static gui.FXMLaddStationController.generated_long;
 import java.io.IOException;
 import java.net.URL;
-import java.util.Locale;
-import java.util.Optional;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Side;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.ButtonType;
-import javafx.scene.Scene;
+import javafx.scene.chart.BarChart;
+import javafx.scene.chart.PieChart;
 import javafx.scene.control.Button;
-import javafx.scene.control.ButtonType;
 import javafx.scene.control.ComboBox;
-import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
+import javafx.scene.effect.DropShadow;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
-import service.ServiceStation;
+import service.ServiceLigne;
 
 /**
  * FXML Controller class
  *
  * @author user
  */
-public class FXMLupdateStationController implements Initializable {
+public class HOMEController implements Initializable {
 
     @FXML
     private Button btnOverview;
@@ -54,9 +48,9 @@ public class FXMLupdateStationController implements Initializable {
     @FXML
     private Button BTN_LINE_MANAGEMENT;
     @FXML
-    private Button btnMenus;
-    @FXML
     private Button btnSettings;
+    @FXML
+    private Button btnMenus;
     @FXML
     private Button btnSignout;
     @FXML
@@ -68,142 +62,64 @@ public class FXMLupdateStationController implements Initializable {
     @FXML
     private Pane pnlOverview;
     @FXML
-    private JFXButton ADD_LINE_BTN;
+    private Label H1_STATION_MANAGEMENT;
     @FXML
-    private JFXButton UPDATE_BTN_STATION;
+    private AnchorPane ANCHOR_UPDATE;
     @FXML
-    private Hyperlink PREV_LINK;
+    private JFXTextField LINE_NAME;
     @FXML
-    private AnchorPane BOX_NOTIF;
+    private ComboBox<?> COMBO_BOX_TRANSP;
     @FXML
-    private Label OP_SUCCESS;
+    private ImageView SAVE_ICON;
     @FXML
-    private AnchorPane BOX_NOTIF_WARNING;
+    private ImageView EXIT_ICON;
     @FXML
-    private Label OP_SUCCESS1;
+    private Label LINE_ID;
     @FXML
-    private JFXTextField STATION_NAME;
-    @FXML
-    private JFXTextField LONGITUDE;
-    @FXML
-    private JFXTextField LATITUDE;
-    
-    @FXML
-    private Label chooseMap;
-    
-    private ResourceBundle bundle;
+    private Pane paneCharts;
 
+  
     
+    private final ObservableList<PieChart.Data> details = FXCollections.observableArrayList();
     
-    private int id;
+    private PieChart piechart;
+
+    ServiceLigne service_ligne= new ServiceLigne();
     /**
      * Initializes the controller class.
      */
-    ServiceStation service=  new ServiceStation();
-    @FXML
-    private JFXComboBox<?> line_trip;
-    @FXML
-    private JFXComboBox<?> type_trip;
-    @FXML
-    private ImageView MAP_ID;
-    @FXML
-    private ImageView reload_data;
-  
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        
-        
+        // TODO
         loadpages();
+        paneCharts.setEffect(new DropShadow(5  , 5, 10, Color.GREY));
+        double nb_bus=service_ligne.lines_bybus();
+        double nb_train=service_ligne.lines_bytrain();
+        double nb_metro=service_ligne.lines_byMetro();
         
-         //Chargement langage
-//  Loadlang(LigneMain.language);
+        int n1= (int) (nb_bus*100/(nb_bus+nb_train+nb_metro));
+        int n2= (int) (nb_train*100/(nb_bus+nb_train+nb_metro));
+        int n3= (int) (nb_metro*100/(nb_bus+nb_train+nb_metro));
   
-        PREV_LINK.setOnAction(e->{
-            Parent showligne;
-            try {
-                showligne = FXMLLoader.load(getClass().getResource("FXMLgestionstations.fxml"));
-                 Scene scene = new Scene(showligne);
         
+        details.addAll(new PieChart.Data("Bus lines "+ n1+"%", nb_bus),
+                new PieChart.Data("Train lines "+n2+"%", nb_train),
+                new PieChart.Data("Tramway lines "+n3+"%", nb_metro));
         
-        Stage stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
-        stage.setScene(scene);
-        stage.show();
-            } catch (IOException ex) {
-                Logger.getLogger(FXMLupdateStationController.class.getName()).log(Level.SEVERE, null, ex);
-            }
-       
-        });
+        piechart = new PieChart();
+         piechart.setPrefSize(325, 325);
+        piechart.setData(details);
+       piechart.setTitle("Lines by Means of transport");
+   //     piechart.setLegendSide(Side.TOP);
+        piechart.setLabelsVisible(true);
+        paneCharts.getChildren().add(piechart);
         
-        UPDATE_BTN_STATION.setOnAction(e->{
-            Station a= new Station();
-            a.setNom(STATION_NAME.getText());
-          
-            a.setLongitude(Double.parseDouble(LONGITUDE.getText()));
-            a.setLatitude(Double.parseDouble(LATITUDE.getText()));
-            a.setId(id);
-            service.update(a);
-            
-              Alert alert = new Alert(Alert.AlertType.INFORMATION);
-
-alert.setHeaderText(null);
-alert.setContentText("Station has been updated successfully.");
-
-Optional<ButtonType> result = alert.showAndWait();
-if (result.get() == ButtonType.OK){
-    
-        Parent parent;
-             try {
-                 parent = FXMLLoader.load(getClass().getResource("FXMLgestionstations.fxml"));
-                  Scene scene = new Scene(parent);
-        
-        
-        Stage stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
-        stage.setScene(scene);
-        stage.show();
-             } catch (IOException ex) {
-                 Logger.getLogger(FXMLgestionstationsController.class.getName()).log(Level.SEVERE, null, ex);
-             }
-} 
-            
-            
-            
-        });
-        
-         MAP_ID.setOnMouseClicked(e->{
-                     Parent root;
-       
-           MapRetrievePoint map=new MapRetrievePoint();
-           map.y=Double.parseDouble(LONGITUDE.getText());
-           map.x=Double.parseDouble(LATITUDE.getText());
-           Stage stage=new Stage();
-        map.start(stage);
-        
-  
-                });
-         
-          reload_data.setOnMouseClicked(ev->{
-                          LONGITUDE.setText(generated_long);
-        LATITUDE.setText(generated_lat);
-                });
     }    
 
     @FXML
     private void handleClicks(ActionEvent event) {
     }
-
-    @FXML
-    private void Back(ActionEvent event) {
-    }
-    
-    public void initData(Station s)
-    {
-        STATION_NAME.setText(s.getNom());
-        LONGITUDE.setText(Double.toString(s.getLongitude()));
-        LATITUDE.setText(Double.toString(s.getLatitude()));
-        id=s.getId();
-    }
-    
-     public void loadpages()
+       public void loadpages()
  {
        btnOverview.setOnAction(e->{
           Parent showligne;
@@ -299,25 +215,6 @@ if (result.get() == ButtonType.OK){
          
      });
         
- }
-    
-      private void Loadlang(String lang) {
-  Locale locale = new Locale(lang);
-  bundle = ResourceBundle.getBundle("i18n.mybundle", locale);
-  
-   btnOrders.setText(bundle.getString("BTN_TRIPS_MANAGEMENT"));
-    BTN_LINE_MANAGEMENT.setText(bundle.getString("BTN_LINE_MANAGEMENT"));
-            btnMenus.setText(bundle.getString("BTN_STATION_MANAGEMENT"));
-            btnSignout.setText(bundle.getString("BTN_SIGN_OUT"));
-
-  PREV_LINK.setText(bundle.getString("PREV_PAGE"));
-  
-                    STATION_NAME.setPromptText(bundle.getString("STATION_NAME"));
-                    LONGITUDE.setPromptText(bundle.getString("LONGITUDE"));
-                            LATITUDE.setPromptText(bundle.getString("LATITUDE"));
-                            chooseMap.setText(bundle.getString("CHOSE_MAP"));
-                                    UPDATE_BTN_STATION.setText(bundle.getString("SAVE"));
-
  }
     
 }

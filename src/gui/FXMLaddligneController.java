@@ -218,7 +218,21 @@ if (result.get() == ButtonType.OK){
              }
          
      });
-     
+       btnOverview.setOnAction(e->{
+          Parent showligne;
+             try {
+                 showligne = FXMLLoader.load(getClass().getResource("HOME.fxml"));
+                  Scene scene = new Scene(showligne);
+        
+        
+        Stage stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
+        stage.setScene(scene);
+        stage.show();
+             } catch (IOException ex) {
+                 Logger.getLogger(FXMLgestionstationsController.class.getName()).log(Level.SEVERE, null, ex);
+             }
+       
+         });
      btnSettings.setOnAction(e->{
          Parent showligne;
              try {
