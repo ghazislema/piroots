@@ -1,6 +1,10 @@
 package gui;
 
 import com.teamdev.jxmaps.ControlPosition;
+import com.teamdev.jxmaps.DirectionsRequest;
+import com.teamdev.jxmaps.DirectionsResult;
+import com.teamdev.jxmaps.DirectionsRouteCallback;
+import com.teamdev.jxmaps.DirectionsStatus;
 import com.teamdev.jxmaps.GeocoderCallback;
 import com.teamdev.jxmaps.GeocoderRequest;
 import com.teamdev.jxmaps.GeocoderResult;
@@ -15,6 +19,7 @@ import com.teamdev.jxmaps.MapStatus;
 import com.teamdev.jxmaps.MapTypeControlOptions;
 import com.teamdev.jxmaps.MapViewOptions;
 import com.teamdev.jxmaps.Marker;
+import com.teamdev.jxmaps.TravelMode;
 import com.teamdev.jxmaps.javafx.MapView;
 import javafx.application.Application;
 import javafx.event.Event;
@@ -22,6 +27,7 @@ import javafx.scene.Scene;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
+import javax.swing.JOptionPane;
 
 
 /**
@@ -43,7 +49,7 @@ public class MapExample extends Application {
         this.y=y;
         this.nom=nom;
     }
-    
+     
     @Override
     public void init() throws Exception {
         MapView.InitJavaFX();

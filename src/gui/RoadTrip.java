@@ -6,6 +6,7 @@
 package gui;
 
 import com.teamdev.jxmaps.ControlPosition;
+import com.teamdev.jxmaps.InfoWindow;
 import com.teamdev.jxmaps.LatLng;
 import com.teamdev.jxmaps.Map;
 import com.teamdev.jxmaps.MapOptions;
@@ -18,6 +19,8 @@ import com.teamdev.jxmaps.Polyline;
 import com.teamdev.jxmaps.PolylineOptions;
 import com.teamdev.jxmaps.javafx.MapView;
 import entities.Station;
+import static gui.MapExample.nom;
+import static gui.TestingTraject.list;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -38,6 +41,7 @@ public class RoadTrip extends Application {
     public static List < Station > list = new ArrayList < > ();
  public static double x = 36.832130;
  public static double y = 36.832130;
+ public static String nom;
     @Override
     public void start(Stage primaryStage) {
         MapViewOptions options = new MapViewOptions();
@@ -78,17 +82,40 @@ public class RoadTrip extends Application {
          Marker marker = new Marker(map);
      marker.setPosition(new LatLng(list.get(i).getLatitude(),
       list.get(i).getLongitude()));
+     
+     if (i==0)
+     {
+     final InfoWindow window = new InfoWindow(map);
+                                window.setContent("Departure point: "+list.get(i).getNom());
+                                window.open(map, marker);    
          
-   
+     }
+     if (i==list.size()-1)
+     {
+       final InfoWindow window = new InfoWindow(map);
+                                window.setContent("Arrival point: "+list.get(i).getNom());
+                                window.open(map, marker);    
+     }
+     }
+
+
+ int nn = list.size();
+     LatLng[] path = new LatLng[nn];
+
+for (int i = 0; i < list.size(); i++) {
+      path[i] = new LatLng(list.get(i).getLatitude(), list.get(i).getLongitude());
      }
 
 
      Polyline polyline = new Polyline(map);
 
 
- 
+     polyline.setPath(path);
 
      PolylineOptions options2 = new PolylineOptions();
+ 
+
+ 
 
      options2.setGeodesic(true);
 

@@ -165,7 +165,7 @@
                   </ImageView>
                   <AnchorPane fx:id="STEP2_ANCHOR" layoutX="27.0" layoutY="96.0" prefHeight="361.0" prefWidth="735.0" visible="false">
                      <children>
-                        <Label layoutX="26.0" layoutY="30.0" prefHeight="17.0" prefWidth="464.0" text="Your line simulation is below, add stations in order, to build your line traject" />
+                        <Label layoutX="29.0" layoutY="14.0" prefHeight="17.0" prefWidth="464.0" text="Your line simulation is below, add stations in order, to build your line traject." />
                         <Hyperlink fx:id="next2" layoutX="379.0" layoutY="310.0" text="Next step" />
                         <Hyperlink fx:id="prev1" layoutX="289.0" layoutY="310.0" text="Previous step" />
                         <StackPane fx:id="pane" layoutX="23.0" layoutY="85.0" prefHeight="207.0" prefWidth="691.0">
@@ -173,6 +173,9 @@
                               <JFXChipView fx:id="chipView" />
                            </children>
                         </StackPane>
+                        <Label layoutX="29.0" layoutY="49.0" prefHeight="17.0" prefWidth="464.0" text="Traject generation type : " />
+                        <JFXRadioButton fx:id="manual" layoutX="183.0" layoutY="49.0" text="Manual" />
+                        <JFXRadioButton fx:id="Automatic1" layoutX="261.0" layoutY="49.0" prefHeight="17.0" prefWidth="142.0" text="Automatic " />
                      </children>
                   </AnchorPane>
                   <AnchorPane fx:id="STEP3_ANCHOR" layoutX="27.0" layoutY="96.0" prefHeight="361.0" prefWidth="735.0" visible="false">

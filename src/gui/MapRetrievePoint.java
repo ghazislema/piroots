@@ -35,8 +35,8 @@ import javafx.stage.Stage;
  */
 public class MapRetrievePoint extends Application {
    
-    public static double x=9.55265;
-    public static double y=35.523842;
+    public static double y=9.55265;
+    public static double x=35.523842;
     public static String nom;
     
     

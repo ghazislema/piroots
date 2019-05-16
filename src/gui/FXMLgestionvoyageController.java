@@ -144,7 +144,7 @@ public ServiceVoyage service = new ServiceVoyage();
                 return remplir(pageIndex);
             }
         });
-        
+       
         AnchorPANEid.setTopAnchor(pagination, 10.0);
         AnchorPANEid.setBottomAnchor(pagination, 10.0);
         AnchorPANEid.setLeftAnchor(pagination, 10.0);
@@ -169,6 +169,9 @@ public ServiceVoyage service = new ServiceVoyage();
          });
     }  
     
+    
+
+  
     public VBox remplir(int pageIndex)
     {
         
