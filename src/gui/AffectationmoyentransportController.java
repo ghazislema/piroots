@@ -5,13 +5,16 @@
  */
 package gui;
 
-import appMainClasses.LigneMain;
 import com.jfoenix.controls.JFXButton;
-import com.jfoenix.controls.JFXTextField;
-import entities.Station;
+import com.jfoenix.controls.JFXComboBox;
+import com.jfoenix.controls.JFXRadioButton;
+import entities.Autobus;
+import entities.Ligne;
+import entities.Metro;
+import entities.Train;
 import java.io.IOException;
 import java.net.URL;
-import java.util.Locale;
+import java.util.List;
 import java.util.Optional;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
@@ -28,18 +31,22 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
-import javafx.scene.image.ImageView;
+import javafx.scene.control.RadioButton;
+import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
-import service.ServiceStation;
+import service.AutobusService;
+import service.MetroService;
+import service.ServiceLigne;
+import service.TrainService;
 
 /**
  * FXML Controller class
  *
- * @author gslema
+ * @author user
  */
-public class FXMLaddStationController implements Initializable {
+public class AffectationmoyentransportController implements Initializable {
 
     @FXML
     private Button btnMenus1;
@@ -50,9 +57,9 @@ public class FXMLaddStationController implements Initializable {
     @FXML
     private Button BTN_LINE_MANAGEMENT;
     @FXML
-    private Button btnMenus;
-    @FXML
     private Button btnSettings;
+    @FXML
+    private Button btnMenus;
     @FXML
     private Button btnSignout;
     @FXML
@@ -64,11 +71,9 @@ public class FXMLaddStationController implements Initializable {
     @FXML
     private Pane pnlOverview;
     @FXML
-    private JFXButton UPDATE_BTN_STATION;
+    private JFXButton ADD_LINE_BTN;
     @FXML
     private Hyperlink PREV_LINK;
-    @FXML
-    private JFXTextField STATION_NAME;
     @FXML
     private AnchorPane BOX_NOTIF;
     @FXML
@@ -78,120 +83,36 @@ public class FXMLaddStationController implements Initializable {
     @FXML
     private Label OP_SUCCESS1;
     @FXML
-    public JFXTextField LONGITUDE;
+    private JFXRadioButton radio1;
     @FXML
-    public JFXTextField LATITUDE;
+    private JFXRadioButton radio3;
     @FXML
-    private Label chooseMap;
+    private JFXRadioButton radio2;
     @FXML
-    private ImageView MAP_ID;
+    private JFXComboBox<Label> LINE_CAMBO_BAWKS;
     @FXML
-    private ImageView reload_data;
-    ServiceStation service = new ServiceStation();
-    private ResourceBundle bundle;
+    private Label tx1;
+    @FXML
+    private Label tx11;
+    @FXML
+    private JFXComboBox<Label> LINE_CAMBO_BAWKS1;
+
+    TrainService train_service=new TrainService();
+    MetroService metro_service=new MetroService();
+    AutobusService bus_service=new AutobusService();
+    ServiceLigne service_ligne=new ServiceLigne();
     
-    
-    public static String generated_long;
-    public static String generated_lat;
-  
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        
-        loadpages();
-        //Chargement langage
- // Loadlang(LigneMain.language);
-  
-  
         // TODO
-        PREV_LINK.setOnAction(e->{
-            Parent showligne;
-            try {
-                showligne = FXMLLoader.load(getClass().getResource("FXMLgestionstations.fxml"));
-                 Scene scene = new Scene(showligne);
-        
-        
-        Stage stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
-        stage.setScene(scene);
-        stage.show();
-            } catch (IOException ex) {
-                Logger.getLogger(FXMLupdateStationController.class.getName()).log(Level.SEVERE, null, ex);
-            }
-       
-        });
-        
-        
-                UPDATE_BTN_STATION.setOnAction(e->{
-                    
-                     Station a= new Station();
-            a.setNom(STATION_NAME.getText());
-          
-            a.setLongitude(Double.parseDouble(LONGITUDE.getText()));
-            a.setLatitude(Double.parseDouble(LATITUDE.getText()));
-                    
-                    if (service.searchStation(STATION_NAME.getText())){
-                 Alert alert = new Alert(Alert.AlertType.WARNING);
-
-alert.setHeaderText(null);
-alert.setContentText("Station already exists !");
-
-alert.showAndWait();
-                
-            }
-                    else
-                    {
-                         service.insert(a);
-                          Alert alert = new Alert(Alert.AlertType.INFORMATION);
-
-alert.setHeaderText(null);
-alert.setContentText("Station has been created successfully.");
-
-Optional<ButtonType> result = alert.showAndWait();
-if (result.get() == ButtonType.OK){
-    
-        Parent parent;
-             try {
-                 parent = FXMLLoader.load(getClass().getResource("FXMLgestionstations.fxml"));
-                  Scene scene = new Scene(parent);
-        
-        
-        Stage stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
-        stage.setScene(scene);
-        stage.show();
-             } catch (IOException ex) {
-                 Logger.getLogger(FXMLgestionstationsController.class.getName()).log(Level.SEVERE, null, ex);
-             }
-} 
-                    }
-                    
-                    
-                    
-                    
-                    
-           
-           
-        });
-                
-                
-                MAP_ID.setOnMouseClicked(e->{
-                     Parent root;
-       
-           MapRetrievePoint map=new MapRetrievePoint();
-           Stage stage=new Stage();
-        map.start(stage);
-        
-  
-                });
-                
-                reload_data.setOnMouseClicked(ev->{
-                          LONGITUDE.setText(generated_long);
-        LATITUDE.setText(generated_lat);
-                });
+        loadpages();
+        loaditems();
     }    
-
-     public void loadpages()
+    
+        public void loadpages()
  {
      
              
@@ -306,29 +227,126 @@ if (result.get() == ButtonType.OK){
      });
         
  }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    public void loaditems()
+    {
+        
+        LINE_CAMBO_BAWKS.setVisibleRowCount(4);
+  final ToggleGroup group = new ToggleGroup();
+  radio1.setToggleGroup(group);
+  radio2.setToggleGroup(group);
+  radio3.setToggleGroup(group);
+  radio1.setUserData("Bus");
+  radio1.setUserData("Train");
+  radio1.setUserData("Metro");
+  
+  group.selectedToggleProperty().addListener(e->{
+      RadioButton selectedRadioButton = (RadioButton) group.getSelectedToggle();
+   String str = selectedRadioButton.getText();
+   
+      System.out.println(str);
+   
+    LINE_CAMBO_BAWKS.getItems().clear();
+   
+   List < Ligne > list_ligne = service_ligne.searchLineByNameTransport(str);
+
+   for (Ligne l: list_ligne) {
+    Label nom = new Label(l.getNom());
+    LINE_CAMBO_BAWKS.getItems().add(nom);
+   }
+   
+   
+   
+   
+   
+   
+   
+   tx1.setDisable(false);
+    LINE_CAMBO_BAWKS.setDisable(false);
+    tx11.setDisable(false);
+   LINE_CAMBO_BAWKS1.setDisable(false);
+       LINE_CAMBO_BAWKS1.getItems().clear();
+   
+       if (str.equals("Train"))
+          {
+         List<Train> list_train =    train_service.getAllTrain();
+           for (Train l: list_train) {
+               Label nom=new Label(l.getMatricule());
+            
+                LINE_CAMBO_BAWKS1.getItems().add(nom);
+             }
+              
+          }
+       else  if (str.equals("Metro"))
+          {
+         List<Metro> list_metro =    metro_service.getAllMetro();
+           for (Metro l: list_metro) {
+               Label nom=new Label(l.getMatricule());
+             
+                LINE_CAMBO_BAWKS1.getItems().add(nom);
+             }
+              
+          }
+       else if (str.equals("Bus"))
+          {
+         List<Autobus> list_bus =    bus_service.getAllBus();
+           for (Autobus l: list_bus) {
+               Label nom=new Label(l.getMatricule());
+                LINE_CAMBO_BAWKS1.getItems().add(nom);
+             }
+              
+          }
+       
+       
+  });
+  
+  
+  
+  
+    }
+
     @FXML
     private void handleClicks(ActionEvent event) {
     }
 
     @FXML
     private void Back(ActionEvent event) {
-    }
+        
+        Label lig=LINE_CAMBO_BAWKS.getValue();
+        Label mat=LINE_CAMBO_BAWKS1.getValue();
+       
+        service_ligne.affectmeans(lig.getText(), mat.getText());
+        
+         Alert alert = new Alert(Alert.AlertType.WARNING);
+
+alert.setHeaderText(null);
+alert.setContentText("Vehicule affected to line successufly");
+
+Optional<ButtonType> result = alert.showAndWait();
+if (result.get() == ButtonType.OK){
     
-     private void Loadlang(String lang) {
-  Locale locale = new Locale(lang);
-  bundle = ResourceBundle.getBundle("i18n.mybundle", locale);
-
-  PREV_LINK.setText(bundle.getString("PREV_PAGE"));
-   btnOrders.setText(bundle.getString("BTN_TRIPS_MANAGEMENT"));
-    BTN_LINE_MANAGEMENT.setText(bundle.getString("BTN_LINE_MANAGEMENT"));
-            btnMenus.setText(bundle.getString("BTN_STATION_MANAGEMENT"));
-            btnSignout.setText(bundle.getString("BTN_SIGN_OUT"));
-                    STATION_NAME.setPromptText(bundle.getString("STATION_NAME"));
-                    LONGITUDE.setPromptText(bundle.getString("LONGITUDE"));
-                            LATITUDE.setPromptText(bundle.getString("LATITUDE"));
-                            chooseMap.setText(bundle.getString("CHOSE_MAP"));
-                                    UPDATE_BTN_STATION.setText(bundle.getString("SAVE"));
-
- }
+        Parent parent;
+             try {
+                 parent = FXMLLoader.load(getClass().getResource("FXMLgestionlignes.fxml"));
+                  Scene scene = new Scene(parent);
+        
+        
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setScene(scene);
+        stage.show();
+             } catch (IOException ex) {
+                 Logger.getLogger(FXMLgestionstationsController.class.getName()).log(Level.SEVERE, null, ex);
+             }
+} 
+        
+    }
     
 }

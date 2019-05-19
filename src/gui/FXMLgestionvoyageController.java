@@ -42,7 +42,7 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 import jdk.nashorn.internal.objects.Global;
-import service.EmailSend;
+import util.EmailSend;
 import service.ServiceLigne;
 import service.ServiceStation;
 import service.ServiceVoyage;
@@ -60,6 +60,8 @@ public class FXMLgestionvoyageController implements Initializable {
     private Button btnOrders;
     @FXML
     private Button BTN_LINE_MANAGEMENT;
+     @FXML
+    private Button btnMenus1;
     @FXML
     private Button btnMenus;
     @FXML
@@ -306,6 +308,21 @@ if (result.get() == ButtonType.OK){
    
  public void loadpages()
  {
+       btnMenus1.setOnAction(e->{
+          Parent showligne;
+             try {
+                 showligne = FXMLLoader.load(getClass().getResource("affectationmoyentransport.fxml"));
+                  Scene scene = new Scene(showligne);
+        
+        
+        Stage stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
+        stage.setScene(scene);
+        stage.show();
+             } catch (IOException ex) {
+                 Logger.getLogger(FXMLgestionstationsController.class.getName()).log(Level.SEVERE, null, ex);
+             }
+       
+         });
        btnOverview.setOnAction(e->{
           Parent showligne;
              try {

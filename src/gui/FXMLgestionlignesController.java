@@ -79,6 +79,8 @@ public class FXMLgestionlignesController implements Initializable {
  private Label BTN_ADD_NEW_LINE;
  @FXML
  private Button btnOverview;
+  @FXML
+    private Button btnMenus1;
  @FXML
  private Button btnOrders;
  @FXML
@@ -145,7 +147,21 @@ public class FXMLgestionlignesController implements Initializable {
 
  public void loadpages()
  {
-     
+       btnMenus1.setOnAction(e->{
+          Parent showligne;
+             try {
+                 showligne = FXMLLoader.load(getClass().getResource("affectationmoyentransport.fxml"));
+                  Scene scene = new Scene(showligne);
+        
+        
+        Stage stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
+        stage.setScene(scene);
+        stage.show();
+             } catch (IOException ex) {
+                 Logger.getLogger(FXMLgestionstationsController.class.getName()).log(Level.SEVERE, null, ex);
+             }
+       
+         });
        btnOverview.setOnAction(e->{
           Parent showligne;
              try {

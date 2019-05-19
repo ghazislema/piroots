@@ -4,7 +4,7 @@
  * https://www.google.com/settings/security/lesssecureapps
  */
 
-package service;
+package util;
 
 /**
  *

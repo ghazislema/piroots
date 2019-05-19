@@ -10,15 +10,15 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import static service.ServiceLigne.ps;
+
 
 /**
  *
  * @author user
  */
 public class ServiceAuthentification {
-    static Connection con = MYSQLConnection.conncet();
- static PreparedStatement ps;
+     Connection con = MYSQLConnection.conncet();
+  PreparedStatement ps;
  
  public String retrieve_userpw(String username)
  {

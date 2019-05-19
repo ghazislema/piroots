@@ -58,7 +58,8 @@ import service.ServiceStation;
  * @author user
  */
 public class RoadConstructionController implements Initializable {
-
+ @FXML
+    private Button btnMenus1;
  @FXML
  private Button btnOverview;
  @FXML
@@ -179,6 +180,13 @@ public class RoadConstructionController implements Initializable {
    RadioButton selectedRadioButton = (RadioButton) group.getSelectedToggle();
    String str = selectedRadioButton.getText();
    
+   if (str.equals("Train") || str.equals("Tramway"))
+          {
+              Automatic1.setDisable(true);
+              manual.setDisable(true);
+              manual.setSelected(true);
+              
+          }
    LINE_CAMBO_BAWKS.getItems().clear();
    
    List < Ligne > list_ligne = serv_ligne.searchLineByNameTransport(str);
@@ -425,7 +433,7 @@ loadpages();
 }
  int max(Station tab[], int taille,double lng,double lat)
 {
-    // on considère que le plus grand élément est le premier
+    
     int i=0, indice_max=0;
     
     while(i < taille)
@@ -470,6 +478,21 @@ loadpages();
  
   public void loadpages()
  {
+       btnMenus1.setOnAction(e->{
+          Parent showligne;
+             try {
+                 showligne = FXMLLoader.load(getClass().getResource("affectationmoyentransport.fxml"));
+                  Scene scene = new Scene(showligne);
+        
+        
+        Stage stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
+        stage.setScene(scene);
+        stage.show();
+             } catch (IOException ex) {
+                 Logger.getLogger(FXMLgestionstationsController.class.getName()).log(Level.SEVERE, null, ex);
+             }
+       
+         });
      btnOverview.setOnAction(e->{
           Parent showligne;
              try {

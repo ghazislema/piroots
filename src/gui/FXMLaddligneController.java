@@ -81,6 +81,8 @@ private ResourceBundle bundle;
     private ComboBox COMBO_BOX_TRANSP;
     @FXML
     private JFXTextField LINE_NAME;
+     @FXML
+    private Button btnMenus1;
 
     /**
      * Initializes the controller class.
@@ -186,6 +188,21 @@ if (result.get() == ButtonType.OK){
 
       public void loadpages()
  {
+       btnMenus1.setOnAction(e->{
+          Parent showligne;
+             try {
+                 showligne = FXMLLoader.load(getClass().getResource("affectationmoyentransport.fxml"));
+                  Scene scene = new Scene(showligne);
+        
+        
+        Stage stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
+        stage.setScene(scene);
+        stage.show();
+             } catch (IOException ex) {
+                 Logger.getLogger(FXMLgestionstationsController.class.getName()).log(Level.SEVERE, null, ex);
+             }
+       
+         });
      btnOrders.setOnAction(e->{
           Parent showligne;
              try {

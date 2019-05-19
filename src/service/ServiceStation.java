@@ -14,7 +14,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import static service.ServiceLigne.ps;
 
 /**
  *
@@ -22,8 +21,8 @@ import static service.ServiceLigne.ps;
  */
 public class ServiceStation implements SCRUD < Station >{
 
-   static Connection con = MYSQLConnection.conncet();
-    static PreparedStatement ps;
+    Connection con = MYSQLConnection.conncet();
+     PreparedStatement ps;
     
     
     

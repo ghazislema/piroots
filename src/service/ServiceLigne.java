@@ -22,9 +22,35 @@ import entities.Station;
  */
 public class ServiceLigne implements SCRUD < Ligne > {
 
- static Connection con = MYSQLConnection.conncet();
- static PreparedStatement ps;
+  Connection con = MYSQLConnection.conncet();
+  PreparedStatement ps;
 
+  
+  public void affectmeans(String nomligne,String matricule)
+  {
+        try {
+   ps = con.prepareStatement("insert into vehiculeligne " +
+    "              (ligne,vehicule)" +
+    "               values(?,?)");
+
+
+   ps.setString(1,nomligne);
+   ps.setString(2, matricule);
+
+
+   int i = ps.executeUpdate();
+
+   if (i != 0) {
+    System.out.println("Ligne ajouté avec success");
+   } else {
+    System.out.println("Operation non aboutie");
+   }
+  } catch (Exception e) {
+   e.printStackTrace();
+  }
+      
+  }
+  
  public int lines_bybus()
  {
       int ret=0;
