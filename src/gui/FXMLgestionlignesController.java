@@ -88,8 +88,6 @@ public class FXMLgestionlignesController implements Initializable {
  @FXML
  private Button btnMenus;
  @FXML
- private Button btnPackages;
- @FXML
  private Button btnSettings;
  @FXML
  private Button btnSignout;
@@ -103,11 +101,15 @@ public class FXMLgestionlignesController implements Initializable {
  private Pane pnlOverview;
  @FXML
  private VBox pnItems;
- @FXML
- private Button btnOrders1;
 
  private ResourceBundle bundle;
  private Locale locale;
+    @FXML
+    private Button btnMenus2;
+    @FXML
+    private ImageView RELOAD_BTN;
+    @FXML
+    private ImageView RELOAD_BTN1;
 
  /**
   * Initializes the controller class.
@@ -147,6 +149,21 @@ public class FXMLgestionlignesController implements Initializable {
 
  public void loadpages()
  {
+     btnMenus2.setOnAction(e->{
+          Parent showligne;
+             try {
+                 showligne = FXMLLoader.load(getClass().getResource("FXMLDisplayTrafic.fxml"));
+                  Scene scene = new Scene(showligne);
+        
+        
+        Stage stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
+        stage.setScene(scene);
+        stage.show();
+             } catch (IOException ex) {
+                 Logger.getLogger(FXMLgestionstationsController.class.getName()).log(Level.SEVERE, null, ex);
+             }
+       
+         });
        btnMenus1.setOnAction(e->{
           Parent showligne;
              try {

@@ -103,6 +103,8 @@ public class FXMLgestionstationsController implements Initializable {
     public ServiceStation service = new ServiceStation();
     @FXML
     private ImageView RELOAD_BTN2;
+    @FXML
+    private Button btnMenus2;
     /**
      * Initializes the controller class.
      */
@@ -150,6 +152,21 @@ public class FXMLgestionstationsController implements Initializable {
     
      public void loadpages()
  {
+      btnMenus2.setOnAction(e->{
+          Parent showligne;
+             try {
+                 showligne = FXMLLoader.load(getClass().getResource("FXMLDisplayTrafic.fxml"));
+                  Scene scene = new Scene(showligne);
+        
+        
+        Stage stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
+        stage.setScene(scene);
+        stage.show();
+             } catch (IOException ex) {
+                 Logger.getLogger(FXMLgestionstationsController.class.getName()).log(Level.SEVERE, null, ex);
+             }
+       
+         });
        btnMenus1.setOnAction(e->{
           Parent showligne;
              try {

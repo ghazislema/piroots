@@ -12,7 +12,7 @@ package properties;
 public class property {
     
     
-      public static final String url ="jdbc:mysql://127.0.0.1:3306/rootsdb";
+      public static final String url ="jdbc:mysql://127.0.0.1:3306/rootstrafic";
       public static final String user ="root";
-      public static final String password ="";
+      public static final String password ="root";
 }

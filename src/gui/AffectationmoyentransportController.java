@@ -101,6 +101,8 @@ public class AffectationmoyentransportController implements Initializable {
     MetroService metro_service=new MetroService();
     AutobusService bus_service=new AutobusService();
     ServiceLigne service_ligne=new ServiceLigne();
+    @FXML
+    private Button btnMenus2;
     
     /**
      * Initializes the controller class.
@@ -114,6 +116,22 @@ public class AffectationmoyentransportController implements Initializable {
     
         public void loadpages()
  {
+     
+             btnMenus2.setOnAction(e->{
+          Parent showligne;
+             try {
+                 showligne = FXMLLoader.load(getClass().getResource("FXMLDisplayTrafic.fxml"));
+                  Scene scene = new Scene(showligne);
+        
+        
+        Stage stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
+        stage.setScene(scene);
+        stage.show();
+             } catch (IOException ex) {
+                 Logger.getLogger(FXMLgestionstationsController.class.getName()).log(Level.SEVERE, null, ex);
+             }
+       
+         });
      
              
               btnMenus1.setOnAction(e->{

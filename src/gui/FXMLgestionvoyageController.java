@@ -65,8 +65,6 @@ public class FXMLgestionvoyageController implements Initializable {
     @FXML
     private Button btnMenus;
     @FXML
-    private Button btnPackages;
-    @FXML
     private Button btnSettings;
     @FXML
     private Button btnSignout;
@@ -78,12 +76,9 @@ public class FXMLgestionvoyageController implements Initializable {
     private Pane pnlMenus;
     @FXML
     private Pane pnlOverview;
-    @FXML
     private TextField SEARCH_BAR;
     @FXML
     private Label H1_STATION_MANAGEMENT;
-    @FXML
-    private VBox pnItems;
     @FXML
     private Label COL2_LIST_STATION;
     @FXML
@@ -125,6 +120,10 @@ public ServiceVoyage service = new ServiceVoyage();
      */
     List<Voyage> list= service.findAll();
     Pagination pagination;
+    @FXML
+    private Button btnMenus2;
+    @FXML
+    private ImageView RELOAD_BTN21;
     
     public int itemsPerPage() {
         return 8;
@@ -281,8 +280,8 @@ if (result.get() == ButtonType.OK){
     
       box.getChildren().remove(h1);
     service.delete(id);
-//    EmailSend a= new EmailSend();
-  //  a.main(null);
+    EmailSend a= new EmailSend();
+    a.main(null);
     
   
 } 
@@ -308,6 +307,21 @@ if (result.get() == ButtonType.OK){
    
  public void loadpages()
  {
+      btnMenus2.setOnAction(e->{
+          Parent showligne;
+             try {
+                 showligne = FXMLLoader.load(getClass().getResource("FXMLDisplayTrafic.fxml"));
+                  Scene scene = new Scene(showligne);
+        
+        
+        Stage stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
+        stage.setScene(scene);
+        stage.show();
+             } catch (IOException ex) {
+                 Logger.getLogger(FXMLgestionstationsController.class.getName()).log(Level.SEVERE, null, ex);
+             }
+       
+         });
        btnMenus1.setOnAction(e->{
           Parent showligne;
              try {

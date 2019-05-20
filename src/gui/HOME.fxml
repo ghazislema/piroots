@@ -15,7 +15,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="576.0" prefWidth="1050.0" style="-fx-background-color: #171D26 #171D26;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.HOMEController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="576.0" prefWidth="1050.0" style="-fx-background-color: #171D26 #171D26;" xmlns="http://javafx.com/javafx/8.0.181" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.HOMEController">
    <children>
       <VBox alignment="TOP_CENTER" layoutY="156.0" prefHeight="422.0" prefWidth="256.0" style="-fx-background-color: #171D26;" AnchorPane.bottomAnchor="-2.0" AnchorPane.topAnchor="156.0">
          <children>
@@ -102,6 +102,18 @@
                   <Insets left="50.0" />
                </padding>
             </Button>
+            <Button fx:id="btnMenus2" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" onAction="#handleClicks" prefHeight="42.0" prefWidth="259.0" stylesheets="@../ressources/css/style.css" text="Trafic  management">
+               <graphic>
+                  <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../ressources/images/warning.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <padding>
+                  <Insets left="50.0" />
+               </padding>
+            </Button>
             <Button fx:id="btnSignout" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="259.0" stylesheets="@../ressources/css/style.css" text="Sign Out">
                <graphic>
                   <ImageView fitHeight="23.0" fitWidth="27.0" opacity="0.57" pickOnBounds="true" preserveRatio="true">
@@ -152,7 +164,8 @@
                      </children>
                   </AnchorPane>
                   <Label layoutX="28.0" layoutY="114.0" prefHeight="17.0" prefWidth="670.0" text="Welcome to Smart Roots home page. Those are some statistics pie chart representing several data from our database." />
-                  <Pane fx:id="paneCharts" layoutX="28.0" layoutY="160.0" prefHeight="366.0" prefWidth="735.0" style="-fx-background-color: #F9F3E5;" />
+                  <Pane fx:id="paneCharts" layoutX="28.0" layoutY="160.0" prefHeight="366.0" prefWidth="356.0" style="-fx-background-color: #F9F3E5;" />
+                  <Pane fx:id="paneCharts1" layoutX="397.0" layoutY="166.0" prefHeight="366.0" prefWidth="372.0" style="-fx-background-color: #F9F3E5;" />
                </children>
             </Pane>
          </children>

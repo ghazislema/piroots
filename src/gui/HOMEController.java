@@ -6,6 +6,7 @@
 package gui;
 
 import com.jfoenix.controls.JFXTextField;
+import entities.TypeTrafic;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -22,7 +23,10 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.chart.BarChart;
+import javafx.scene.chart.CategoryAxis;
+import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.PieChart;
+import javafx.scene.chart.XYChart;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
@@ -33,6 +37,7 @@ import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import service.ServiceLigne;
+import service.ServiceTrafic;
 
 /**
  * FXML Controller class
@@ -86,6 +91,10 @@ public class HOMEController implements Initializable {
     private PieChart piechart;
 
     ServiceLigne service_ligne= new ServiceLigne();
+    @FXML
+    private Button btnMenus2;
+    @FXML
+    private Pane paneCharts1;
     /**
      * Initializes the controller class.
      */
@@ -113,7 +122,38 @@ public class HOMEController implements Initializable {
        piechart.setTitle("Lines by Means of transport");
    //     piechart.setLegendSide(Side.TOP);
         piechart.setLabelsVisible(true);
-        paneCharts.getChildren().add(piechart);
+       paneCharts.getChildren().add(piechart);
+         CategoryAxis xAxis = new CategoryAxis();
+         NumberAxis yAxis = new NumberAxis();
+      BarChart<String,Number> bc = new BarChart<>(xAxis,yAxis);
+        bc.setTitle("Trafic Par Année");
+        xAxis.setLabel("year");       
+        yAxis.setLabel("number");
+        ServiceTrafic st = new ServiceTrafic();
+          XYChart.Series series1 = new XYChart.Series();
+        series1.setName("2019");       
+        series1.getData().add(new XYChart.Data(TypeTrafic.maintenance.toString(), st.traficmain()));
+        series1.getData().add(new XYChart.Data(TypeTrafic.mesuresDeSecurite.toString(), st.traficMS()));
+        series1.getData().add(new XYChart.Data(TypeTrafic.facteursNaturels.toString(),st.trafiFN())); 
+        
+        XYChart.Series series2 = new XYChart.Series();
+        series2.setName("2020");
+        series2.getData().add(new XYChart.Data(TypeTrafic.maintenance.toString(), st.traficmain()));
+        series2.getData().add(new XYChart.Data(TypeTrafic.mesuresDeSecurite.toString(), st.traficMS()));
+        series2.getData().add(new XYChart.Data(TypeTrafic.facteursNaturels.toString(),st.trafiFN())); 
+        
+        XYChart.Series series3 = new XYChart.Series();
+        series3.setName("2021");
+        series1.getData().add(new XYChart.Data(TypeTrafic.maintenance.toString(), st.traficmain()));
+        series1.getData().add(new XYChart.Data(TypeTrafic.mesuresDeSecurite.toString(), st.traficMS()));
+        series1.getData().add(new XYChart.Data(TypeTrafic.facteursNaturels.toString(),st.trafiFN())); 
+        
+        bc.getData().addAll(series1, series2, series3);
+        
+         bc.setPrefSize(500, 325);
+         paneCharts1.setEffect(new DropShadow(5  , 5, 10, Color.GREY));
+        paneCharts1.getChildren().add(bc);
+        
         
     }    
 
@@ -122,6 +162,21 @@ public class HOMEController implements Initializable {
     }
        public void loadpages()
  {
+      btnMenus2.setOnAction(e->{
+          Parent showligne;
+             try {
+                 showligne = FXMLLoader.load(getClass().getResource("FXMLDisplayTrafic.fxml"));
+                  Scene scene = new Scene(showligne);
+        
+        
+        Stage stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
+        stage.setScene(scene);
+        stage.show();
+             } catch (IOException ex) {
+                 Logger.getLogger(FXMLgestionstationsController.class.getName()).log(Level.SEVERE, null, ex);
+             }
+       
+         });
        btnMenus1.setOnAction(e->{
           Parent showligne;
              try {

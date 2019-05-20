@@ -93,6 +93,16 @@ public class FXMLaddStationController implements Initializable {
     
     public static String generated_long;
     public static String generated_lat;
+    @FXML
+    private Button btnMenus2;
+    @FXML
+    private AnchorPane BOX_NOTIF_WARNING1;
+    @FXML
+    private Label OP_SUCCESS11;
+    @FXML
+    private AnchorPane BOX_NOTIF1;
+    @FXML
+    private Label OP_SUCCESS2;
   
     /**
      * Initializes the controller class.
@@ -310,9 +320,6 @@ if (result.get() == ButtonType.OK){
     private void handleClicks(ActionEvent event) {
     }
 
-    @FXML
-    private void Back(ActionEvent event) {
-    }
     
      private void Loadlang(String lang) {
   Locale locale = new Locale(lang);
