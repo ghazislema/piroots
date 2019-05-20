@@ -281,8 +281,8 @@ if (result.get() == ButtonType.OK){
     
       box.getChildren().remove(h1);
     service.delete(id);
-    EmailSend a= new EmailSend();
-    a.main(null);
+//    EmailSend a= new EmailSend();
+  //  a.main(null);
     
   
 } 

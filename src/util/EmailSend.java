@@ -22,7 +22,7 @@ public class EmailSend {
     public static String to = "ghazi_slema@outlook.fr";
     public static String from = "ghazi.slema@esprit.tn";
     public static String username="";
-    public static String tripid="";
+    public static String tripid="28";
     public static void main(String args[]){
         try{
             
